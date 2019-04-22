@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.bpm.core.BPManager">
+  <SMTPServer></SMTPServer>
+  <Localized>false</Localized>
+  <Clustered>false</Clustered>
+  <RESTServices enable="false" protect="false" secure="false"/>
+  <SOAPServices enable="false" protect="false" secure="false"/>
+  <Model>
+    <BPM resource="bpp1/Processes/IdeaGeneration.bpm" date="20190421192156"/>
+  </Model>
+  <Queries>
+    <ManagedProcessOids>
+    select
+        p.oid 
+    from
+        Process p 
+    where
+        p.uuid in(
+            :uuids
+        )
+    </ManagedProcessOids>
+    <Process>
+    from
+        Process p 
+    where
+        p.uuid = :uuid
+    </Process>
+    <ProcessInstanceParameters>
+    select
+        pt.name,
+        pi.value 
+    from
+        ProcessInstance pri 
+    left join
+        pri.parameterInstances pi 
+    left join
+        pi.parameterType pt 
+    where
+        pri.oid = :processInstanceOid 
+        and pi.current = :current
+    </ProcessInstanceParameters>
+    <ProcessInstanceByActivityInstanceOid>
+    from
+        ProcessInstance pi 
+    where
+        pi.oid in(
+            select
+                ai.processInstance.oid 
+            from
+                ActivityInstance ai 
+            where
+                ai.oid = :activityInstanceOid
+        )
+    </ProcessInstanceByActivityInstanceOid>
+    <ParameterType>
+    from
+        ParameterType pt 
+    where
+        pt.name = :parameterName 
+        and pt.process.oid = :processOid
+    </ParameterType>
+    <ParameterInstance>
+    from
+        ParameterInstance pi 
+    where
+        pi.parameterType.oid = :parameterTypeOid 
+        and pi.processInstance.oid = :processInstanceOid 
+        and pi.current = :current
+    </ParameterInstance>
+    <ParameterInstances>
+    from
+        ParameterInstance pi 
+    where
+        pi.parameterType.oid in(
+            :parameterTypeOids
+        ) 
+        and pi.processInstance.oid = :processInstanceOid
+    </ParameterInstances>
+    <ActivityType>
+    from
+        ActivityType at 
+    where
+        at.uuid = :uuid
+    </ActivityType>
+    <ActivityTypeOids>
+    select
+        at.oid 
+    from
+        ActivityType at 
+    where
+        at.oid in(
+            select
+                at2.oid 
+            from
+                ActivityType at2 
+            inner join
+                at2.groups gr 
+            where
+                at2.process.oid in(
+                    :processOids
+                ) 
+                and at2.type in(
+                    :types
+                ) 
+                and gr.oid in(
+                    :groupOids
+                ) 
+                and (
+                    at2.execution = :execution 
+                    or safe_cast(:execution) is null
+                )
+        )
+    </ActivityTypeOids>
+    <ActivityInstances>
+    from
+        ActivityInstance ai 
+    where
+        ai.processInstance.oid=:processInstanceOid 
+        and ai.activityType.type in(
+            :types
+        )
+    </ActivityInstances>
+    <ActivityInstances2>
+    from
+        ActivityInstance ai 
+    where
+        ai.status in(
+            :statuses
+        ) 
+        and ai.activityType.uuid in(
+            :uuids
+        ) 
+        and ai.processInstance.oid in(
+            :processInstanceOids
+        )
+    </ActivityInstances2>
+    <ActivityInstances3>
+    from
+        ActivityInstance ai 
+    where
+        ai.status in(
+            :statuses
+        ) 
+        and ai.activityType.uuid in(
+            :uuids
+        )
+    </ActivityInstances3>
+    <UserActivityInstances>
+    select
+        distinct ai.oid,
+        at.execution,
+        at.type 
+    from
+        ActivityInstance ai 
+    inner join
+        ai.activityType at 
+    inner join
+        at.groups gr 
+    left join
+        ai.activityInstanceCandidateUsers cu 
+    where
+        at.process.oid in(
+            :processOids
+        ) 
+        and gr.oid in(
+            :groupOids
+        ) 
+        and ai.status in(
+            :status
+        ) 
+        and (
+            ai.user.oid = :userOid 
+            or ai.user.oid is null
+        ) 
+        and (
+            ai.activityInstanceGroup.oid in(
+                :groupOids
+            ) 
+            or ai.activityInstanceGroup.oid is null
+        ) 
+        and (
+            cu.oid = :userOid 
+            or cu.oid is null
+        )
+    </UserActivityInstances>
+    <UserAssignedActivityInstances>
+    from
+        ActivityInstance ai 
+    where
+        ai.status in(
+            :status
+        ) 
+        and ai.oid in(
+            select
+                ai2.oid 
+            from
+                ActivityInstance ai2 
+            inner join
+                ai2.activityType at 
+            inner join
+                at.groups gr 
+            where
+                at.process.oid in(
+                    :processOids
+                ) 
+                and gr.oid in(
+                    :groupOids
+                ) 
+                and (
+                    ai2.user.oid = :userOid
+                )
+        )
+    </UserAssignedActivityInstances>
+    <UserActivityCount>
+    select
+        u.oid,
+        ai.status,
+        count(ai.oid) 
+    from
+        User u 
+    left join
+        u.activityInstances ai 
+    where
+        (
+            ai.oid is null 
+            or ai.oid in(
+                select
+                    ai2.oid 
+                from
+                    ActivityInstance ai2 
+                where
+                    ai2.activityType.process.oid in(
+                        :processOids
+                    )
+            )
+        ) 
+        and u.oid in(
+            select
+                u2.oid 
+            from
+                User u2 
+            left join
+                u2.groups g 
+            where
+                g.oid in(
+                    :groupOids
+                ) 
+                or u2.defaultGroup.oid in(
+                    :groupOids
+                )
+        ) 
+    group by
+        u.oid,
+        ai.status 
+    order by
+        count(ai.oid)
+    </UserActivityCount>
+  </Queries>
+</Descriptor>

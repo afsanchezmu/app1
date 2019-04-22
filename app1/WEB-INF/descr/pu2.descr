@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.bpm.services.MetadataUnitService" name="Synchronize MetaData">
+  <Mode>synchronizeMetadata</Mode>
+  <CreateTestUsers>true</CreateTestUsers>
+  <UsersPerLane>2</UsersPerLane>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Synchronize MetaData</ModelName>
+    <ParentContainer>sv2</ParentContainer>
+    <MasterPage ignore="false">mpage1</MasterPage>
+    <NavigationAncestors>sv2</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>false</CheckPermission>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <OperationParam unit="pu2">pu2.processUUIDs</OperationParam>
+      <Params>tmu2.date|pwu2.sortCriteria|sp|sfld2_output|rcond5.groupOID|rcond4.userOID|link|acond5|acond6|acond3|acond4|rcond3.processOid|acond7|kcond3.processOid|pwu2.block|acond2|acond1|cmplink|sfld3_output|sfld1_output|sfld2_label|pu11.errorInfo|sfld3_label|smc|pwu2.newSortAttribute|sfld1_label|tmu1.date</Params>
+    </OperationParams>
+    <OutgoingLinks>
+      <Link resultCode="success">oln2</Link>
+      <Link resultCode="error">kln2</Link>
+    </OutgoingLinks>
+    <IsLinkHistoryRecorded>true</IsLinkHistoryRecorded>
+  </WRParameterService>
+</Descriptor>

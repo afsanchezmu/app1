@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.session.rtx.LogoutUnitService" name="Logout User">
+  <SiteView>sv1</SiteView>
+  <InvalidateSession>false</InvalidateSession>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Logout User</ModelName>
+    <ParentContainer>sv2</ParentContainer>
+    <MasterPage ignore="false">mpage1</MasterPage>
+    <NavigationAncestors>sv2</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>false</CheckPermission>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <Params>kcond4.userOID|sp|cmplink|link|smc</Params>
+    </OperationParams>
+    <OutgoingLinks></OutgoingLinks>
+    <IsLinkHistoryRecorded>true</IsLinkHistoryRecorded>
+  </WRParameterService>
+</Descriptor>

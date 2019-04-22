@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.content.rtx.EntryUnitService" name="Search">
+  <FormFields>
+    <SelectionField id="sfld6" name="Process" type="string" localized="false" value="" splitOutput="">
+      <Slot id="sfld6_label" label="true" output="false"/>
+      <Slot id="sfld6_output" label="false" output="true"/>
+    </SelectionField>
+    <SelectionField id="sfld7" name="Status" type="string" localized="false" value="" splitOutput="">
+      <Slot id="slot3" label="true" output="false" value="Ready|Active|Aborted"/>
+      <Slot id="slot4" label="false" output="true" value="ready|active|aborted"/>
+    </SelectionField>
+  </FormFields>
+  <wr:Validation xmlns:wr="http://www.webratio.com/2013/WebML/WRValidation">
+    <wr:ValidationLink elementId="enu3" linkId="ln51" action="validate"/>
+  </wr:Validation>
+</Descriptor>

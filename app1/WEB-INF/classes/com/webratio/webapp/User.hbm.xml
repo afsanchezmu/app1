@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="true" default-cascade="none" default-access="property" default-lazy="true">
+  <class name="com.webratio.webapp.User" table="`user`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="oid" column="`oid`" type="java.lang.Integer">
+      <generator class="com.webratio.rtx.hibernate.MaxPlusOneIncrementGenerator"/>
+    </id>
+    <property name="userName" column="`username`" type="java.lang.String" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="password" column="`password`" type="java.lang.String" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="email" column="`email`" type="java.lang.String" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <set name="groups" table="`user_group`" inverse="false" mutable="true" sort="unsorted" optimistic-lock="true" embed-xml="true">
+      <key on-delete="noaction">
+        <column name="`user_oid`"/>
+      </key>
+      <many-to-many class="com.webratio.webapp.Group" not-found="exception" embed-xml="true" unique="false">
+        <column name="`group_oid`"/>
+      </many-to-many>
+    </set>
+    <many-to-one name="defaultGroup" class="com.webratio.webapp.Group" update="true" insert="true" not-found="exception" unique="false" optimistic-lock="true" embed-xml="true">
+      <column name="`group_oid`"/>
+    </many-to-one>
+    <set name="activityInstances" inverse="true" mutable="true" sort="unsorted" optimistic-lock="true" embed-xml="true">
+      <key on-delete="noaction">
+        <column name="`user_oid`"/>
+      </key>
+      <one-to-many class="com.webratio.webapp.ActivityInstance" not-found="exception" embed-xml="true"/>
+    </set>
+    <set name="candidateUserActivityInstances" table="`activityinstance_candidateuser`" inverse="true" mutable="true" sort="unsorted" optimistic-lock="true" embed-xml="true">
+      <key on-delete="noaction">
+        <column name="`user_oid`"/>
+      </key>
+      <many-to-many class="com.webratio.webapp.ActivityInstance" not-found="exception" embed-xml="true" unique="false">
+        <column name="`activityinstance_oid`"/>
+      </many-to-many>
+    </set>
+    <set name="notifications" table="`user_notifications`" inverse="false" mutable="true" sort="unsorted" optimistic-lock="true" embed-xml="true">
+      <key on-delete="noaction">
+        <column name="`user_oid`"/>
+      </key>
+      <many-to-many class="com.webratio.webapp.Notification" not-found="exception" embed-xml="true" unique="false">
+        <column name="`notification_oid`"/>
+      </many-to-many>
+    </set>
+    <set name="userNotes" inverse="true" mutable="true" sort="unsorted" optimistic-lock="true" embed-xml="true">
+      <key on-delete="noaction">
+        <column name="`user_oid`"/>
+      </key>
+      <one-to-many class="com.webratio.webapp.Note" not-found="exception" embed-xml="true"/>
+    </set>
+    <set name="userAttachments" inverse="true" mutable="true" sort="unsorted" optimistic-lock="true" embed-xml="true">
+      <key on-delete="noaction">
+        <column name="`user_oid`"/>
+      </key>
+      <one-to-many class="com.webratio.webapp.Attachment" not-found="exception" embed-xml="true"/>
+    </set>
+  </class>
+  <!-- mapping for relationship 'groups[User2Group]' -->
+  <class entity-name="com.webratio.webapp.Rel_User_to_groups" table="`user_group`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <composite-id mapped="false" unsaved-value="undefined">
+      <key-property name="source_oid" column="`user_oid`" type="java.lang.Integer"/>
+      <key-property name="target_oid" column="`group_oid`" type="java.lang.Integer"/>
+    </composite-id>
+  </class>
+  <!-- mapping for relationship 'defaultGroup[User2DefaultGroup]' -->
+  <class entity-name="com.webratio.webapp.Rel_User_to_defaultGroup" table="`user`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="source_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="target_oid" column="`group_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+  <!-- mapping for relationship 'activityInstances[user2ActivityInstances]' -->
+  <class entity-name="com.webratio.webapp.Rel_User_to_activityInstances" table="`activityinstance`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="target_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="source_oid" column="`user_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+  <!-- mapping for relationship 'candidateUserActivityInstances[candidateUser2ActivityInstances]' -->
+  <class entity-name="com.webratio.webapp.Rel_User_to_candidateUserActivityInstances" table="`activityinstance_candidateuser`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <composite-id mapped="false" unsaved-value="undefined">
+      <key-property name="source_oid" column="`user_oid`" type="java.lang.Integer"/>
+      <key-property name="target_oid" column="`activityinstance_oid`" type="java.lang.Integer"/>
+    </composite-id>
+  </class>
+  <!-- mapping for relationship 'notifications[user2Notifications]' -->
+  <class entity-name="com.webratio.webapp.Rel_User_to_notifications" table="`user_notifications`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <composite-id mapped="false" unsaved-value="undefined">
+      <key-property name="source_oid" column="`user_oid`" type="java.lang.Integer"/>
+      <key-property name="target_oid" column="`notification_oid`" type="java.lang.Integer"/>
+    </composite-id>
+  </class>
+  <!-- mapping for relationship 'userNotes[user2Notes]' -->
+  <class entity-name="com.webratio.webapp.Rel_User_to_userNotes" table="`note`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="target_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="source_oid" column="`user_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+  <!-- mapping for relationship 'userAttachments[user2Attachments]' -->
+  <class entity-name="com.webratio.webapp.Rel_User_to_userAttachments" table="`attachment`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="target_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="source_oid" column="`user_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+</hibernate-mapping>

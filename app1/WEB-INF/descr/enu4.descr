@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.content.rtx.EntryUnitService" name="Search">
+  <FormFields>
+    <Field id="fld7" name="From Date" type="date" localized="true"></Field>
+    <Field id="fld8" name="To Date" type="date" localized="true"></Field>
+    <SelectionField id="sfld8" name="Process" type="string" localized="false" value="" splitOutput="">
+      <Slot id="sfld8_label" label="true" output="false"/>
+      <Slot id="sfld8_output" label="false" output="true"/>
+    </SelectionField>
+    <SelectionField id="sfld9" name="User" type="string" localized="false" value="" splitOutput="">
+      <Slot id="sfld9_label" label="true" output="false"/>
+      <Slot id="sfld9_output" label="false" output="true"/>
+    </SelectionField>
+    <SelectionField id="sfld10" name="Group" type="string" localized="false" value="" splitOutput="">
+      <Slot id="sfld10_label" label="true" output="false"/>
+      <Slot id="sfld10_output" label="false" output="true"/>
+    </SelectionField>
+    <SelectionField id="sfld11" name="Status" type="string" localized="false" value="" splitOutput="">
+      <Slot id="slot5" label="true" output="true" value="ready|active"/>
+    </SelectionField>
+  </FormFields>
+  <wr:Validation xmlns:wr="http://www.webratio.com/2013/WebML/WRValidation">
+    <wr:ValidationLink elementId="enu4" linkId="ln60" action="validate"/>
+  </wr:Validation>
+</Descriptor>

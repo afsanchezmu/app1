@@ -1,0 +1,37 @@
+
+<BPMProject xmlns:gr="http://www.webratio.com/2006/WebML/Graph" gr:showTooltip="true" gr:showActivityParameters="true" uuid="JUR5H7U2_K9B1C8">  
+  
+  <Pool id="pool1" name="Idea birth" uuid="JUR5H7U2_5X" code="IDEA_LAUNCHTRACK" parameterOrder="pool1#prm1"> 
+    
+    <Parameters>
+      
+      <Parameter id="pool1#prm1" uuid="JUR7768G_UW6KZN" name="Title" type="string"/>
+    
+    </Parameters>  
+    
+    <Lane id="pool1#lane1" name="Idealist" notification="None" uuid="JUR5H7U2_OK"> 
+      
+      <Task id="pool1#lane1#task1" name="Title" execution="userExecution" gr:x="230" gr:y="0" uuid="JUR5H7U2_61V" code="IDEA_FLOW_001" parametersOrder="pool1#lane1#task1#smpars1" rollbackPolicy="default"> 
+        
+        <FlowConnector id="pool1#lane1#task1#fcon2" to="pool1#lane1#endter1" uuid="JUR5H7U2_32J"/>
+        
+        <SimpleParameters id="pool1#lane1#task1#smpars1" order="pool1#lane1#task1#smpars1#smpar1">
+          
+          <SimpleParameter id="pool1#lane1#task1#smpars1#smpar1" editPolicy="Editable Mandatory" parameter="pool1#prm1"/>
+        
+        </SimpleParameters>
+      
+      </Task>
+      
+      <StartEvent execution="userExecution" gr:x="36" gr:y="48" id="pool1#lane1#strev2" name="Start Event 1" uuid="JUR5H7U2_7ET"> 
+        
+        <FlowConnector id="pool1#lane1#strev2#fcon1" to="pool1#lane1#task1" uuid="JUR5H7U2_35Z"/>
+      
+      </StartEvent>  
+      
+      <EndEvent id="pool1#lane1#endter1" name="End Event 1" uuid="JUR5H7U2_52X" gr:x="613" gr:y="42"/> 
+    
+    </Lane> 
+  
+  </Pool> 
+</BPMProject>

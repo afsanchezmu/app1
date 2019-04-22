@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.content.rtx.db.PowerIndexUnitService" name="Completed stuff">
+  <UseFirstRowAsDefaultCurrent>false</UseFirstRowAsDefaultCurrent>
+  <Results maxResults="" blockFactor="10" blockWindow="5"/>
+  <SortHistorySize>1</SortHistorySize>
+  <Checkable>false</Checkable>
+  <Query entity="ProcessInstance">
+    <Input id="p0" param="acond16" type="string" implied="false" expandStyle="in" value="completed" attribute="processInstanceStatus"/>
+    <Input id="p1" param="rcond17.processOid" type="integer" implied="false" expandStyle="in"/>
+    <Input id="p2" param="rcond18.userOID" type="integer" implied="false" expandStyle="in"/>
+    <Input id="p3" param="acond17" type="timestamp" implied="true" impliedText="1 = 1" expandStyle="aggregate" function="min" attribute="processInstanceCompletedTimestamp"/>
+    <Input id="p4" param="acond18" type="timestamp" implied="true" impliedText="1 = 1" expandStyle="aggregate" function="max" attribute="processInstanceCompletedTimestamp"/>
+    <Input id="p5" param="rcond19.processOid" type="integer" implied="true" impliedText="1 = 1" expandStyle="in"/>
+    <Output id="processInstanceOid" name="oid" index="0"/>
+    <Output id="processInstanceName" name="name" index="1"/>
+    <Output id="processInstanceCompletedTimestamp" name="completedAt" index="2"/>
+    <HQL>select a_processInstance.oid, a_processInstance.name, a_processInstance.completedAt from ProcessInstance a_processInstance
+      <Where defaultPolicy="fill" allImplied="false">(({[p0]safe_cast(a_processInstance.status) in(?)})) and (({[p1](a_processInstance.process.oid in(?))})) and (({[p2]a_processInstance.oid in(select a_processInstance_p2.oid from ProcessInstance a_processInstance_p2 inner join a_processInstance_p2.activityInstances activityInstance_p2_1 inner join activityInstance_p2_1.user user_p2_0 where user_p2_0.oid in(?))})) and (({[p3]a_processInstance.completedAt &gt;= ?})) and (({[p4]a_processInstance.completedAt &lt;= ?})) and (({[p5](a_processInstance.process.oid in(?))}))</Where>order by a_processInstance.completedAt asc, a_processInstance.oid asc, a_processInstance.name asc
+    </HQL>
+  </Query>
+  <SortAttributes>
+    <Attribute id="processInstanceCompletedTimestamp" dynamic="false" order="asc">a_processInstance.completedAt</Attribute>
+    <Attribute id="processInstanceOid" dynamic="false" order="asc">a_processInstance.oid</Attribute>
+    <Attribute id="processInstanceName" dynamic="false" order="asc">a_processInstance.name</Attribute>
+  </SortAttributes>
+  <wr:Validation xmlns:wr="http://www.webratio.com/2013/WebML/WRValidation">
+    <wr:ValidationLink elementId="pwu6" linkId="ln69" action="validate"/>
+    <wr:ValidationLink elementId="pwu6" linkId="ln70" action="validate"/>
+  </wr:Validation>
+</Descriptor>

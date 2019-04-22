@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="true" default-cascade="none" default-access="property" default-lazy="true">
+  <class name="com.webratio.webapp.ActivityInstance" table="`activityinstance`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="oid" column="`oid`" type="java.lang.Integer">
+      <generator class="com.webratio.rtx.hibernate.MaxPlusOneIncrementGenerator"/>
+    </id>
+    <property name="name" column="`name`" type="java.lang.String" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="status" column="`status`" type="java.lang.String" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="readySince" column="`ready_since`" type="java.sql.Timestamp" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="activeSince" column="`active_since`" type="java.sql.Timestamp" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="completedAt" column="`completed_at`" type="java.sql.Timestamp" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="abortedAt" column="`aborted_at`" type="java.sql.Timestamp" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="cancelledAt" column="`cancelled_at`" type="java.sql.Timestamp" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="workedAt" column="`worked_at`" type="java.sql.Timestamp" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="rollbackable" column="`rollbackable`" type="java.lang.Boolean" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="context" column="`context`" type="java.lang.String" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <many-to-one name="activityType" class="com.webratio.webapp.ActivityType" update="true" insert="true" not-found="exception" unique="false" optimistic-lock="true" embed-xml="true">
+      <column name="`activitytype_oid`"/>
+    </many-to-one>
+    <many-to-one name="processInstance" class="com.webratio.webapp.ProcessInstance" update="true" insert="true" not-found="exception" unique="false" optimistic-lock="true" embed-xml="true">
+      <column name="`processinstance_oid`"/>
+    </many-to-one>
+    <set name="parameterInstances" inverse="true" mutable="true" sort="unsorted" optimistic-lock="true" embed-xml="true">
+      <key on-delete="noaction">
+        <column name="`activityinstance_oid`"/>
+      </key>
+      <one-to-many class="com.webratio.webapp.ParameterInstance" not-found="exception" embed-xml="true"/>
+    </set>
+    <set name="nextActivityInstances" table="`previousactivityinstance_nexta`" inverse="false" mutable="true" sort="unsorted" optimistic-lock="true" embed-xml="true">
+      <key on-delete="noaction">
+        <column name="`activityinstance_oid_2`"/>
+      </key>
+      <many-to-many class="com.webratio.webapp.ActivityInstance" not-found="exception" embed-xml="true" unique="false">
+        <column name="`activityinstance_oid`"/>
+      </many-to-many>
+    </set>
+    <set name="previousActivityInstances" table="`previousactivityinstance_nexta`" inverse="true" mutable="true" sort="unsorted" optimistic-lock="true" embed-xml="true">
+      <key on-delete="noaction">
+        <column name="`activityinstance_oid`"/>
+      </key>
+      <many-to-many class="com.webratio.webapp.ActivityInstance" not-found="exception" embed-xml="true" unique="false">
+        <column name="`activityinstance_oid_2`"/>
+      </many-to-many>
+    </set>
+    <many-to-one name="user" class="com.webratio.webapp.User" update="true" insert="true" not-found="exception" unique="false" optimistic-lock="true" embed-xml="true">
+      <column name="`user_oid`"/>
+    </many-to-one>
+    <set name="activityInstanceCandidateUsers" table="`activityinstance_candidateuser`" inverse="false" mutable="true" sort="unsorted" optimistic-lock="true" embed-xml="true">
+      <key on-delete="noaction">
+        <column name="`activityinstance_oid`"/>
+      </key>
+      <many-to-many class="com.webratio.webapp.User" not-found="exception" embed-xml="true" unique="false">
+        <column name="`user_oid`"/>
+      </many-to-many>
+    </set>
+    <set name="notifications" inverse="true" mutable="true" sort="unsorted" optimistic-lock="true" embed-xml="true">
+      <key on-delete="noaction">
+        <column name="`activityinstance_oid`"/>
+      </key>
+      <one-to-many class="com.webratio.webapp.Notification" not-found="exception" embed-xml="true"/>
+    </set>
+    <set name="activityInstanceNotes" table="`note_activityinstance`" inverse="true" mutable="true" sort="unsorted" optimistic-lock="true" embed-xml="true">
+      <key on-delete="noaction">
+        <column name="`activityinstance_oid`"/>
+      </key>
+      <many-to-many class="com.webratio.webapp.Note" not-found="exception" embed-xml="true" unique="false">
+        <column name="`note_oid`"/>
+      </many-to-many>
+    </set>
+    <set name="nextActivityInstanceNote" inverse="true" mutable="true" sort="unsorted" optimistic-lock="true" embed-xml="true">
+      <key on-delete="noaction">
+        <column name="`activityinstance_oid`"/>
+      </key>
+      <one-to-many class="com.webratio.webapp.Note" not-found="exception" embed-xml="true"/>
+    </set>
+    <many-to-one name="activityInstanceGroup" class="com.webratio.webapp.Group" update="true" insert="true" not-found="exception" unique="false" optimistic-lock="true" embed-xml="true">
+      <column name="`group_oid`"/>
+    </many-to-one>
+  </class>
+  <!-- mapping for relationship 'activityType[activityInstance2ActivityType]' -->
+  <class entity-name="com.webratio.webapp.Rel_ActivityInstance_to_activityType" table="`activityinstance`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="source_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="target_oid" column="`activitytype_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+  <!-- mapping for relationship 'processInstance[activityInstance2ProcessInstance]' -->
+  <class entity-name="com.webratio.webapp.Rel_ActivityInstance_to_processInstance" table="`activityinstance`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="source_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="target_oid" column="`processinstance_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+  <!-- mapping for relationship 'parameterInstances[activityInstance2ParameterInstances]' -->
+  <class entity-name="com.webratio.webapp.Rel_ActivityInstance_to_parameterInstances" table="`parameterinstance`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="target_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="source_oid" column="`activityinstance_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+  <!-- mapping for relationship 'nextActivityInstances[previousActivityInstance2NextActivityInstances]' -->
+  <class entity-name="com.webratio.webapp.Rel_ActivityInstance_to_nextActivityInstances" table="`previousactivityinstance_nexta`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <composite-id mapped="false" unsaved-value="undefined">
+      <key-property name="source_oid" column="`activityinstance_oid_2`" type="java.lang.Integer"/>
+      <key-property name="target_oid" column="`activityinstance_oid`" type="java.lang.Integer"/>
+    </composite-id>
+  </class>
+  <!-- mapping for relationship 'previousActivityInstances[nextActivityInstance2PreviousActivityInstances]' -->
+  <class entity-name="com.webratio.webapp.Rel_ActivityInstance_to_previousActivityInstances" table="`previousactivityinstance_nexta`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <composite-id mapped="false" unsaved-value="undefined">
+      <key-property name="source_oid" column="`activityinstance_oid`" type="java.lang.Integer"/>
+      <key-property name="target_oid" column="`activityinstance_oid_2`" type="java.lang.Integer"/>
+    </composite-id>
+  </class>
+  <!-- mapping for relationship 'user[activityInstance2User]' -->
+  <class entity-name="com.webratio.webapp.Rel_ActivityInstance_to_user" table="`activityinstance`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="source_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="target_oid" column="`user_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+  <!-- mapping for relationship 'activityInstanceCandidateUsers[activityInstance2CandidateUsers]' -->
+  <class entity-name="com.webratio.webapp.Rel_ActivityInstance_to_activityInstanceCandidateUsers" table="`activityinstance_candidateuser`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <composite-id mapped="false" unsaved-value="undefined">
+      <key-property name="source_oid" column="`activityinstance_oid`" type="java.lang.Integer"/>
+      <key-property name="target_oid" column="`user_oid`" type="java.lang.Integer"/>
+    </composite-id>
+  </class>
+  <!-- mapping for relationship 'notifications[activityInstance2Notifications]' -->
+  <class entity-name="com.webratio.webapp.Rel_ActivityInstance_to_notifications" table="`notification`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="target_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="source_oid" column="`activityinstance_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+  <!-- mapping for relationship 'activityInstanceNotes[activityInstance2Notes]' -->
+  <class entity-name="com.webratio.webapp.Rel_ActivityInstance_to_activityInstanceNotes" table="`note_activityinstance`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <composite-id mapped="false" unsaved-value="undefined">
+      <key-property name="source_oid" column="`activityinstance_oid`" type="java.lang.Integer"/>
+      <key-property name="target_oid" column="`note_oid`" type="java.lang.Integer"/>
+    </composite-id>
+  </class>
+  <!-- mapping for relationship 'nextActivityInstanceNote[nextActivityInstance2Notes]' -->
+  <class entity-name="com.webratio.webapp.Rel_ActivityInstance_to_nextActivityInstanceNote" table="`note`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="target_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="source_oid" column="`activityinstance_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+  <!-- mapping for relationship 'activityInstanceGroup[activityInstance2Group]' -->
+  <class entity-name="com.webratio.webapp.Rel_ActivityInstance_to_activityInstanceGroup" table="`activityinstance`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="source_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="target_oid" column="`group_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+</hibernate-mapping>

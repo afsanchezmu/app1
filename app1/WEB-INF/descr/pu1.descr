@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.bpm.services.MetadataUnitService" name="Warning">
+  <Mode>verifyMetadata</Mode>
+  <CreateTestUsers/>
+  <UsersPerLane>2</UsersPerLane>
+  <wr:Validation xmlns:wr="http://www.webratio.com/2013/WebML/WRValidation">
+    <CheckedUnitItemsValidationRule service="com.webratio.units.validation.CheckedUnitItemsValidationRuleService" elementId="pu1" id="pu1Checked" name="Checked Items">
+      <Predicate>min</Predicate>
+      <ItemCount>1</ItemCount>
+    </CheckedUnitItemsValidationRule>
+  </wr:Validation>
+</Descriptor>

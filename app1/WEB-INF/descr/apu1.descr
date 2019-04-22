@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.bpm.services.ActivityParametersUnitService" name="Set Parameters">
+  <OnFailRemoveTaskOid>true</OnFailRemoveTaskOid>
+  <InActivityModule>true</InActivityModule>
+  <RetrievePreviousInstances>false</RetrievePreviousInstances>
+  <RetrieveNextTypes>false</RetrieveNextTypes>
+  <Input id="ap1" uuid="JUR7768G_UW6KZN">Title</Input>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Set Parameters</ModelName>
+    <ParentContainer>hym1</ParentContainer>
+    <MasterPage ignore="false">mpage2</MasterPage>
+    <NavigationAncestors>sv3|sv3Activities|hym1</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>true</CheckPermission>
+    <PermissionElement>hym1</PermissionElement>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <OperationParam unit="apu1">ap1</OperationParam>
+      <Params>sp|cmplink|fld11_slot|pu17.shownMessages|link|pu17.errorInfo|smc</Params>
+    </OperationParams>
+    <SecondaryIncomingLinks>ln82</SecondaryIncomingLinks>
+    <OutgoingLinks>
+      <Link resultCode="success.ln78">oln11</Link>
+      <Link resultCode="success.ln79">oln12</Link>
+      <Link resultCode="error">apu1ko</Link>
+    </OutgoingLinks>
+    <IsLinkHistoryRecorded>true</IsLinkHistoryRecorded>
+  </WRParameterService>
+</Descriptor>

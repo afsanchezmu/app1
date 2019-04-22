@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.bpm.services.ProcessUnitService" name="Leave Activity">
+  <Mode>leaveActivity</Mode>
+  <OnFailRemoveTaskOid>true</OnFailRemoveTaskOid>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Leave Activity</ModelName>
+    <ParentContainer>hym1</ParentContainer>
+    <MasterPage ignore="false">mpage2</MasterPage>
+    <NavigationAncestors>sv3|sv3Activities|hym1</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>true</CheckPermission>
+    <PermissionElement>hym1</PermissionElement>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <Params>sp|cmplink|fld11_slot|pu17.shownMessages|link|pu17.errorInfo|smc</Params>
+    </OperationParams>
+    <OutgoingLinks>
+      <Link resultCode="error">pu20ko</Link>
+    </OutgoingLinks>
+  </WRParameterService>
+</Descriptor>
