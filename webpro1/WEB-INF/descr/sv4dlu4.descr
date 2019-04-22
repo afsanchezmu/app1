@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.operation.rtx.db.DeleteUnitService" name="Delete Attachment">
+  <Entity>Attachment</Entity>
+  <CascadeDeleteRoles/>
+  <FetchMode keyCondition="sv4kcond25">HQL</FetchMode>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Delete Attachment</ModelName>
+    <ParentContainer>sv4Activities</ParentContainer>
+    <MasterPage ignore="false">sv4mpage4</MasterPage>
+    <NavigationAncestors>sv4|sv4Activities</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>true</CheckPermission>
+    <PermissionElement>sv4</PermissionElement>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <OperationParam unit="sv4dlu4">sv4kcond25.attachmentOid</OperationParam>
+      <Params>sv4par156|sv4pwu11.block|sp|link|sv4kcond29.activityInstanceOid|sv4rcond37.processInstanceOid|sv4kcond31.userOID|sv4pwu12.block|cmplink|sv4kcond30.activityInstanceOid|sv4rcond36.processInstanceOid|sv4pu37.activityInstanceOid|sv4rcond38.activityInstanceOid|smc|sv4kcond28.processInstanceOid</Params>
+    </OperationParams>
+    <OutgoingLinks>
+      <Link resultCode="success">sv4oln24</Link>
+    </OutgoingLinks>
+  </WRParameterService>
+</Descriptor>

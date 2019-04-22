@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultLinkService">
+  <Target>pu3</Target>
+  <Secure>false</Secure>
+  <Source>dau1</Source>
+  <SourcePage>page3</SourcePage>
+  <ReachableAlternativePages></ReachableAlternativePages>
+  <Navigates>true</Navigates>
+  <StartsTransaction>false</StartsTransaction>
+  <EndsTransaction>false</EndsTransaction>
+  <StartPageIdRequiredByTarget>true</StartPageIdRequiredByTarget>
+  <PreservedContextParams>
+    <Params>kcond2.processInstanceOid</Params>
+  </PreservedContextParams>
+  <ContextPropagations>
+    <ContextPropagation targetParam="pu3.processInstanceOids" sourceUnit="dau1" sourceParam="data.processInstanceOid"/>
+  </ContextPropagations>
+</Descriptor>

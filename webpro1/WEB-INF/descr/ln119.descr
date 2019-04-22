@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultLinkService">
+  <Target>mpage3</Target>
+  <Secure>false</Secure>
+  <Source>gtu8</Source>
+  <SourcePage>mpage3</SourcePage>
+  <ReachableAlternativePages></ReachableAlternativePages>
+  <StartsTransaction>false</StartsTransaction>
+  <EndsTransaction>false</EndsTransaction>
+  <StartPageIdRequiredByTarget>false</StartPageIdRequiredByTarget>
+  <PreservedContextParams>
+    <Params/>
+  </PreservedContextParams>
+  <ContextPropagations>
+    <ContextPropagation targetParam="kcond23.userOID" sourceUnit="gtu8" sourceSessionParam="UserCtxParam"/>
+  </ContextPropagations>
+</Descriptor>

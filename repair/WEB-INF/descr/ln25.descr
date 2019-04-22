@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultLinkService">
+  <Target>page5</Target>
+  <Secure>false</Secure>
+  <Source>enu2</Source>
+  <SourcePage>page5</SourcePage>
+  <ReachableAlternativePages></ReachableAlternativePages>
+  <StartsTransaction>false</StartsTransaction>
+  <EndsTransaction>false</EndsTransaction>
+  <StartPageIdRequiredByTarget>false</StartPageIdRequiredByTarget>
+  <PreservedContextParams>
+    <Params/>
+  </PreservedContextParams>
+  <ContextPropagations>
+    <ContextPropagation targetParam="acond6" sourceUnit="enu2" sourceParam="fld5"/>
+    <ContextPropagation targetParam="acond5" sourceUnit="enu2" sourceParam="sfld5"/>
+    <ContextPropagation targetParam="rcond5.groupOID" sourceUnit="enu2" sourceParam="sfld3"/>
+    <ContextPropagation targetParam="rcond4.userOID" sourceUnit="enu2" sourceParam="sfld2"/>
+    <ContextPropagation targetParam="acond1" sourceUnit="enu2" sourceParam="sfld1"/>
+    <ContextPropagation targetParam="acond3" sourceUnit="enu2" sourceParam="fld3"/>
+    <ContextPropagation targetParam="acond2" sourceUnit="enu2" sourceParam="sfld4"/>
+  </ContextPropagations>
+</Descriptor>

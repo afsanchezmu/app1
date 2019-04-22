@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="true" default-cascade="none" default-access="property" default-lazy="true">
+  <class name="com.webratio.webapp.ProcessInstance" table="`processinstance`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="oid" column="`oid`" type="java.lang.Integer">
+      <generator class="com.webratio.rtx.hibernate.MaxPlusOneIncrementGenerator"/>
+    </id>
+    <property name="name" column="`name`" type="java.lang.String" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="subProcessIndex" column="`subprocessindex`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="status" column="`status`" type="java.lang.String" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="activeSince" column="`active_since`" type="java.sql.Timestamp" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="completedAt" column="`completed_at`" type="java.sql.Timestamp" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="cancelledAt" column="`cancelled_at`" type="java.sql.Timestamp" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="abortedAt" column="`aborted_at`" type="java.sql.Timestamp" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <many-to-one name="process" class="com.webratio.webapp.Process" update="true" insert="true" not-found="exception" unique="false" optimistic-lock="true" embed-xml="true">
+      <column name="`process_oid`"/>
+    </many-to-one>
+    <set name="activityInstances" inverse="true" mutable="true" sort="unsorted" optimistic-lock="true" embed-xml="true">
+      <key on-delete="noaction">
+        <column name="`processinstance_oid`"/>
+      </key>
+      <one-to-many class="com.webratio.webapp.ActivityInstance" not-found="exception" embed-xml="true"/>
+    </set>
+    <set name="parameterInstances" inverse="true" mutable="true" sort="unsorted" optimistic-lock="true" embed-xml="true">
+      <key on-delete="noaction">
+        <column name="`processinstance_oid`"/>
+      </key>
+      <one-to-many class="com.webratio.webapp.ParameterInstance" not-found="exception" embed-xml="true"/>
+    </set>
+    <set name="processNotes" table="`note_processinstance`" inverse="true" mutable="true" sort="unsorted" optimistic-lock="true" embed-xml="true">
+      <key on-delete="noaction">
+        <column name="`processinstance_oid`"/>
+      </key>
+      <many-to-many class="com.webratio.webapp.Note" not-found="exception" embed-xml="true" unique="false">
+        <column name="`note_oid`"/>
+      </many-to-many>
+    </set>
+    <set name="processAttachments" table="`attachment_processinstance`" inverse="true" mutable="true" sort="unsorted" optimistic-lock="true" embed-xml="true">
+      <key on-delete="noaction">
+        <column name="`processinstance_oid`"/>
+      </key>
+      <many-to-many class="com.webratio.webapp.Attachment" not-found="exception" embed-xml="true" unique="false">
+        <column name="`attachment_oid`"/>
+      </many-to-many>
+    </set>
+    <many-to-one name="parentProcessInstance" class="com.webratio.webapp.ProcessInstance" update="true" insert="true" not-found="exception" unique="false" optimistic-lock="true" embed-xml="true">
+      <column name="`processinstance_oid`"/>
+    </many-to-one>
+    <set name="subprocessInstances" inverse="true" mutable="true" sort="unsorted" optimistic-lock="true" embed-xml="true">
+      <key on-delete="noaction">
+        <column name="`processinstance_oid`"/>
+      </key>
+      <one-to-many class="com.webratio.webapp.ProcessInstance" not-found="exception" embed-xml="true"/>
+    </set>
+    <many-to-one name="attachmentCountBean" class="com.webratio.webapp.ProcessInstance_AttachmentCountBean" insert="false" update="false" not-found="exception" unique="false" optimistic-lock="true" embed-xml="true">
+      <column name="`oid`"/>
+    </many-to-one>
+  </class>
+  <!-- mapping for derived attribute 'attachment count[processInstanceAttachmentCount]' -->
+  <class name="com.webratio.webapp.ProcessInstance_AttachmentCountBean" table="`processinstance_attachment_cou`" mutable="true" polymorphism="implicit" dynamic-update="false" dynamic-insert="false" select-before-update="false" optimistic-lock="version">
+    <id name="oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="value" column="`der_attr`" type="java.lang.Integer" insert="false" update="false" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+  <!-- mapping for relationship 'process[processInstance2Process]' -->
+  <class entity-name="com.webratio.webapp.Rel_ProcessInstance_to_process" table="`processinstance`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="source_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="target_oid" column="`process_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+  <!-- mapping for relationship 'activityInstances[processInstance2ActivityInstances]' -->
+  <class entity-name="com.webratio.webapp.Rel_ProcessInstance_to_activityInstances" table="`activityinstance`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="target_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="source_oid" column="`processinstance_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+  <!-- mapping for relationship 'parameterInstances[processInstance2ParameterInstances]' -->
+  <class entity-name="com.webratio.webapp.Rel_ProcessInstance_to_parameterInstances" table="`parameterinstance`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="target_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="source_oid" column="`processinstance_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+  <!-- mapping for relationship 'processNotes[processInstance2Notes]' -->
+  <class entity-name="com.webratio.webapp.Rel_ProcessInstance_to_processNotes" table="`note_processinstance`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <composite-id mapped="false" unsaved-value="undefined">
+      <key-property name="source_oid" column="`processinstance_oid`" type="java.lang.Integer"/>
+      <key-property name="target_oid" column="`note_oid`" type="java.lang.Integer"/>
+    </composite-id>
+  </class>
+  <!-- mapping for relationship 'processAttachments[processInstance2Attachments]' -->
+  <class entity-name="com.webratio.webapp.Rel_ProcessInstance_to_processAttachments" table="`attachment_processinstance`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <composite-id mapped="false" unsaved-value="undefined">
+      <key-property name="source_oid" column="`processinstance_oid`" type="java.lang.Integer"/>
+      <key-property name="target_oid" column="`attachment_oid`" type="java.lang.Integer"/>
+    </composite-id>
+  </class>
+  <!-- mapping for relationship 'ParentProcessInstance[subprocessInstance2ParentProcessInstance]' -->
+  <class entity-name="com.webratio.webapp.Rel_ProcessInstance_to_parentProcessInstance" table="`processinstance`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="source_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="target_oid" column="`processinstance_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+  <!-- mapping for relationship 'SubprocessInstances[parentProcessInstance2SubprocessInstances]' -->
+  <class entity-name="com.webratio.webapp.Rel_ProcessInstance_to_subprocessInstances" table="`processinstance`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="target_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="source_oid" column="`processinstance_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+</hibernate-mapping>

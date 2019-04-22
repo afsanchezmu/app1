@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultLinkService">
+  <Target>page17</Target>
+  <Secure>false</Secure>
+  <Source>enu6</Source>
+  <SourcePage>page17</SourcePage>
+  <ReachableAlternativePages></ReachableAlternativePages>
+  <Navigates>true</Navigates>
+  <StartsTransaction>false</StartsTransaction>
+  <EndsTransaction>false</EndsTransaction>
+  <StartPageIdRequiredByTarget>false</StartPageIdRequiredByTarget>
+  <PreservedContextParams>
+    <Params>pwu7.newSortAttribute|pwu7.sortCriteria|kcond19.activityInstanceOid|rcond22.processOid|acond20</Params>
+  </PreservedContextParams>
+  <ContextPropagations>
+    <ContextPropagation targetParam="rcond22.processOid" sourceUnit="enu6" sourceParam="sfld13"/>
+    <ContextPropagation targetParam="acond20" sourceUnit="enu6" sourceParam="sfld14"/>
+  </ContextPropagations>
+</Descriptor>

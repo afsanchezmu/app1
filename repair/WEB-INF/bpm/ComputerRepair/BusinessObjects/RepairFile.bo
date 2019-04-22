@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BusinessObject uuid="H6HJHWHN_4QN" order="H5C57EKZ_3RV H5C57LGJ_2JC H5C57TVW_3GZ H5C58HQJ_1AD H5C58S03_7AD H5C58Y1V_1I3" entityId="ent1" name="RepairFile">
+  <Property uuid="H5C57LGJ_2JC" name="Computer characteristic" type="text" attributeId="att3"/>
+  <Property uuid="H5C57TVW_3GZ" name="Defect description" type="text" attributeId="att4"/>
+  <Property uuid="H5C57EKZ_3RV" name="Problem abstract" type="string" attributeId="att2"/>
+  <Property uuid="H5C58S03_7AD" name="Repair price" type="decimal" attributeId="att6"/>
+  <Property uuid="H5C58Y1V_1I3" name="Repair progress" type="string" selectionPolicy="multiple" caseValueOrder="H6J52723_15 H6J52723_43F" attributeId="att7">
+    <CaseValue uuid="H6J52723_15">In progress</CaseValue>
+    <CaseValue uuid="H6J52723_43F">Finished</CaseValue>
+  </Property>
+  <Property uuid="H5C58HQJ_1AD" name="Request date" type="date" attributeId="att5"/>
+</BusinessObject>
+ 

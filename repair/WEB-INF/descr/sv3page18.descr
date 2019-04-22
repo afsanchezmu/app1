@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultPageService" name="Process Diagram">
+  <ParentContainer>sv3Activities</ParentContainer>
+  <Secure>false</Secure>
+  <Localized>false</Localized>
+  <CheckPermission>true</CheckPermission>
+  <PermissionElement>sv3</PermissionElement>
+  <MasterPage ignore="true"/>
+  <Alternatives/>
+  <ProtectedSubPages/>
+  <Navigations>
+    <Navigation name="0" nonContextual="true" interPage="always" links="sv3page18"/>
+    <Navigation name="1" nonContextual="true" interPage="always" links="sv3page18.link"/>
+    <Navigation name="2" links="sv3page18.auto-link"/>
+    <Navigation name="3" interPage="always" links="sv3ln121"/>
+    <Navigation name="4" links="sv3pdu5parentLevel"/>
+    <Navigation name="5" links="sv3pdu5subLevel"/>
+  </Navigations>
+  <ContextInitServices/>
+  <ContextInits></ContextInits>
+  <UselessPreserves>
+    <UselessPreserve navs="2|5|4" futile=""/>
+  </UselessPreserves>
+  <LinkSequence/>
+  <UnitComputations>
+    <UnitComputation unit="sv3pdu5"></UnitComputation>
+  </UnitComputations>
+  <ManualLinks>
+    <ManualLink>sv3pdu5parentLevel</ManualLink>
+    <ManualLink>sv3pdu5subLevel</ManualLink>
+  </ManualLinks>
+  <Variables></Variables>
+  <Conditions></Conditions>
+  <Layouts>
+    <Layout id="sv3page18_grid_0">
+      <Layout id="sv3page18_cell_0">
+        <Layout id="sv3pdu5_0" unitId="sv3pdu5"></Layout>
+      </Layout>
+    </Layout>
+  </Layouts>
+  <AutoLinkInfo>
+    <PreservedContextParams>
+      <Params>sv3pdu5.processInstanceOid|sv3pdu5.processUUID|sv3pdu5.contextProcessInstanceOid</Params>
+    </PreservedContextParams>
+  </AutoLinkInfo>
+  <!--Page Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultPageParameterService">
+    <ModelName>Process Diagram</ModelName>
+    <NavigationAncestors>sv3|sv3Activities</NavigationAncestors>
+    <LinkIdRequired>false</LinkIdRequired>
+    <PageParams>
+      <PageParam unit="sv3pdu5">sv3pdu5.processInstanceOid</PageParam>
+      <PageParam unit="sv3pdu5">sv3pdu5.contextProcessInstanceOid</PageParam>
+      <PageParam unit="sv3pdu5">sv3pdu5.processUUID</PageParam>
+      <PageParam>sv3pu25.activityInstanceOid</PageParam>
+      <PageParam>sv3kcond29.processInstanceOid</PageParam>
+      <PageParam>sv3kcond30.activityInstanceOid</PageParam>
+      <PageParam>sv3kcond31.activityInstanceOid</PageParam>
+      <PageParam>sv3rcond36.processInstanceOid</PageParam>
+      <PageParam>sv3pwu11.block</PageParam>
+      <PageParam>sv3kcond32.userOID</PageParam>
+      <PageParam>sv3rcond38.activityInstanceOid</PageParam>
+      <PageParam>sv3rcond37.processInstanceOid</PageParam>
+      <PageParam>sv3pwu12.block</PageParam>
+      <PageParam>sv3par129</PageParam>
+      <PageParam>link</PageParam>
+      <PageParam>nav</PageParam>
+      <PageParam>so</PageParam>
+      <PageParam>ajax</PageParam>
+      <PageParam>ajaxRefresh</PageParam>
+    </PageParams>
+  </WRParameterService>
+</Descriptor>

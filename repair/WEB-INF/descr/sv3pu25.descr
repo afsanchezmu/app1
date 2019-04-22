@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.bpm.services.ProcessInfoUnitService" name="History">
+  <Mode>history</Mode>
+  <Outputs previousInstances="true" incomingUserActivityTypeOids="false" incomingUserActivityInstanceOids="false"/>
+</Descriptor>

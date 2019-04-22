@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.bpm.services.ProcessUnitService" name="Start Process">
+  <Mode>startProcess</Mode>
+  <OnFailRemoveTaskOid/>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Start Process</ModelName>
+    <ParentContainer>sv4</ParentContainer>
+    <MasterPage ignore="false">mpage3</MasterPage>
+    <NavigationAncestors>sv4</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>true</CheckPermission>
+    <PermissionElement>sv4</PermissionElement>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <OperationParam unit="spu2">spu2.startActivityTypeOid</OperationParam>
+      <Params>pwu8.block|sp|pwu7.current.activityInstanceOid|kcond19.activityInstanceOid|sfld13_label|link|pwu7.block|sfld13_output|rcond22.processOid|pwu7.sortCriteria|kcond20.processOid|kcond17.activityTypeOid|cmplink|rcond24.processOid|rcond23.userOID|pu20.processInstanceOid|pu23.errorInfo|acond20|pu23.shownMessages|kcond18.activityInstanceOid|smc|pwu7.newSortAttribute</Params>
+    </OperationParams>
+    <OutgoingLinks>
+      <Link resultCode="error">kln12</Link>
+    </OutgoingLinks>
+  </WRParameterService>
+</Descriptor>
+ 

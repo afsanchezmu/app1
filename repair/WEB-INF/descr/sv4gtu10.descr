@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.session.rtx.GetUnitService" name="User">
+  <ContextParameters>UserCtxParam</ContextParameters>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>User</ModelName>
+    <ParentContainer>sv4opg1</ParentContainer>
+    <MasterPage ignore="false">sv4mpage4</MasterPage>
+    <NavigationAncestors>sv4|sv4Activities</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>true</CheckPermission>
+    <PermissionElement>sv4</PermissionElement>
+    <StartsTransaction>true</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <Params>sv4kcond32.userOID|sv4par129|sv4pwu11.block|sv4kcond31.activityInstanceOid|sv4rcond37.processInstanceOid|sv4cru1.attachmentTimestamp|sv4pwu12.block|sv4pu25.activityInstanceOid|sv4cru1.attachment2User.userOID|sv4cru1.attachmentFile|sv4kcond27.processInstanceOid|sv4rcond36.processInstanceOid|sv4kcond30.activityInstanceOid|sv4kcond28.attachmentOid|sv4rcond38.activityInstanceOid|sv4kcond29.processInstanceOid</Params>
+    </OperationParams>
+    <OutgoingLinks>
+      <Link resultCode="success" transport="true">sv4ln119</Link>
+      <Link resultCode="error" transport="true">sv4ln119</Link>
+    </OutgoingLinks>
+  </WRParameterService>
+</Descriptor>
+ 

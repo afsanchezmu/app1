@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultPageService" name="Master page">
+  <ParentContainer>sv3Activities</ParentContainer>
+  <Secure>false</Secure>
+  <Localized>false</Localized>
+  <CheckPermission>true</CheckPermission>
+  <PermissionElement>sv3</PermissionElement>
+  <IsMasterPage>true</IsMasterPage>
+  <Alternatives/>
+  <ProtectedSubPages/>
+  <Navigations knownEffects="UserCtxParam|#pr#">
+    <Navigation name="0" nonContextual="true" interPage="always" links="sv3mpage4"/>
+    <Navigation name="1" nonContextual="true" interPage="always" links="sv3mpage4.link"/>
+    <Navigation name="2" links="sv3mpage4.auto-link"/>
+    <Navigation name="3" links="sv3mpage4.auto-link" selectiveRefresh="true"/>
+    <Navigation name="4" links="sv3ln152|validation-failed"/>
+    <Navigation name="5" links="sv3ln152|validation-failed" selectiveRefresh="true"/>
+    <Navigation name="6" links="sv3ln154|validation-failed"/>
+    <Navigation name="7" links="sv3ln154|validation-failed" selectiveRefresh="true"/>
+    <Navigation name="8" links="sv3ln140|impl" postPropagatedLink="sv3ln140"/>
+    <Navigation name="9" links="sv3ln151|impl" postPropagatedLink="sv3ln151"/>
+    <Navigation name="10" links="sv3ln151|impl" selectiveRefresh="true" postPropagatedLink="sv3ln151"/>
+    <Navigation name="11" links="sv3ln151|sv3oln24" effects="#pr#"/>
+    <Navigation name="12" links="sv3ln151|sv3oln24" selectiveRefresh="true" effects="#pr#"/>
+    <Navigation name="13" links="sv3ln152|impl" postPropagatedLink="sv3ln152"/>
+    <Navigation name="14" links="sv3ln152|impl" selectiveRefresh="true" postPropagatedLink="sv3ln152"/>
+    <Navigation name="15" links="sv3ln152|sv3oln30" effects="#pr#"/>
+    <Navigation name="16" links="sv3ln152|sv3oln30" selectiveRefresh="true" effects="#pr#"/>
+    <Navigation name="17" links="sv3ln154|impl" postPropagatedLink="sv3ln154"/>
+    <Navigation name="18" links="sv3ln154|impl" selectiveRefresh="true" postPropagatedLink="sv3ln154"/>
+    <Navigation name="19" links="sv3ln154|sv3oln27" effects="#pr#"/>
+    <Navigation name="20" links="sv3ln154|sv3oln27" selectiveRefresh="true" effects="#pr#"/>
+    <Navigation name="21" links="sv3ln157|impl" postPropagatedLink="sv3ln157"/>
+    <Navigation name="22" links="sv3ln158|impl" postPropagatedLink="sv3ln158"/>
+    <Navigation name="23" links="sv3ln158|impl" selectiveRefresh="true" postPropagatedLink="sv3ln158"/>
+    <Navigation name="24" links="sv3ln158|sv3oln17" effects="#pr#"/>
+    <Navigation name="25" links="sv3ln158|sv3oln17" selectiveRefresh="true" effects="#pr#"/>
+    <Navigation name="26" links="sv3pwu11Block"/>
+    <Navigation name="27" links="sv3pwu11Block" selectiveRefresh="true"/>
+    <Navigation name="28" links="sv3pwu11First"/>
+    <Navigation name="29" links="sv3pwu11First" selectiveRefresh="true"/>
+    <Navigation name="30" links="sv3pwu11Last"/>
+    <Navigation name="31" links="sv3pwu11Last" selectiveRefresh="true"/>
+    <Navigation name="32" links="sv3pwu11Next"/>
+    <Navigation name="33" links="sv3pwu11Next" selectiveRefresh="true"/>
+    <Navigation name="34" links="sv3pwu11Previous"/>
+    <Navigation name="35" links="sv3pwu11Previous" selectiveRefresh="true"/>
+    <Navigation name="36" links="sv3pwu12Block"/>
+    <Navigation name="37" links="sv3pwu12Block" selectiveRefresh="true"/>
+    <Navigation name="38" links="sv3pwu12First"/>
+    <Navigation name="39" links="sv3pwu12First" selectiveRefresh="true"/>
+    <Navigation name="40" links="sv3pwu12Last"/>
+    <Navigation name="41" links="sv3pwu12Last" selectiveRefresh="true"/>
+    <Navigation name="42" links="sv3pwu12Next"/>
+    <Navigation name="43" links="sv3pwu12Next" selectiveRefresh="true"/>
+    <Navigation name="44" links="sv3pwu12Previous"/>
+    <Navigation name="45" links="sv3pwu12Previous" selectiveRefresh="true"/>
+  </Navigations>
+  <ContextInitServices/>
+  <ContextInits></ContextInits>
+  <UselessPreserves>
+    <UselessPreserve navs="4" futile="" renewed="sv3cru2.note2NextActivityInstance.activityInstanceOid|sv3kcond32.processInstanceOid"/>
+    <UselessPreserve navs="2" effects="-|UserCtxParam" futile="" renewed="sv3kcond28.processInstanceOid|sv3kcond29.activityInstanceOid"/>
+    <UselessPreserve navs="3|2" effects="#pr#" futile="" renewed="sv3kcond28.processInstanceOid|sv3kcond29.activityInstanceOid"/>
+    <UselessPreserve navs="6" futile="" renewed="sv3kcond26.processInstanceOid"/>
+    <UselessPreserve navs="30|32|34|26|28" futile="" renewed="sv3rcond36.processInstanceOid"/>
+    <UselessPreserve navs="44|42|40|36|38" futile="" renewed="sv3rcond37.processInstanceOid|sv3rcond38.activityInstanceOid"/>
+    <UselessPreserve navs="19|35|17|18|33|15|16|13|39|14|37|11|12|21|20|43|41|45|22|23|24|25|27|29|3|10|31|9|8" effects="-|UserCtxParam" futile=""/>
+    <UselessPreserve navs="19|35|17|18|33|15|16|13|39|14|37|11|12|21|20|43|41|45|22|23|24|25|27|29|10|31|9|8" effects="#pr#" futile=""/>
+    <UselessPreserve navs="5" futile="sv3cru2.note2NextActivityInstance.activityInstanceOid|sv3kcond32.processInstanceOid"/>
+    <UselessPreserve navs="7" futile="sv3kcond26.processInstanceOid"/>
+  </UselessPreserves>
+  <LinkSequence>sv3ln156|sv3ln143|sv3ln144|sv3ln145|sv3ln142|sv3ln146|sv3ln147|sv3ln148|sv3ln149|sv3ln150|sv3ln153|sv3ln155</LinkSequence>
+  <UnitComputations>
+    <UnitComputation unit="sv3dau9">
+      <NavigationCondition selectiveRefresh="true" navs="3|20|16|25|12"/>
+    </UnitComputation>
+    <UnitComputation unit="sv3pu37" formBased="true">
+      <NavigationCondition selectiveRefresh="true" navs="20|16|25|12" effects="-|UserCtxParam"/>
+      <NavigationCondition selectiveRefresh="true" navs="3|20|16|25|12" effects="#pr#"/>
+      <RefreshFormAll selectiveRefresh="true" navs="20|16|25|12"/>
+      <RefreshFormAll navs="21|1|0|19|17|22|9|15|24|8|13|11"/>
+    </UnitComputation>
+    <UnitComputation unit="sv3dau10">
+      <NavigationCondition selectiveRefresh="true" navs="20|16|25|12" effects="-|UserCtxParam"/>
+      <NavigationCondition selectiveRefresh="true" navs="3|20|16|25|12" effects="#pr#"/>
+    </UnitComputation>
+    <UnitComputation unit="sv3inu4">
+      <NavigationCondition selectiveRefresh="true" navs="20|16|25|12" effects="-|UserCtxParam"/>
+      <NavigationCondition selectiveRefresh="true" navs="3|20|16|25|12" effects="#pr#"/>
+    </UnitComputation>
+    <UnitComputation unit="sv3apu9">
+      <NavigationCondition selectiveRefresh="true" navs="20|16|25|12" effects="-|UserCtxParam"/>
+      <NavigationCondition selectiveRefresh="true" navs="3|20|16|25|12" effects="#pr#"/>
+    </UnitComputation>
+    <UnitComputation unit="sv3pwu11" formBased="true">
+      <NavigationCondition selectiveRefresh="true" navs="20|31|35|33|16|25|27|29|12" effects="-|UserCtxParam"/>
+      <NavigationCondition selectiveRefresh="true" navs="3|20|31|35|33|16|25|27|29|12" effects="#pr#"/>
+      <RefreshFormAll selectiveRefresh="true" navs="20|16|25|12"/>
+      <RefreshFormAll navs="21|1|0|19|17|22|9|15|24|8|13|11"/>
+      <RefreshForm selectiveRefresh="true" navs="31|35|33|27|29" inputs="sv3pwu11.block"/>
+      <RefreshForm navs="30|32|34|26|28" inputs="sv3pwu11.block"/>
+    </UnitComputation>
+    <UnitComputation unit="sv3enu17" formBased="true">
+      <NavigationCondition selectiveRefresh="true" navs="3|20|5|18|16|25|14|12" effects="#pr#"/>
+      <NavigationCondition selectiveRefresh="true" navs="20|5|18|16|25|14|12" effects="-|UserCtxParam"/>
+      <RefreshFormAll selectiveRefresh="true" navs="20|16|25|12"/>
+      <RefreshFormAll navs="21|1|0|19|17|22|9|15|24|8|13|11"/>
+    </UnitComputation>
+    <UnitComputation unit="sv3enu18" formBased="true">
+      <NavigationCondition selectiveRefresh="true" navs="20|7|18|16|25|14|12" effects="-|UserCtxParam"/>
+      <NavigationCondition selectiveRefresh="true" navs="3|20|7|18|16|25|14|12" effects="#pr#"/>
+      <RefreshFormAll selectiveRefresh="true" navs="20|16|25|12"/>
+      <RefreshFormAll navs="21|1|0|19|17|22|9|15|24|8|13|11"/>
+    </UnitComputation>
+    <UnitComputation unit="sv3gtu11">
+      <NavigationCondition selectiveRefresh="true" navs="20|16|25|12" effects="-"/>
+      <NavigationCondition selectiveRefresh="true" navs="3|20|16|25|12" effects="UserCtxParam|#pr#"/>
+    </UnitComputation>
+    <UnitComputation unit="sv3dau11">
+      <NavigationCondition selectiveRefresh="true" navs="20|16|25|12" effects="-"/>
+      <NavigationCondition selectiveRefresh="true" navs="3|20|16|25|12" effects="UserCtxParam|#pr#"/>
+    </UnitComputation>
+    <UnitComputation unit="sv3pwu12" formBased="true">
+      <NavigationCondition selectiveRefresh="true" navs="20|45|43|41|16|25|39|37|12" effects="-|UserCtxParam"/>
+      <NavigationCondition selectiveRefresh="true" navs="3|20|45|43|41|16|25|39|37|12" effects="#pr#"/>
+      <RefreshFormAll selectiveRefresh="true" navs="20|16|25|12"/>
+      <RefreshFormAll navs="21|1|0|19|17|22|9|15|24|8|13|11"/>
+      <RefreshForm selectiveRefresh="true" navs="43|45|41|39|37" inputs="sv3pwu12.block"/>
+      <RefreshForm navs="42|44|40|36|38" inputs="sv3pwu12.block"/>
+    </UnitComputation>
+  </UnitComputations>
+  <ManualLinks>
+    <ManualLink>sv3ln140</ManualLink>
+    <ManualLink>sv3ln141</ManualLink>
+    <ManualLink>sv3ln151</ManualLink>
+    <ManualLink>sv3pwu11First</ManualLink>
+    <ManualLink>sv3pwu11Previous</ManualLink>
+    <ManualLink>sv3pwu11Next</ManualLink>
+    <ManualLink>sv3pwu11Last</ManualLink>
+    <ManualLink>sv3pwu11Block</ManualLink>
+    <ManualLink>sv3ln152</ManualLink>
+    <ManualLink>sv3ln154</ManualLink>
+    <ManualLink>sv3ln157</ManualLink>
+    <ManualLink>sv3ln158</ManualLink>
+    <ManualLink>sv3pwu12First</ManualLink>
+    <ManualLink>sv3pwu12Previous</ManualLink>
+    <ManualLink>sv3pwu12Next</ManualLink>
+    <ManualLink>sv3pwu12Last</ManualLink>
+    <ManualLink>sv3pwu12Block</ManualLink>
+  </ManualLinks>
+  <PropagationModes client="true" server="true"/>
+  <Variables>
+    <Variable id="sv3var16" name="rollbackable" type="boolean" unitId="sv3dau10" parameter="data.activityInstanceRollbackable">
+      <NavigationCondition selectiveRefresh="true" navs="3|20|16|25|12"/>
+    </Variable>
+  </Variables>
+  <Conditions>
+    <Condition id="cexpr_sv3var16" name="rollbackable" variables="sv3var16" xml:space="preserve">com.webratio.rtx.core.BeanHelper.asObject(sv3var16)</Condition>
+  </Conditions>
+  <Layouts>
+    <Layout id="sv3mpage4_customlocation_0">
+      <Layout id="sv3mpage4_grid_0">
+        <Layout id="sv3mpage4_cell_0">
+          <Layout id="sv3mpage4_grid_1">
+            <Layout id="sv3mpage4_cell_1">
+              <Layout id="sv3dau9_0" unitId="sv3dau9"></Layout>
+            </Layout>
+            <Layout id="sv3mpage4_cell_13">
+              <Layout id="sv3dau10_0" unitId="sv3dau10"></Layout>
+            </Layout>
+            <Layout id="sv3mpage4_cell_25">
+              <Layout id="sv3dau9_1" unitId="sv3dau9"></Layout>
+            </Layout>
+            <Layout id="sv3mpage4_cell_37">
+              <Layout id="sv3inu4_0" unitId="sv3inu4"></Layout>
+            </Layout>
+          </Layout>
+        </Layout>
+      </Layout>
+    </Layout>
+    <Layout id="sv3mpage4_customlocation_1">
+      <Layout id="sv3mpage4_grid_2">
+        <Layout id="sv3mpage4_cell_49">
+          <Layout id="sv3mpage4_grid_3">
+            <Layout id="sv3mpage4_cell_50">
+              <Layout id="sv3mpage4_grid_4">
+                <Layout id="sv3mpage4_cell_51">
+                  <Layout id="sv3pwu12_0" unitId="sv3pwu12"></Layout>
+                  <Layout id="sv3enu17_0" unitId="sv3enu17"></Layout>
+                </Layout>
+              </Layout>
+            </Layout>
+            <Layout id="sv3mpage4_cell_63">
+              <Layout id="sv3mpage4_grid_5">
+                <Layout id="sv3mpage4_cell_64">
+                  <Layout id="sv3pwu11_0" unitId="sv3pwu11"></Layout>
+                  <Layout id="sv3enu18_0" unitId="sv3enu18"></Layout>
+                </Layout>
+              </Layout>
+            </Layout>
+          </Layout>
+        </Layout>
+      </Layout>
+    </Layout>
+    <Layout id="sv3mpage4_customlocation_2">
+      <Layout id="sv3mpage4_grid_6">
+        <Layout id="sv3mpage4_cell_76">
+          <Layout id="sv3dau11_0" unitId="sv3dau11"></Layout>
+        </Layout>
+      </Layout>
+    </Layout>
+  </Layouts>
+  <AutoLinkInfo>
+    <PreservedContextParams>
+      <Params/>
+    </PreservedContextParams>
+    <PreservedContextParams selectiveRefresh="true">
+      <Params>sv3kcond29.activityInstanceOid|sv3kcond28.processInstanceOid</Params>
+    </PreservedContextParams>
+  </AutoLinkInfo>
+  <!--Page Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultPageParameterService">
+    <ModelName>Master page</ModelName>
+    <NavigationAncestors>sv3|sv3Activities</NavigationAncestors>
+    <LinkIdRequired>true</LinkIdRequired>
+    <PageParams>
+      <PageParam unit="sv3pu37">sv3pu37.activityInstanceOid</PageParam>
+      <PageParam unit="sv3dau9">sv3kcond28.processInstanceOid</PageParam>
+      <PageParam unit="sv3dau10">sv3kcond29.activityInstanceOid</PageParam>
+      <PageParam unit="sv3inu4">sv3kcond30.activityInstanceOid</PageParam>
+      <PageParam unit="sv3pwu11">sv3rcond36.processInstanceOid</PageParam>
+      <PageParam unit="sv3pwu11">sv3pwu11.block</PageParam>
+      <PageParam unit="sv3dau11">sv3kcond31.userOID</PageParam>
+      <PageParam unit="sv3pwu12">sv3rcond38.activityInstanceOid</PageParam>
+      <PageParam unit="sv3pwu12">sv3rcond37.processInstanceOid</PageParam>
+      <PageParam unit="sv3pwu12">sv3pwu12.block</PageParam>
+      <PageParam>sv3par156</PageParam>
+      <PageParam>sv3pu36.activityInstanceOid</PageParam>
+      <PageParam>sv3kcond25.attachmentOid</PageParam>
+      <PageParam>sv3cru2.noteText</PageParam>
+      <PageParam>sv3cru1.attachmentFile</PageParam>
+      <PageParam>sv3kcond17.noteOid</PageParam>
+      <PageParam>link</PageParam>
+      <PageParam>nav</PageParam>
+      <PageParam>so</PageParam>
+      <PageParam>ajax</PageParam>
+      <PageParam>ajaxRefresh</PageParam>
+    </PageParams>
+  </WRParameterService>
+</Descriptor>

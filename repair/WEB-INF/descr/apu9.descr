@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.bpm.services.ActivityParametersUnitService" name="Get Parameters">
+  <OnFailRemoveTaskOid/>
+  <InActivityModule>true</InActivityModule>
+  <RetrievePreviousInstances>false</RetrievePreviousInstances>
+  <RetrieveNextTypes>false</RetrieveNextTypes>
+  <Output id="ap31" uuid="H6HJWCFB_I19UU">RepairFile</Output>
+  <Output id="ap33" uuid="H6HJWCFB_I19UU/H5C57EKZ_3RV">RepairFile.Problem abstract</Output>
+  <Output id="ap34" uuid="H6HJWCFB_I19UU/H5C57LGJ_2JC">RepairFile.Computer characteristic</Output>
+  <Output id="ap35" uuid="H6HJWCFB_I19UU/H5C57TVW_3GZ">RepairFile.Defect description</Output>
+  <Output id="ap37" uuid="H6HJWCFB_I19UU/H5C58HQJ_1AD">RepairFile.Request date</Output>
+  <Output id="ap38" uuid="H6HJWCFB_I19UU/H5C58S03_7AD">RepairFile.Repair price</Output>
+  <Output id="ap39" uuid="H6HJWCFB_I19UU/H5C58Y1V_1I3">RepairFile.Repair progress</Output>
+  <CaseValues id="ap39" uuid="H6HJWCFB_I19UU/H5C58Y1V_1I3">RepairFile.Repair progress</CaseValues>
+</Descriptor>
+ 

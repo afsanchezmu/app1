@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="true" default-cascade="none" default-access="property" default-lazy="true">
+  <class name="com.webratio.webapp.RepairFile" table="`repairfile`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="OID" column="`oid`" type="java.lang.Integer">
+      <generator class="com.webratio.rtx.hibernate.MaxPlusOneIncrementGenerator"/>
+    </id>
+    <property name="problemAbstract" column="`problem_abstract`" type="java.lang.String" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="computerCharacteristic" column="`computer_characteristic`" type="java.lang.String" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="defectDescription" column="`defect_description`" type="java.lang.String" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="requestDate" column="`request_date`" type="java.sql.Date" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="repairPrice" column="`repair_price`" type="java.math.BigDecimal" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="repairProgress" column="`repair_progress`" type="java.lang.String" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+</hibernate-mapping>

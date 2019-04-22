@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultLinkService">
+  <Target>apu10</Target>
+  <Secure>false</Secure>
+  <Source>enu20</Source>
+  <SourcePage>page23</SourcePage>
+  <ReachableAlternativePages></ReachableAlternativePages>
+  <StartsTransaction>false</StartsTransaction>
+  <EndsTransaction>false</EndsTransaction>
+  <StartPageIdRequiredByTarget>true</StartPageIdRequiredByTarget>
+  <PreservedContextParams>
+    <Params/>
+  </PreservedContextParams>
+  <ContextPropagations>
+    <ContextPropagation targetParam="ap42" sourceUnit="enu20" sourceParam="fld40"/>
+    <ContextPropagation targetParam="ap46" sourceUnit="enu20" sourceParam="fld43"/>
+    <ContextPropagation targetParam="ap50" sourceUnit="enu20" sourceParam="msfld2"/>
+  </ContextPropagations>
+</Descriptor>
+ 

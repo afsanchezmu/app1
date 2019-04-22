@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultLinkService">
+  <Target>sv4cru1</Target>
+  <Secure>false</Secure>
+  <Source>sv4tmu7</Source>
+  <ReachableAlternativePages></ReachableAlternativePages>
+  <Navigates>true</Navigates>
+  <StartsTransaction>false</StartsTransaction>
+  <EndsTransaction>false</EndsTransaction>
+  <StartPageIdRequiredByTarget>true</StartPageIdRequiredByTarget>
+  <PreservedContextParams>
+    <Params/>
+  </PreservedContextParams>
+  <ContextPropagations>
+    <ContextPropagation targetParam="sv4cru1.attachmentTimestamp" sourceUnit="sv4tmu7" sourceParam="currentTimestamp"/>
+  </ContextPropagations>
+</Descriptor>

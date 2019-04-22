@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultPageService" name="Select User and Group Assignee">
+  <ParentContainer>sv2</ParentContainer>
+  <Secure>false</Secure>
+  <Localized>false</Localized>
+  <CheckPermission>false</CheckPermission>
+  <MasterPage ignore="true"/>
+  <Alternatives/>
+  <ProtectedSubPages/>
+  <Navigations>
+    <Navigation name="0" nonContextual="true" interPage="always" links="page2"/>
+    <Navigation name="1" nonContextual="true" interPage="always" links="page2.link"/>
+    <Navigation name="2" links="page2.auto-link"/>
+    <Navigation name="3" interPage="always" links="ln12"/>
+  </Navigations>
+  <ContextInitServices/>
+  <ContextInits></ContextInits>
+  <UselessPreserves>
+    <UselessPreserve navs="2" futile=""/>
+  </UselessPreserves>
+  <LinkSequence>ln3|ln4</LinkSequence>
+  <UnitComputations>
+    <UnitComputation unit="seu1"></UnitComputation>
+    <UnitComputation unit="hinu1"></UnitComputation>
+  </UnitComputations>
+  <ManualLinks>
+    <ManualLink>ln5</ManualLink>
+    <ManualLink>ln6</ManualLink>
+  </ManualLinks>
+  <PropagationModes client="true" server="true"/>
+  <Variables></Variables>
+  <Conditions></Conditions>
+  <Layouts>
+    <Layout id="page2_grid_0">
+      <Layout id="page2_cell_0">
+        <Layout id="hinu1_0" unitId="hinu1"></Layout>
+      </Layout>
+    </Layout>
+  </Layouts>
+  <AutoLinkInfo>
+    <PreservedContextParams>
+      <Params>kcond1.activityInstanceOid</Params>
+    </PreservedContextParams>
+  </AutoLinkInfo>
+  <!--Page Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultPageParameterService">
+    <ModelName>Select User and Group Assignee</ModelName>
+    <NavigationAncestors>sv2</NavigationAncestors>
+    <LinkIdRequired>true</LinkIdRequired>
+    <PageParams>
+      <PageParam unit="seu1">kcond1.activityInstanceOid</PageParam>
+      <PageParam unit="hinu1">rcond1.activityInstanceOid</PageParam>
+      <PageParam>kcond2.processInstanceOid</PageParam>
+      <PageParam>pwu1.sortCriteria</PageParam>
+      <PageParam>pwu1.newSortAttribute</PageParam>
+      <PageParam>rcond2.processInstanceOid</PageParam>
+      <PageParam>link</PageParam>
+      <PageParam>nav</PageParam>
+      <PageParam>so</PageParam>
+      <PageParam>ajax</PageParam>
+      <PageParam>ajaxRefresh</PageParam>
+    </PageParams>
+  </WRParameterService>
+</Descriptor>

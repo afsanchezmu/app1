@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="true" default-cascade="none" default-access="property" default-lazy="true">
+  <class name="com.webratio.webapp.SequenceFlow" table="`sequenceflow`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="oid" column="`oid`" type="java.lang.Integer">
+      <generator class="com.webratio.rtx.hibernate.MaxPlusOneIncrementGenerator"/>
+    </id>
+    <property name="label" column="`label`" type="java.lang.String" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="condition" column="`condition`" type="java.lang.String" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="_default" column="`default`" type="java.lang.Boolean" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="sortNumber" column="`sort_number`" type="java.lang.Double" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <many-to-one name="nextActivityType" class="com.webratio.webapp.ActivityType" update="true" insert="true" not-found="exception" unique="false" optimistic-lock="true" embed-xml="true">
+      <column name="`activitytype_oid`"/>
+    </many-to-one>
+    <many-to-one name="previousActivityType" class="com.webratio.webapp.ActivityType" update="true" insert="true" not-found="exception" unique="false" optimistic-lock="true" embed-xml="true">
+      <column name="`activitytype_oid_2`"/>
+    </many-to-one>
+  </class>
+  <!-- mapping for relationship 'nextActivityType[previousSequenceFlow2NextActivityType]' -->
+  <class entity-name="com.webratio.webapp.Rel_SequenceFlow_to_nextActivityType" table="`sequenceflow`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="source_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="target_oid" column="`activitytype_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+  <!-- mapping for relationship 'previousActivityType[nextSequenceFlow2PreviousActivityType]' -->
+  <class entity-name="com.webratio.webapp.Rel_SequenceFlow_to_previousActivityType" table="`sequenceflow`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="source_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="target_oid" column="`activitytype_oid_2`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.bpm.services.ActivityParametersUnitService" name="GetInfo">
+  <OnFailRemoveTaskOid/>
+  <InActivityModule>false</InActivityModule>
+  <RetrievePreviousInstances>false</RetrievePreviousInstances>
+  <RetrieveNextTypes>false</RetrieveNextTypes>
+</Descriptor>
+ 

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.module.rtx.CollectorUnitService" name="Input">
+  <Type>INPUT</Type>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Input</ModelName>
+    <ParentContainer>hym6</ParentContainer>
+    <MasterPage ignore="false">sv4mpage4</MasterPage>
+    <NavigationAncestors>sv4|sv4Activities|hym6</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>true</CheckPermission>
+    <PermissionElement>hym6</PermissionElement>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <Params>fld44_slot|fld43_slot|fld40_slot|slot11|fld41_slot|msfld2_presel|fld42_slot|fld45_slot</Params>
+    </OperationParams>
+    <OutgoingLinks>
+      <Link resultCode="success">oln31</Link>
+    </OutgoingLinks>
+    <IsLinkHistoryRecorded>true</IsLinkHistoryRecorded>
+  </WRParameterService>
+</Descriptor>
+ 

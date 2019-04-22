@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.content.rtx.db.PowerIndexUnitService" name="Process Instances">
+  <UseFirstRowAsDefaultCurrent>false</UseFirstRowAsDefaultCurrent>
+  <Results maxResults="" blockFactor="20" blockWindow="10"/>
+  <SortHistorySize>1</SortHistorySize>
+  <Checkable>false</Checkable>
+  <Query entity="ProcessInstance">
+    <Input id="p0" param="rcond3.processOid" type="integer" implied="false" expandStyle="in"/>
+    <Input id="p1" param="rcond4.userOID" type="integer" implied="true" impliedText="1 = 1" expandStyle="in"/>
+    <Input id="p2" param="acond1" type="integer" implied="true" impliedText="1 = 1" expandStyle="in" attribute="processOid"/>
+    <Input id="p3" param="rcond5.groupOID" type="integer" implied="true" impliedText="1 = 1" expandStyle="in"/>
+    <Input id="p4" param="acond2" type="string" implied="true" impliedText="1 = 1" expandStyle="in" attribute="processInstanceStatus"/>
+    <Input id="p5" param="acond3" type="timestamp" implied="true" impliedText="1 = 1" expandStyle="aggregate" function="min" attribute="processInstanceActiveTimestamp"/>
+    <Input id="p6" param="acond4" type="timestamp" implied="true" impliedText="1 = 1" expandStyle="aggregate" function="max" attribute="processInstanceActiveTimestamp"/>
+    <Input id="p7" param="acond5" type="string" implied="true" impliedText="1 = 1" expandStyle="in" function="upper" attribute="activityInstanceStatus"/>
+    <Input id="p8" param="acond6" type="timestamp" implied="true" impliedText="1 = 1" expandStyle="aggregate" function="min" attribute="activityInstanceReadyTimestamp"/>
+    <Input id="p8" param="acond6" type="timestamp" implied="true" impliedText="1 = 1" expandStyle="aggregate" function="min" attribute="activityInstanceActiveTimestamp"/>
+    <Input id="p9" param="acond7" type="timestamp" implied="true" impliedText="1 = 1" expandStyle="aggregate" function="max" attribute="activityInstanceReadyTimestamp"/>
+    <Input id="p9" param="acond7" type="timestamp" implied="true" impliedText="1 = 1" expandStyle="aggregate" function="max" attribute="activityInstanceActiveTimestamp"/>
+    <Output id="processInstanceOid" name="oid" index="0"/>
+    <Output id="processInstanceCancelledTimestamp" name="cancelledAt" index="1"/>
+    <Output id="processInstanceActiveTimestamp" name="activeSince" index="2"/>
+    <Output id="processInstanceName" name="name" index="3"/>
+    <Output id="processInstanceCompletedTimestamp" name="completedAt" index="4"/>
+    <HQL>select a_processInstance.oid, a_processInstance.cancelledAt, a_processInstance.activeSince, a_processInstance.name, a_processInstance.completedAt from ProcessInstance a_processInstance
+      <Where defaultPolicy="fill" allImplied="false">(({[p0](a_processInstance.process.oid in(?))})) and (({[p1]a_processInstance.oid in(select a_processInstance_p1.oid from ProcessInstance a_processInstance_p1 inner join a_processInstance_p1.activityInstances activityInstance_p1_1 inner join activityInstance_p1_1.user user_p1_0 where user_p1_0.oid in(?))})) and ([(a_processInstance.oid in( select a_processInstance_2.oid from ProcessInstance a_processInstance_2 inner join a_processInstance_2.process s_process_processInstance2Process where ({[p2]s_process_processInstance2Process.oid in(?)})))]) and (({[p3]a_processInstance.oid in(select a_processInstance_p3.oid from ProcessInstance a_processInstance_p3 inner join a_processInstance_p3.activityInstances activityInstance_p3_1 inner join activityInstance_p3_1.activityInstanceGroup group_p3_0 where group_p3_0.oid in(?))})) and (({[p4]safe_cast(a_processInstance.status) in(?)})) and (({[p5]a_processInstance.activeSince &gt;= ?})) and (({[p6]a_processInstance.activeSince &lt;= ?})) and ([(a_processInstance.oid in( select a_processInstance_2.oid from ProcessInstance a_processInstance_2 inner join a_processInstance_2.activityInstances s_activityInstance_processInstance2ActivityInstances where ({[p7]upper(safe_cast(s_activityInstance_processInstance2ActivityInstances.status)) in(?)})))]) and ([(a_processInstance.oid in( select a_processInstance_2.oid from ProcessInstance a_processInstance_2 inner join a_processInstance_2.activityInstances s_activityInstance_processInstance2ActivityInstances where ({[p8]s_activityInstance_processInstance2ActivityInstances.readySince &gt;= ?}) or ({[p8]s_activityInstance_processInstance2ActivityInstances.activeSince &gt;= ?})))]) and ([(a_processInstance.oid in( select a_processInstance_2.oid from ProcessInstance a_processInstance_2 inner join a_processInstance_2.activityInstances s_activityInstance_processInstance2ActivityInstances where ({[p9]s_activityInstance_processInstance2ActivityInstances.readySince &lt;= ?}) or ({[p9]s_activityInstance_processInstance2ActivityInstances.activeSince &lt;= ?})))])</Where>order by $$SORT_CRITERIA$$
+    </HQL>
+  </Query>
+  <SortAttributes>
+    <Attribute id="processInstanceActiveTimestamp" dynamic="true" order="desc">a_processInstance.activeSince</Attribute>
+    <Attribute id="processInstanceOid" dynamic="true" order="desc">a_processInstance.oid</Attribute>
+    <Attribute id="processInstanceActiveTimestamp" dynamic="false" order="desc">a_processInstance.activeSince</Attribute>
+    <Attribute id="processInstanceOid" dynamic="false" order="desc">a_processInstance.oid</Attribute>
+  </SortAttributes>
+  <wr:Validation xmlns:wr="http://www.webratio.com/2013/WebML/WRValidation">
+    <wr:ValidationLink elementId="pwu2" linkId="ln14" action="validate"/>
+  </wr:Validation>
+</Descriptor>

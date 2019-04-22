@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultLinkService">
+  <Target>dlu2</Target>
+  <Secure>false</Secure>
+  <Source>pwu8</Source>
+  <SourcePage>page17</SourcePage>
+  <ReachableAlternativePages></ReachableAlternativePages>
+  <Navigates>true</Navigates>
+  <StartsTransaction>false</StartsTransaction>
+  <EndsTransaction>false</EndsTransaction>
+  <StartPageIdRequiredByTarget>true</StartPageIdRequiredByTarget>
+  <PreservedContextParams>
+    <Params>pwu7.newSortAttribute|pwu7.sortCriteria|kcond19.activityInstanceOid|pwu7.current.activityInstanceOid|rcond22.processOid|acond20</Params>
+  </PreservedContextParams>
+  <ContextPropagations>
+    <ContextPropagation targetParam="kcond15.notificationOid" sourceUnit="pwu8" sourceParam="data[].notificationOid"/>
+  </ContextPropagations>
+</Descriptor>

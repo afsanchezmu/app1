@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultPageService" name="Error">
+  <ParentContainer>sv4</ParentContainer>
+  <Secure>false</Secure>
+  <Localized>false</Localized>
+  <CheckPermission>true</CheckPermission>
+  <PermissionElement>sv4</PermissionElement>
+  <MasterPage>mpage3</MasterPage>
+  <Alternatives/>
+  <ProtectedSubPages/>
+  <Navigations knownEffects="#pr#">
+    <Navigation name="0" nonContextual="true" interPage="always" links="page17"/>
+    <Navigation name="1" nonContextual="true" interPage="always" links="page17.link"/>
+    <Navigation name="2" links="page17.auto-link"/>
+    <Navigation name="3" links="page17.auto-link" selectiveRefresh="true"/>
+    <Navigation name="4" interPage="always" links="ln154|apu6ko"/>
+    <Navigation name="5" interPage="always" links="ln154|pu32ko"/>
+    <Navigation name="6" interPage="always" links="ln154|pu33ko"/>
+    <Navigation name="7" interPage="always" links="ln155|apu6ko"/>
+    <Navigation name="8" interPage="always" links="ln155|pu32ko"/>
+    <Navigation name="9" interPage="always" links="ln155|pu33ko"/>
+    <Navigation name="10" interPage="always" links="ln156|pu34ko"/>
+    <Navigation name="11" interPage="always" links="ln159|apu8ko"/>
+    <Navigation name="12" interPage="always" links="ln159|pu35ko"/>
+    <Navigation name="13" interPage="always" links="ln159|pu36ko"/>
+    <Navigation name="14" interPage="always" links="ln160|apu8ko"/>
+    <Navigation name="15" interPage="always" links="ln160|pu35ko"/>
+    <Navigation name="16" interPage="always" links="ln160|pu36ko"/>
+    <Navigation name="17" interPage="always" links="ln161|pu37ko"/>
+    <Navigation name="18" interPage="always" links="ln164|apu10ko"/>
+    <Navigation name="19" interPage="always" links="ln164|pu38ko"/>
+    <Navigation name="20" interPage="always" links="ln164|pu39ko"/>
+    <Navigation name="21" interPage="always" links="ln165|apu10ko"/>
+    <Navigation name="22" interPage="always" links="ln165|pu38ko"/>
+    <Navigation name="23" interPage="always" links="ln165|pu39ko"/>
+    <Navigation name="24" interPage="always" links="ln166|pu40ko"/>
+    <Navigation name="25" interPage="always" links="ln81|kln12"/>
+    <Navigation name="26" interPage="always" links="ln82|kln11"/>
+    <Navigation name="27" interPage="always" links="ln84|kln11"/>
+    <Navigation name="28" interPage="always" links="ln94|kln13"/>
+  </Navigations>
+  <ContextInitServices/>
+  <ContextInits></ContextInits>
+  <UselessPreserves>
+    <UselessPreserve navs="2" effects="-" futile=""/>
+    <UselessPreserve navs="3|2" effects="#pr#" futile=""/>
+    <UselessPreserve navs="3" effects="-" futile="pu23.errorInfo|pu23.shownMessages"/>
+  </UselessPreserves>
+  <LinkSequence/>
+  <UnitComputations>
+    <UnitComputation unit="pu23" formBased="true">
+      <NavigationCondition selectiveRefresh="true" effects="#pr#"/>
+      <RefreshFormAll navs="25|26|27|28" inputs="pu23.errorInfo"/>
+      <RefreshFormAll navs="19|17|22|18|23|15|24|16|13|14|11|12|21|20|10|7|6|5|4|9|8" inputs="pu23.shownMessages"/>
+      <RefreshFormAll navs="1|0"/>
+    </UnitComputation>
+  </UnitComputations>
+  <ManualLinks></ManualLinks>
+  <Variables></Variables>
+  <Conditions></Conditions>
+  <Layouts>
+    <Layout id="page17_grid_0">
+      <Layout id="page17_cell_0">
+        <Layout id="pu23_0" unitId="pu23"></Layout>
+      </Layout>
+    </Layout>
+  </Layouts>
+  <AutoLinkInfo>
+    <PreservedContextParams>
+      <Params>pu23.shownMessages|pu23.errorInfo</Params>
+    </PreservedContextParams>
+    <PreservedContextParams selectiveRefresh="true">
+      <Params>pu23.shownMessages|pu23.errorInfo</Params>
+    </PreservedContextParams>
+  </AutoLinkInfo>
+  <!--Page Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultPageParameterService">
+    <ModelName>Error</ModelName>
+    <NavigationAncestors>sv4</NavigationAncestors>
+    <LinkIdRequired>true</LinkIdRequired>
+    <PageParams>
+      <PageParam unit="pu23">pu23.errorInfo</PageParam>
+      <PageParam unit="pu23">pu23.shownMessages</PageParam>
+      <PageParam>link</PageParam>
+      <PageParam>nav</PageParam>
+      <PageParam>so</PageParam>
+      <PageParam>ajax</PageParam>
+      <PageParam>ajaxRefresh</PageParam>
+    </PageParams>
+  </WRParameterService>
+</Descriptor>
+ 

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="true" default-cascade="none" default-access="property" default-lazy="true">
+  <class name="com.webratio.webapp.Note" table="`note`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="oid" column="`oid`" type="java.lang.Integer">
+      <generator class="com.webratio.rtx.hibernate.MaxPlusOneIncrementGenerator"/>
+    </id>
+    <property name="text" column="`text`" type="java.lang.String" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="timestamp" column="`timestamp`" type="java.sql.Timestamp" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <set name="processInstances" table="`note_processinstance`" inverse="false" mutable="true" sort="unsorted" optimistic-lock="true" embed-xml="true">
+      <key on-delete="noaction">
+        <column name="`note_oid`"/>
+      </key>
+      <many-to-many class="com.webratio.webapp.ProcessInstance" not-found="exception" embed-xml="true" unique="false">
+        <column name="`processinstance_oid`"/>
+      </many-to-many>
+    </set>
+    <set name="activityInstances" table="`note_activityinstance`" inverse="false" mutable="true" sort="unsorted" optimistic-lock="true" embed-xml="true">
+      <key on-delete="noaction">
+        <column name="`note_oid`"/>
+      </key>
+      <many-to-many class="com.webratio.webapp.ActivityInstance" not-found="exception" embed-xml="true" unique="false">
+        <column name="`activityinstance_oid`"/>
+      </many-to-many>
+    </set>
+    <many-to-one name="activityInstance" class="com.webratio.webapp.ActivityInstance" update="true" insert="true" not-found="exception" unique="false" optimistic-lock="true" embed-xml="true">
+      <column name="`activityinstance_oid`"/>
+    </many-to-one>
+    <many-to-one name="user" class="com.webratio.webapp.User" update="true" insert="true" not-found="exception" unique="false" optimistic-lock="true" embed-xml="true">
+      <column name="`user_oid`"/>
+    </many-to-one>
+  </class>
+  <!-- mapping for relationship 'processInstances[note2ProcessInstances]' -->
+  <class entity-name="com.webratio.webapp.Rel_Note_to_processInstances" table="`note_processinstance`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <composite-id mapped="false" unsaved-value="undefined">
+      <key-property name="source_oid" column="`note_oid`" type="java.lang.Integer"/>
+      <key-property name="target_oid" column="`processinstance_oid`" type="java.lang.Integer"/>
+    </composite-id>
+  </class>
+  <!-- mapping for relationship 'activityInstances[note2ActivityInstances]' -->
+  <class entity-name="com.webratio.webapp.Rel_Note_to_activityInstances" table="`note_activityinstance`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <composite-id mapped="false" unsaved-value="undefined">
+      <key-property name="source_oid" column="`note_oid`" type="java.lang.Integer"/>
+      <key-property name="target_oid" column="`activityinstance_oid`" type="java.lang.Integer"/>
+    </composite-id>
+  </class>
+  <!-- mapping for relationship 'activityInstance[note2NextActivityInstance]' -->
+  <class entity-name="com.webratio.webapp.Rel_Note_to_activityInstance" table="`note`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="source_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="target_oid" column="`activityinstance_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+  <!-- mapping for relationship 'user[note2User]' -->
+  <class entity-name="com.webratio.webapp.Rel_Note_to_user" table="`note`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="source_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="target_oid" column="`user_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+</hibernate-mapping>

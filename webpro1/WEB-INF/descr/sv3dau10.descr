@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.content.rtx.db.DataUnitService" name="Activity">
+  <Query entity="ActivityInstance">
+    <Input id="p0" param="sv3kcond29.activityInstanceOid" type="integer" implied="false" expandStyle="in"/>
+    <Output id="activityInstanceOid" name="oid" index="0"/>
+    <Output id="activityInstanceRollbackable" name="rollbackable" index="1"/>
+    <Output id="activityInstanceDescription" name="description" index="2"/>
+    <Output id="activityInstanceActiveTimestamp" name="activeSince" index="3"/>
+    <Output id="activityInstanceName" name="name" index="4"/>
+    <HQL>select a_activityInstance.oid, a_activityInstance.rollbackable, a_activityType_activityInstance2ActivityType.description, a_activityInstance.activeSince, a_activityInstance.name from ActivityInstance a_activityInstance left join a_activityInstance.activityType a_activityType_activityInstance2ActivityType
+      <Where defaultPolicy="fill" allImplied="false">(({[p0]a_activityInstance.oid in(?)}))</Where>
+    </HQL>
+  </Query>
+</Descriptor>

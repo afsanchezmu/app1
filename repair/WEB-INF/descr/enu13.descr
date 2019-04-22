@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.content.rtx.EntryUnitService" name="User Input">
+  <FormFields>
+    <SelectionField id="sfld20" name="Customer Decision" type="string" localized="false" value="" splitOutput="">
+      <Slot id="slot9" label="true" output="true" value=""/>
+    </SelectionField>
+  </FormFields>
+  <wr:Validation xmlns:wr="http://www.webratio.com/2013/WebML/WRValidation">
+    <wr:ValidationLink elementId="enu13" linkId="ln149" action="validate"/>
+    <MandatoryValidationRule service="com.webratio.units.validation.MandatoryValidationRuleService" elementId="sfld20" id="mnd8" name="required">
+      <CompanionField/>
+      <Predicate/>
+      <IgnoreCase/>
+      <Value/>
+    </MandatoryValidationRule>
+  </wr:Validation>
+</Descriptor>

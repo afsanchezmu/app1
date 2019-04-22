@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.bpm.services.ActivityParametersUnitService" name="Set Parameters">
+  <OnFailRemoveTaskOid>true</OnFailRemoveTaskOid>
+  <InActivityModule>true</InActivityModule>
+  <RetrievePreviousInstances>false</RetrievePreviousInstances>
+  <RetrieveNextTypes>false</RetrieveNextTypes>
+  <Input id="ap2" uuid="H6HJWCFB_I19UU">RepairFile</Input>
+  <Input id="ap4" uuid="H6HJWCFB_I19UU/H5C57EKZ_3RV">RepairFile.Problem abstract</Input>
+  <Input id="ap6" uuid="H6HJWCFB_I19UU/H5C57LGJ_2JC">RepairFile.Computer characteristic</Input>
+  <Input id="ap8" uuid="H6HJWCFB_I19UU/H5C57TVW_3GZ">RepairFile.Defect description</Input>
+  <Input id="ap10" uuid="H6HJWCFB_I19UU/H5C58HQJ_1AD">RepairFile.Request date</Input>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Set Parameters</ModelName>
+    <ParentContainer>hym2</ParentContainer>
+    <MasterPage ignore="false">sv3mpage4</MasterPage>
+    <NavigationAncestors>sv3|sv3Activities|hym2</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>true</CheckPermission>
+    <PermissionElement>hym2</PermissionElement>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <OperationParam unit="apu2">ap10</OperationParam>
+      <OperationParam unit="apu2">ap8</OperationParam>
+      <OperationParam unit="apu2">ap6</OperationParam>
+      <OperationParam unit="apu2">ap4</OperationParam>
+      <OperationParam unit="apu2">ap2</OperationParam>
+      <Params>fld21_slot|sp|fld18_slot|fld20_slot|cmplink|pu17.shownMessages|link|pu17.errorInfo|fld17_slot|fld19_slot|smc</Params>
+    </OperationParams>
+    <SecondaryIncomingLinks>ln141</SecondaryIncomingLinks>
+    <OutgoingLinks>
+      <Link resultCode="success.ln142">oln20</Link>
+      <Link resultCode="success.ln143">oln21</Link>
+      <Link resultCode="error">apu2ko</Link>
+    </OutgoingLinks>
+    <IsLinkHistoryRecorded>true</IsLinkHistoryRecorded>
+  </WRParameterService>
+</Descriptor>

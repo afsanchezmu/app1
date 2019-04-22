@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultLinkService">
+  <Target>sv4cru2</Target>
+  <Secure>false</Secure>
+  <Source>sv4tmu8</Source>
+  <ReachableAlternativePages></ReachableAlternativePages>
+  <Navigates>true</Navigates>
+  <StartsTransaction>false</StartsTransaction>
+  <EndsTransaction>false</EndsTransaction>
+  <StartPageIdRequiredByTarget>true</StartPageIdRequiredByTarget>
+  <PreservedContextParams>
+    <Params/>
+  </PreservedContextParams>
+  <ContextPropagations>
+    <ContextPropagation targetParam="sv4cru2.noteTimestamp" sourceUnit="sv4tmu8" sourceParam="currentTimestamp"/>
+  </ContextPropagations>
+</Descriptor>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultLinkService">
+  <Target>spu1</Target>
+  <Secure>false</Secure>
+  <Source>inu2</Source>
+  <SourcePage>page8</SourcePage>
+  <ReachableAlternativePages></ReachableAlternativePages>
+  <Navigates>true</Navigates>
+  <StartsTransaction>false</StartsTransaction>
+  <EndsTransaction>false</EndsTransaction>
+  <StartPageIdRequiredByTarget>true</StartPageIdRequiredByTarget>
+  <PreservedContextParams>
+    <Params>pwu3.current.activityInstanceOid|kcond9.activityInstanceOid|pwu3.sortCriteria|pwu3.newSortAttribute|acond10|rcond7.processOid</Params>
+  </PreservedContextParams>
+  <ContextPropagations>
+    <ContextPropagation targetParam="spu1.startActivityTypeOid" sourceUnit="inu2" sourceParam="data[].activityTypeOid"/>
+  </ContextPropagations>
+</Descriptor>

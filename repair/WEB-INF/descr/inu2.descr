@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.content.rtx.db.IndexUnitService" name="Start a New Process">
+  <UseFirstRowAsDefaultCurrent>false</UseFirstRowAsDefaultCurrent>
+  <MaxResults/>
+  <Query entity="ActivityType">
+    <Input id="p0" param="kcond7.activityTypeOid" type="integer" implied="false" expandStyle="in"/>
+    <Output id="activityTypeOid" name="oid" index="0"/>
+    <Output id="activityTypeName" name="name" index="1"/>
+    <HQL>select a_activityType.oid, a_activityType.name from ActivityType a_activityType
+      <Where defaultPolicy="fill" allImplied="false">(({[p0]a_activityType.oid in(?)}))</Where>order by a_activityType.name asc
+    </HQL>
+  </Query>
+</Descriptor>

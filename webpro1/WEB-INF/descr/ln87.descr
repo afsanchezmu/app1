@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultLinkService">
+  <Target>page17</Target>
+  <Secure>false</Secure>
+  <Source>dau6</Source>
+  <SourcePage>page17</SourcePage>
+  <ReachableAlternativePages></ReachableAlternativePages>
+  <StartsTransaction>false</StartsTransaction>
+  <EndsTransaction>false</EndsTransaction>
+  <StartPageIdRequiredByTarget>false</StartPageIdRequiredByTarget>
+  <PreservedContextParams>
+    <Params/>
+  </PreservedContextParams>
+  <ContextPropagations>
+    <ContextPropagation targetParam="pu26.processInstanceOid" sourceUnit="dau6" sourceParam="data.activityInstance2ProcessInstance_processInstanceOid"/>
+  </ContextPropagations>
+</Descriptor>

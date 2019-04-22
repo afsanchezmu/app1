@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultPageService" name="Process Diagram">
+  <ParentContainer>sv4</ParentContainer>
+  <Secure>false</Secure>
+  <Localized>false</Localized>
+  <CheckPermission>true</CheckPermission>
+  <PermissionElement>sv4</PermissionElement>
+  <MasterPage>mpage3</MasterPage>
+  <Alternatives/>
+  <ProtectedSubPages/>
+  <Navigations knownEffects="#pr#">
+    <Navigation name="0" nonContextual="true" interPage="always" links="page18"/>
+    <Navigation name="1" nonContextual="true" interPage="always" links="page18.link"/>
+    <Navigation name="2" links="page18.auto-link"/>
+    <Navigation name="3" links="page18.auto-link" selectiveRefresh="true"/>
+    <Navigation name="4" interPage="always" links="ln115"/>
+    <Navigation name="5" interPage="always" links="ln121"/>
+    <Navigation name="6" interPage="always" links="ln88"/>
+    <Navigation name="7" links="ln94|oln10"/>
+    <Navigation name="8" links="pdu4parentLevel"/>
+    <Navigation name="9" links="pdu4parentLevel" selectiveRefresh="true"/>
+    <Navigation name="10" links="pdu4subLevel"/>
+    <Navigation name="11" links="pdu4subLevel" selectiveRefresh="true"/>
+  </Navigations>
+  <ContextInitServices/>
+  <ContextInits></ContextInits>
+  <UselessPreserves>
+    <UselessPreserve navs="10|7|9|8|11" effects="#pr#" futile=""/>
+    <UselessPreserve navs="2|10|7|9|8|11" effects="-" futile=""/>
+    <UselessPreserve navs="3|2" effects="#pr#" futile="pdu4.contextProcessInstanceOid|pdu4.processUUID"/>
+    <UselessPreserve navs="3" effects="-" futile="pdu4.processInstanceOid|pdu4.contextProcessInstanceOid|pdu4.processUUID"/>
+  </UselessPreserves>
+  <LinkSequence/>
+  <UnitComputations>
+    <UnitComputation unit="pdu4">
+      <NavigationCondition selectiveRefresh="true" effects="#pr#"/>
+      <NavigationCondition selectiveRefresh="true" navs="9|11" effects="-"/>
+    </UnitComputation>
+  </UnitComputations>
+  <ManualLinks>
+    <ManualLink>ln94</ManualLink>
+    <ManualLink>pdu4parentLevel</ManualLink>
+    <ManualLink>pdu4subLevel</ManualLink>
+  </ManualLinks>
+  <PropagationModes client="true" server="true"/>
+  <Variables>
+    <Variable id="var15" name="rollbackableByUser" type="boolean" unitId="pdu4" parameter="data[].rollbackableByUser">
+      <NavigationCondition selectiveRefresh="true" effects="#pr#"/>
+      <NavigationCondition selectiveRefresh="true" navs="9|11" effects="-"/>
+    </Variable>
+  </Variables>
+  <Conditions>
+    <Condition id="cexpr_var15" name="rollbackableByUser" variables="var15" xml:space="preserve">com.webratio.rtx.core.BeanHelper.asObject(var15)</Condition>
+  </Conditions>
+  <Layouts>
+    <Layout id="page18_grid_0">
+      <Layout id="page18_cell_0">
+        <Layout id="pdu4_0" unitId="pdu4"></Layout>
+      </Layout>
+    </Layout>
+  </Layouts>
+  <AutoLinkInfo>
+    <PreservedContextParams>
+      <Params>pdu4.processInstanceOid|pdu4.contextProcessInstanceOid|pdu4.processUUID</Params>
+    </PreservedContextParams>
+    <PreservedContextParams selectiveRefresh="true">
+      <Params>pdu4.processInstanceOid</Params>
+    </PreservedContextParams>
+  </AutoLinkInfo>
+  <!--Page Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultPageParameterService">
+    <ModelName>Process Diagram</ModelName>
+    <NavigationAncestors>sv4</NavigationAncestors>
+    <LinkIdRequired>true</LinkIdRequired>
+    <PageParams>
+      <PageParam unit="pdu4">pdu4.processInstanceOid</PageParam>
+      <PageParam unit="pdu4">pdu4.processUUID</PageParam>
+      <PageParam unit="pdu4">pdu4.contextProcessInstanceOid</PageParam>
+      <PageParam>kcond24.processOid</PageParam>
+      <PageParam preservedByForm="true">sfld19_label</PageParam>
+      <PageParam preservedByForm="true">sfld19_output</PageParam>
+      <PageParam>tmu6.date</PageParam>
+      <PageParam>acond27</PageParam>
+      <PageParam>acond28</PageParam>
+      <PageParam>rcond34.processOid</PageParam>
+      <PageParam>pwu10.block</PageParam>
+      <PageParam>rcond33.userOID</PageParam>
+      <PageParam>pwu10.current.processInstanceOid</PageParam>
+      <PageParam>rcond32.processOid</PageParam>
+      <PageParam>rcond35.processInstanceOid</PageParam>
+      <PageParam>kcond19.activityInstanceOid</PageParam>
+      <PageParam>kcond20.processOid</PageParam>
+      <PageParam>pwu7.current.activityInstanceOid</PageParam>
+      <PageParam>rcond22.processOid</PageParam>
+      <PageParam>acond20</PageParam>
+      <PageParam>pwu7.block</PageParam>
+      <PageParam>pwu7.newSortAttribute</PageParam>
+      <PageParam>pwu7.sortCriteria</PageParam>
+      <PageParam>kcond18.activityInstanceOid</PageParam>
+      <PageParam>pwu8.block</PageParam>
+      <PageParam>rcond24.processOid</PageParam>
+      <PageParam>rcond23.userOID</PageParam>
+      <PageParam preservedByForm="true">sfld13_label</PageParam>
+      <PageParam preservedByForm="true">sfld13_output</PageParam>
+      <PageParam>pu26.processInstanceOid</PageParam>
+      <PageParam>kcond21.processOid</PageParam>
+      <PageParam preservedByForm="true">sfld17_output</PageParam>
+      <PageParam preservedByForm="true">sfld16_label</PageParam>
+      <PageParam preservedByForm="true">sfld15_output</PageParam>
+      <PageParam preservedByForm="true">sfld15_label</PageParam>
+      <PageParam preservedByForm="true">sfld17_label</PageParam>
+      <PageParam preservedByForm="true">sfld16_output</PageParam>
+      <PageParam>rcond25.processOid</PageParam>
+      <PageParam>rcond26.groupOID</PageParam>
+      <PageParam>tmu5.date</PageParam>
+      <PageParam>kcond22.activityInstanceOid</PageParam>
+      <PageParam>rcond29.processOid</PageParam>
+      <PageParam>rcond30.groupOID</PageParam>
+      <PageParam>rcond28.processOid</PageParam>
+      <PageParam>pwu9.current.activityInstanceOid</PageParam>
+      <PageParam>rcond27.userOID</PageParam>
+      <PageParam>rcond31.userOID</PageParam>
+      <PageParam>acond25</PageParam>
+      <PageParam>pwu9.block</PageParam>
+      <PageParam>acond23</PageParam>
+      <PageParam>acond24</PageParam>
+      <PageParam>link</PageParam>
+      <PageParam>nav</PageParam>
+      <PageParam>so</PageParam>
+      <PageParam>ajax</PageParam>
+      <PageParam>ajaxRefresh</PageParam>
+    </PageParams>
+  </WRParameterService>
+</Descriptor>

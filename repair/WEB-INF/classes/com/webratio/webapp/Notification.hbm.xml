@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="true" default-cascade="none" default-access="property" default-lazy="true">
+  <class name="com.webratio.webapp.Notification" table="`notification`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="oid" column="`oid`" type="java.lang.Integer">
+      <generator class="com.webratio.rtx.hibernate.MaxPlusOneIncrementGenerator"/>
+    </id>
+    <property name="message" column="`message`" type="java.lang.String" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="read" column="`read`" type="java.lang.Boolean" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <set name="users" table="`user_notifications`" inverse="true" mutable="true" sort="unsorted" optimistic-lock="true" embed-xml="true">
+      <key on-delete="noaction">
+        <column name="`notification_oid`"/>
+      </key>
+      <many-to-many class="com.webratio.webapp.User" not-found="exception" embed-xml="true" unique="false">
+        <column name="`user_oid`"/>
+      </many-to-many>
+    </set>
+    <many-to-one name="activityInstance" class="com.webratio.webapp.ActivityInstance" update="true" insert="true" not-found="exception" unique="false" optimistic-lock="true" embed-xml="true">
+      <column name="`activityinstance_oid`"/>
+    </many-to-one>
+  </class>
+  <!-- mapping for relationship 'users[notification2Users]' -->
+  <class entity-name="com.webratio.webapp.Rel_Notification_to_users" table="`user_notifications`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <composite-id mapped="false" unsaved-value="undefined">
+      <key-property name="source_oid" column="`notification_oid`" type="java.lang.Integer"/>
+      <key-property name="target_oid" column="`user_oid`" type="java.lang.Integer"/>
+    </composite-id>
+  </class>
+  <!-- mapping for relationship 'activityInstance[notification2ActivityInstance]' -->
+  <class entity-name="com.webratio.webapp.Rel_Notification_to_activityInstance" table="`notification`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="source_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="target_oid" column="`activityinstance_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+</hibernate-mapping>

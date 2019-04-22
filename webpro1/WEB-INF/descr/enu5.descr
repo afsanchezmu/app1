@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.content.rtx.EntryUnitService" name="Search">
+  <FormFields>
+    <Field id="fld9" name="From Date" type="date" localized="true"></Field>
+    <Field id="fld10" name="To Date" type="date" localized="true"></Field>
+    <SelectionField id="sfld12" name="Process" type="string" localized="false" value="" splitOutput="">
+      <Slot id="sfld12_label" label="true" output="false"/>
+      <Slot id="sfld12_output" label="false" output="true"/>
+    </SelectionField>
+  </FormFields>
+  <wr:Validation xmlns:wr="http://www.webratio.com/2013/WebML/WRValidation">
+    <wr:ValidationLink elementId="enu5" linkId="ln76" action="validate"/>
+  </wr:Validation>
+</Descriptor>

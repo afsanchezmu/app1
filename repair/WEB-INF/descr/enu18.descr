@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.content.rtx.EntryUnitService" name="RepairFile">
+  <FormFields>
+    <Field id="fld34" name="OID" type="string" localized="false" serverOnly="true">
+      <Slot id="fld34_slot" label="true" output="true"/>
+    </Field>
+    <Field id="fld35" name="Problem abstract" type="string" localized="false">
+      <Slot id="fld35_slot" label="true" output="true"/>
+    </Field>
+    <Field id="fld36" name="Computer characteristic" type="text" localized="false">
+      <Slot id="fld36_slot" label="true" output="true"/>
+    </Field>
+    <Field id="fld37" name="Defect description" type="text" localized="false">
+      <Slot id="fld37_slot" label="true" output="true"/>
+    </Field>
+    <Field id="fld38" name="Request date" type="date" localized="true">
+      <Slot id="fld38_slot" label="true" output="true"/>
+    </Field>
+    <Field id="fld39" name="Repair price" type="decimal" localized="true">
+      <Slot id="fld39_slot" label="true" output="true"/>
+    </Field>
+    <MultiSelectionField id="msfld1" name="Repair progress" type="string" localized="false" value="" splitOutput="">
+      <Slot id="slot10" label="true" output="true" value=""/>
+    </MultiSelectionField>
+  </FormFields>
+  <wr:Validation xmlns:wr="http://www.webratio.com/2013/WebML/WRValidation">
+    <wr:ValidationLink elementId="enu18" linkId="ln159" action="validate"/>
+    <CheckedFieldItemsValidationRule service="com.webratio.units.validation.CheckedFieldItemsValidationRuleService" elementId="msfld1" id="ckd1" name="required">
+      <Predicate>min</Predicate>
+      <ItemCount>1</ItemCount>
+    </CheckedFieldItemsValidationRule>
+  </wr:Validation>
+</Descriptor>
+ 

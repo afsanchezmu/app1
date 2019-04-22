@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.content.rtx.db.IndexUnitService" name="Demo Users">
+  <UseFirstRowAsDefaultCurrent>false</UseFirstRowAsDefaultCurrent>
+  <MaxResults/>
+  <Query entity="User">
+    <Output id="userOID" name="oid" index="0"/>
+    <Output id="userDefaultGroupName" name="group" index="1"/>
+    <Output id="userName" name="userName" index="2"/>
+    <Output id="password" name="password" index="3"/>
+    <HQL>select a_user.oid, a_group_User2DefaultGroup.groupName, a_user.userName, a_user.password from User a_user left join a_user.defaultGroup a_group_User2DefaultGroup order by a_user.oid asc</HQL>
+  </Query>
+</Descriptor>

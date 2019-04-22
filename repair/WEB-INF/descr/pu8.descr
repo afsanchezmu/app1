@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.bpm.services.ProcessUtilsUnitService" name="Change User and Group">
+  <Mode>assignActivity</Mode>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Change User and Group</ModelName>
+    <ParentContainer>sv2</ParentContainer>
+    <MasterPage ignore="false">mpage1</MasterPage>
+    <NavigationAncestors>sv2</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>false</CheckPermission>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <OperationParam unit="pu8">pu8.activityInstanceOid</OperationParam>
+      <OperationParam unit="pu8">pu8.groupOid</OperationParam>
+      <OperationParam unit="pu8">pu8.userOid</OperationParam>
+      <Params>pwu1.newSortAttribute|sp|pwu1.sortCriteria|cmplink|kcond1.activityInstanceOid|link|kcond2.processInstanceOid|smc|rcond1.activityInstanceOid|rcond2.processInstanceOid</Params>
+    </OperationParams>
+    <SecondaryIncomingLinks>ln4</SecondaryIncomingLinks>
+    <OutgoingLinks>
+      <Link resultCode="success">oln8</Link>
+      <Link resultCode="error">kln7</Link>
+    </OutgoingLinks>
+    <IsLinkHistoryRecorded>true</IsLinkHistoryRecorded>
+  </WRParameterService>
+</Descriptor>

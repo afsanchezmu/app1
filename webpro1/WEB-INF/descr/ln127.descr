@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultLinkService">
+  <Target>page20</Target>
+  <Secure>false</Secure>
+  <Source>enu12</Source>
+  <SourcePage>page20</SourcePage>
+  <ReachableAlternativePages></ReachableAlternativePages>
+  <Navigates>true</Navigates>
+  <StartsTransaction>false</StartsTransaction>
+  <EndsTransaction>false</EndsTransaction>
+  <StartPageIdRequiredByTarget>false</StartPageIdRequiredByTarget>
+  <PreservedContextParams>
+    <Params>tmu6.date|rcond35.processInstanceOid|pwu10.current.processInstanceOid</Params>
+  </PreservedContextParams>
+  <ContextPropagations>
+    <ContextPropagation targetParam="tmu6.date" sourceUnit="enu12" sourceParam="fld20"/>
+  </ContextPropagations>
+</Descriptor>

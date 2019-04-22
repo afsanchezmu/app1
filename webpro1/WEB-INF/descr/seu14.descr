@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.utility.rtx.db.SelectorUnitService" name="Processes">
+  <MaxResults/>
+  <Query entity="Process">
+    <Input id="p0" param="kcond24.processOid" type="integer" implied="false" expandStyle="in"/>
+    <Output id="processOid" name="oid" index="0"/>
+    <Output id="processName" name="name" index="1"/>
+    <HQL>select a_process.oid, a_process.name from Process a_process
+      <Where defaultPolicy="fill" allImplied="false">(({[p0]a_process.oid in(?)}))</Where>
+    </HQL>
+  </Query>
+</Descriptor>

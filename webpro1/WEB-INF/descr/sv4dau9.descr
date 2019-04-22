@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.content.rtx.db.DataUnitService" name="Process">
+  <Query entity="ProcessInstance">
+    <Input id="p0" param="sv4kcond28.processInstanceOid" type="integer" implied="false" expandStyle="in"/>
+    <Output id="processInstanceOid" name="oid" index="0"/>
+    <Output id="processInstanceName" name="name" index="1"/>
+    <Output id="processInstanceDescription" name="description" index="2"/>
+    <Output id="processInstanceProcessName" name="processName" index="3"/>
+    <HQL>select a_processInstance.oid, a_processInstance.name, a_process_processInstance2Process.description, a_process_processInstance2Process.name from ProcessInstance a_processInstance left join a_processInstance.process a_process_processInstance2Process
+      <Where defaultPolicy="fill" allImplied="false">(({[p0]a_processInstance.oid in(?)}))</Where>
+    </HQL>
+  </Query>
+</Descriptor>

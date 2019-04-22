@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.operation.rtx.db.CreateUnitService" name="Create Attachment">
+  <Entity>Attachment</Entity>
+  <BulkInsert>false</BulkInsert>
+  <SkipBlankRecords>false</SkipBlankRecords>
+  <Field param="sv3cru1.attachmentOid" type="integer" attribute="attachmentOid">oid</Field>
+  <Field param="sv3cru1.attachmentFile" type="blob" attribute="attachmentFile">file</Field>
+  <Field param="sv3cru1.attachmentTitle" type="string" attribute="attachmentTitle">title</Field>
+  <Field param="sv3cru1.attachmentTimestamp" type="timestamp" attribute="attachmentTimestamp">timestamp</Field>
+  <Association name="processInstances" direct="true" inverseName="processAttachments" oneToOne="false" maxCardMany="true">
+    <QueryInput id="oid" param="sv3cru1.attachment2ProcessInstances.processInstanceOid" type="integer"/>
+    <Query>from ProcessInstance _e where _e.oid = :oid</Query>
+  </Association>
+  <Association name="user" direct="true" inverseName="userAttachments" oneToOne="false" maxCardMany="false">
+    <QueryInput id="oid" param="sv3cru1.attachment2User.userOID" type="integer"/>
+    <Query>from User _e where _e.oid = :oid</Query>
+  </Association>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Create Attachment</ModelName>
+    <ParentContainer>sv3opg1</ParentContainer>
+    <MasterPage ignore="false">sv3mpage4</MasterPage>
+    <NavigationAncestors>sv3|sv3Activities</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>true</CheckPermission>
+    <PermissionElement>sv3</PermissionElement>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <OperationParam unit="sv3cru1">sv3cru1.attachment2User.userOID</OperationParam>
+      <OperationParam unit="sv3cru1">sv3cru1.attachmentFile</OperationParam>
+      <OperationParam unit="sv3cru1">sv3cru1.attachmentTimestamp</OperationParam>
+      <Params>sv3par156|sv3kcond28.processInstanceOid|sp|sv3kcond27.attachmentOid|link|sv3rcond38.activityInstanceOid|sv3pwu12.block|sv3kcond31.userOID|sv3kcond30.activityInstanceOid|cmplink|sv3rcond36.processInstanceOid|sv3pu37.activityInstanceOid|sv3kcond26.processInstanceOid|sv3rcond37.processInstanceOid|sv3pwu11.block|smc|sv3kcond29.activityInstanceOid</Params>
+    </OperationParams>
+    <PrecedingIncomingLinks>sv3ln139</PrecedingIncomingLinks>
+    <OutgoingLinks>
+      <Link resultCode="success">sv3oln26</Link>
+    </OutgoingLinks>
+  </WRParameterService>
+</Descriptor>

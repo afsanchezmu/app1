@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultPageService" name="Process Instance Diagram">
+  <ParentContainer>sv2</ParentContainer>
+  <Secure>false</Secure>
+  <Localized>false</Localized>
+  <CheckPermission>false</CheckPermission>
+  <MasterPage ignore="true"/>
+  <Alternatives/>
+  <ProtectedSubPages/>
+  <Navigations>
+    <Navigation name="0" nonContextual="true" interPage="always" links="page7"/>
+    <Navigation name="1" nonContextual="true" interPage="always" links="page7.link"/>
+    <Navigation name="2" links="page7.auto-link"/>
+    <Navigation name="3" interPage="always" links="ln10"/>
+    <Navigation name="4" interPage="always" links="ln15"/>
+    <Navigation name="5" links="ln36|oln4"/>
+    <Navigation name="6" links="pdu2parentLevel"/>
+    <Navigation name="7" links="pdu2parentLevel" selectiveRefresh="true"/>
+    <Navigation name="8" links="pdu2subLevel"/>
+    <Navigation name="9" links="pdu2subLevel" selectiveRefresh="true"/>
+  </Navigations>
+  <ContextInitServices/>
+  <ContextInits></ContextInits>
+  <UselessPreserves>
+    <UselessPreserve navs="2|7|6|5|9|8" futile=""/>
+  </UselessPreserves>
+  <LinkSequence/>
+  <UnitComputations>
+    <UnitComputation unit="pdu2">
+      <NavigationCondition selectiveRefresh="true"/>
+    </UnitComputation>
+  </UnitComputations>
+  <ManualLinks>
+    <ManualLink>ln36</ManualLink>
+    <ManualLink>pdu2parentLevel</ManualLink>
+    <ManualLink>pdu2subLevel</ManualLink>
+  </ManualLinks>
+  <PropagationModes client="true" server="true"/>
+  <Variables>
+    <Variable id="var7" name="rollbackableByUser" type="boolean" unitId="pdu2" parameter="data[].rollbackableByUser">
+      <NavigationCondition selectiveRefresh="true"/>
+    </Variable>
+  </Variables>
+  <Conditions>
+    <Condition id="cexpr_var7" name="rollbackableByUser" variables="var7" xml:space="preserve">com.webratio.rtx.core.BeanHelper.asObject(var7)</Condition>
+  </Conditions>
+  <Layouts>
+    <Layout id="page7_grid_0">
+      <Layout id="page7_cell_0">
+        <Layout id="pdu2_0" unitId="pdu2"></Layout>
+      </Layout>
+    </Layout>
+  </Layouts>
+  <AutoLinkInfo>
+    <PreservedContextParams>
+      <Params>pdu2.processInstanceOid|pdu2.processUUID|pdu2.contextProcessInstanceOid</Params>
+    </PreservedContextParams>
+  </AutoLinkInfo>
+  <!--Page Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultPageParameterService">
+    <ModelName>Process Instance Diagram</ModelName>
+    <NavigationAncestors>sv2</NavigationAncestors>
+    <LinkIdRequired>true</LinkIdRequired>
+    <PageParams>
+      <PageParam unit="pdu2">pdu2.processUUID</PageParam>
+      <PageParam unit="pdu2">pdu2.processInstanceOid</PageParam>
+      <PageParam unit="pdu2">pdu2.contextProcessInstanceOid</PageParam>
+      <PageParam preservedByForm="true">sfld2_output</PageParam>
+      <PageParam preservedByForm="true">sfld3_output</PageParam>
+      <PageParam preservedByForm="true">sfld2_label</PageParam>
+      <PageParam preservedByForm="true">sfld1_output</PageParam>
+      <PageParam preservedByForm="true">sfld3_label</PageParam>
+      <PageParam preservedByForm="true">sfld1_label</PageParam>
+      <PageParam>kcond3.processOid</PageParam>
+      <PageParam>tmu1.date</PageParam>
+      <PageParam>tmu2.date</PageParam>
+      <PageParam>pwu2.block</PageParam>
+      <PageParam>acond1</PageParam>
+      <PageParam>acond2</PageParam>
+      <PageParam>pwu2.newSortAttribute</PageParam>
+      <PageParam>rcond4.userOID</PageParam>
+      <PageParam>rcond5.groupOID</PageParam>
+      <PageParam>pwu2.sortCriteria</PageParam>
+      <PageParam>rcond3.processOid</PageParam>
+      <PageParam>acond4</PageParam>
+      <PageParam>acond3</PageParam>
+      <PageParam>acond6</PageParam>
+      <PageParam>acond5</PageParam>
+      <PageParam>acond7</PageParam>
+      <PageParam>pu11.errorInfo</PageParam>
+      <PageParam>kcond2.processInstanceOid</PageParam>
+      <PageParam>pwu1.newSortAttribute</PageParam>
+      <PageParam>pwu1.sortCriteria</PageParam>
+      <PageParam>rcond2.processInstanceOid</PageParam>
+      <PageParam>link</PageParam>
+      <PageParam>nav</PageParam>
+      <PageParam>so</PageParam>
+      <PageParam>ajax</PageParam>
+      <PageParam>ajaxRefresh</PageParam>
+    </PageParams>
+  </WRParameterService>
+</Descriptor>

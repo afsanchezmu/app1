@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.content.rtx.EntryUnitService" name="New Note">
+  <FormFields>
+    <Field id="sv4fld15" name="Note:" type="text" localized="false"></Field>
+  </FormFields>
+  <wr:Validation xmlns:wr="http://www.webratio.com/2013/WebML/WRValidation">
+    <wr:ValidationLink elementId="sv4enu9" linkId="sv4ln132" action="validate"/>
+    <MandatoryValidationRule service="com.webratio.units.validation.MandatoryValidationRuleService" elementId="sv4fld15" id="sv4mnd2" name="NotNull">
+      <CompanionField/>
+      <Predicate/>
+      <IgnoreCase/>
+      <Value/>
+    </MandatoryValidationRule>
+  </wr:Validation>
+</Descriptor>
+ 

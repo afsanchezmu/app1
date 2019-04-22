@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.bpm.services.ProcessUnitService" name="Resume Activity">
+  <Mode>resumeActivity</Mode>
+  <OnFailRemoveTaskOid/>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Resume Activity</ModelName>
+    <ParentContainer>sv3</ParentContainer>
+    <MasterPage ignore="false">mpage2</MasterPage>
+    <NavigationAncestors>sv3</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>true</CheckPermission>
+    <PermissionElement>sv3</PermissionElement>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <OperationParam unit="rau1">rau1.activityInstanceOid</OperationParam>
+      <Params>kcond7.activityTypeOid|sp|sfld6_output|link|kcond9.activityInstanceOid|pwu3.block|rcond7.processOid|kcond10.processOid|pu14.processInstanceOid|kcond8.activityInstanceOid|rcond8.userOID|acond10|pwu3.sortCriteria|pwu3.current.activityInstanceOid|cmplink|pu17.shownMessages|pwu4.block|pwu3.newSortAttribute|pu17.errorInfo|smc|rcond9.processOid|sfld6_label</Params>
+    </OperationParams>
+    <OutgoingLinks>
+      <Link resultCode="error">kln8</Link>
+    </OutgoingLinks>
+  </WRParameterService>
+</Descriptor>

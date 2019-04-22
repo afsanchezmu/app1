@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.bpm.services.UserActivitiesUnitService" name="Active">
+  <Mode>userActivities</Mode>
+  <StatusFilter>runnable</StatusFilter>
+  <Outputs startEvents="true" processInstances="false" activities="true"/>
+</Descriptor>

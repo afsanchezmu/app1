@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultLinkService">
+  <Target>page19</Target>
+  <Secure>false</Secure>
+  <Source>seu11</Source>
+  <SourcePage>page19</SourcePage>
+  <ReachableAlternativePages></ReachableAlternativePages>
+  <StartsTransaction>false</StartsTransaction>
+  <EndsTransaction>false</EndsTransaction>
+  <StartPageIdRequiredByTarget>false</StartPageIdRequiredByTarget>
+  <PreservedContextParams>
+    <Params/>
+  </PreservedContextParams>
+  <ContextPropagations>
+    <ContextPropagation targetParam="sfld15_label" sourceUnit="seu11" sourceParam="processNameArray"/>
+    <ContextPropagation targetParam="sfld15_output" sourceUnit="seu11" sourceParam="processOidArray"/>
+  </ContextPropagations>
+</Descriptor>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.operation.rtx.db.DeleteUnitService" name="Delete Note">
+  <Entity>Note</Entity>
+  <CascadeDeleteRoles/>
+  <FetchMode keyCondition="sv3kcond25">HQL</FetchMode>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Delete Note</ModelName>
+    <ParentContainer>sv3Activities</ParentContainer>
+    <MasterPage ignore="false">sv3mpage4</MasterPage>
+    <NavigationAncestors>sv3|sv3Activities</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>true</CheckPermission>
+    <PermissionElement>sv3</PermissionElement>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <OperationParam unit="sv3dlu3">sv3kcond25.noteOid</OperationParam>
+      <Params>sv3pu25.activityInstanceOid|sp|link|sv3kcond29.processInstanceOid|sv3rcond38.activityInstanceOid|sv3pwu12.block|sv3par129|sv3kcond31.activityInstanceOid|sv3kcond30.activityInstanceOid|cmplink|sv3rcond36.processInstanceOid|sv3kcond32.userOID|sv3rcond37.processInstanceOid|sv3pwu11.block|smc</Params>
+    </OperationParams>
+    <OutgoingLinks>
+      <Link resultCode="success">sv3oln11</Link>
+    </OutgoingLinks>
+  </WRParameterService>
+</Descriptor>

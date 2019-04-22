@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.utility.rtx.TimeUnitService" name="NOW">
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>NOW</ModelName>
+    <ParentContainer>sv3opg1</ParentContainer>
+    <MasterPage ignore="false">sv3mpage4</MasterPage>
+    <NavigationAncestors>sv3|sv3Activities</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>true</CheckPermission>
+    <PermissionElement>sv3</PermissionElement>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <Params>sv3par156|sv3kcond28.processInstanceOid|sp|sv3cru1.attachmentFile|sv3kcond27.attachmentOid|link|sv3rcond38.activityInstanceOid|sv3pwu12.block|sv3kcond31.userOID|sv3kcond30.activityInstanceOid|cmplink|sv3rcond36.processInstanceOid|sv3pu37.activityInstanceOid|sv3cru1.attachment2User.userOID|sv3kcond26.processInstanceOid|sv3rcond37.processInstanceOid|sv3pwu11.block|smc|sv3kcond29.activityInstanceOid|sv3cru1.attachmentTimestamp</Params>
+    </OperationParams>
+    <SecondaryIncomingLinks>sv3ln155|sv3ln150</SecondaryIncomingLinks>
+    <OutgoingLinks>
+      <Link resultCode="success">sv3oln25</Link>
+    </OutgoingLinks>
+  </WRParameterService>
+</Descriptor>

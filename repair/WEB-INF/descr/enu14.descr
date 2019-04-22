@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.content.rtx.EntryUnitService" name="RepairFile">
+  <FormFields>
+    <Field id="fld22" name="OID" type="string" localized="false" serverOnly="true">
+      <Slot id="fld22_slot" label="true" output="true"/>
+    </Field>
+    <Field id="fld23" name="Problem abstract" type="string" localized="false">
+      <Slot id="fld23_slot" label="true" output="true"/>
+    </Field>
+    <Field id="fld24" name="Computer characteristic" type="text" localized="false">
+      <Slot id="fld24_slot" label="true" output="true"/>
+    </Field>
+    <Field id="fld25" name="Defect description" type="text" localized="false">
+      <Slot id="fld25_slot" label="true" output="true"/>
+    </Field>
+    <Field id="fld26" name="Request date" type="date" localized="true">
+      <Slot id="fld26_slot" label="true" output="true"/>
+    </Field>
+    <Field id="fld27" name="Repair price" type="decimal" localized="true">
+      <Slot id="fld27_slot" label="true" output="true"/>
+    </Field>
+  </FormFields>
+  <wr:Validation xmlns:wr="http://www.webratio.com/2013/WebML/WRValidation">
+    <wr:ValidationLink elementId="enu14" linkId="ln149" action="validate"/>
+  </wr:Validation>
+</Descriptor>

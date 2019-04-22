@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.utility.rtx.db.QueryUnitService" name="Ultima hora">
+  <Database>db1</Database>
+  <Language>SQL</Language>
+  <Mode>select</Mode>
+  <Results maxResults="" blockFactor="" blockWindow=""/>
+  <QueryOutput name="value" label="value" id="qo2" type="java.lang.String"/>
+  <QueryText xml:space="preserve" _sel="t">SELECT value FROM db1.parameterinstance where parametertype_oid='3';</QueryText>
+</Descriptor>

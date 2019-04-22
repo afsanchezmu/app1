@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.operation.rtx.db.ModifyUnitService" name="Mark as Read">
+  <BulkUpdate>false</BulkUpdate>
+  <Entity>Notification</Entity>
+  <ModifiedAttributes>notificationRead</ModifiedAttributes>
+  <ModifiedRoles/>
+  <FetchMode keyCondition="kcond16">HQL</FetchMode>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Mark as Read</ModelName>
+    <ParentContainer>sv4</ParentContainer>
+    <MasterPage ignore="false">mpage3</MasterPage>
+    <NavigationAncestors>sv4</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>true</CheckPermission>
+    <PermissionElement>sv4</PermissionElement>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <OperationParam unit="mfu2">kcond16.notificationOid</OperationParam>
+      <OperationParam unit="mfu2">mfu2.notificationRead</OperationParam>
+      <Params>pwu8.block|pu26.processInstanceOid|sp|pwu7.current.activityInstanceOid|kcond19.activityInstanceOid|sfld13_label|link|pwu7.block|sfld13_output|rcond22.processOid|pwu7.sortCriteria|kcond20.processOid|cmplink|rcond24.processOid|rcond23.userOID|acond20|kcond18.activityInstanceOid|smc|pwu7.newSortAttribute</Params>
+    </OperationParams>
+    <OutgoingLinks></OutgoingLinks>
+    <IsLinkHistoryRecorded>true</IsLinkHistoryRecorded>
+  </WRParameterService>
+</Descriptor>

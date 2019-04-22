@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.content.rtx.db.IndexUnitService" name="Completed Activities">
+  <UseFirstRowAsDefaultCurrent>false</UseFirstRowAsDefaultCurrent>
+  <MaxResults/>
+  <Query entity="ActivityInstance">
+    <Input id="p0" param="rcond35.processInstanceOid" type="integer" implied="false" expandStyle="in"/>
+    <Input id="p1" param="acond29" type="string" implied="false" expandStyle="in" value="user" attribute="activityInstanceExecution"/>
+    <Output id="activityInstanceOid" name="oid" index="0"/>
+    <Output id="activityInstanceCompletedTimestamp" name="completedAt" index="1"/>
+    <Output id="activityInstanceGroupName" name="group" index="2"/>
+    <Output id="activityInstanceUserName" name="userName" index="3"/>
+    <Output id="activityInstanceActivityTypeName" name="activityName" index="4"/>
+    <HQL>select a_activityInstance.oid, a_activityInstance.completedAt, a_group_activityInstance2Group.groupName, a_user_activityInstance2User.userName, a_activityType_activityInstance2ActivityType.name from ActivityInstance a_activityInstance left join a_activityInstance.activityInstanceGroup a_group_activityInstance2Group left join a_activityInstance.activityType a_activityType_activityInstance2ActivityType left join a_activityInstance.user a_user_activityInstance2User
+      <Where defaultPolicy="fill" allImplied="false">(({[p0](a_activityInstance.processInstance.oid in(?))})) and (({[p1]safe_cast(a_activityType_activityInstance2ActivityType.execution) in(?)}))</Where>order by a_activityInstance.completedAt asc, a_activityInstance.oid asc, a_activityType_activityInstance2ActivityType.name asc
+    </HQL>
+  </Query>
+</Descriptor>

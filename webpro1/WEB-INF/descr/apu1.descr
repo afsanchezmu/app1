@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.bpm.services.ActivityParametersUnitService" name="Set Parameters">
+  <OnFailRemoveTaskOid/>
+  <InActivityModule>false</InActivityModule>
+  <RetrievePreviousInstances>false</RetrievePreviousInstances>
+  <RetrieveNextTypes>false</RetrieveNextTypes>
+  <Input id="ap15" uuid="JUPTFZ27_6EXCAZ">Comment</Input>
+  <Input id="ap24" uuid="JUPC0TM6_V9CDTP">Title</Input>
+  <Input id="ap25" uuid="JUPXJLNG_CUE6JM">TitleCheck</Input>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Set Parameters</ModelName>
+    <ParentContainer>hym1</ParentContainer>
+    <ParentModule>hym1</ParentModule>
+    <NavigationAncestors/>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>false</CheckPermission>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <OperationParam unit="apu1">ap25</OperationParam>
+      <OperationParam unit="apu1">ap24</OperationParam>
+      <OperationParam unit="apu1">ap15</OperationParam>
+      <Params>fld21_slot|fld22_slot|mc|sp|cmplink|link|fld24_slot|fld23_slot|fld31_slot|smc</Params>
+    </OperationParams>
+    <SecondaryIncomingLinks>ln129</SecondaryIncomingLinks>
+    <OutgoingLinks>
+      <Link resultCode="success.ln131">oln12</Link>
+      <Link resultCode="success.ln132">oln13</Link>
+    </OutgoingLinks>
+    <IsLinkHistoryRecorded>true</IsLinkHistoryRecorded>
+  </WRParameterService>
+</Descriptor>

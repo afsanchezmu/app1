@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.bpm.services.ProcessUnitService" name="Start Process">
+  <Mode>startProcess</Mode>
+  <OnFailRemoveTaskOid/>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Start Process</ModelName>
+    <ParentContainer>sv4</ParentContainer>
+    <MasterPage ignore="false">mpage3</MasterPage>
+    <NavigationAncestors>sv4</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>true</CheckPermission>
+    <PermissionElement>sv4</PermissionElement>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <OperationParam unit="spu2">spu2.startActivityTypeOid</OperationParam>
+      <Params>pu29.errorInfo</Params>
+    </OperationParams>
+    <OutgoingLinks>
+      <Link resultCode="error">kln12</Link>
+    </OutgoingLinks>
+  </WRParameterService>
+</Descriptor>

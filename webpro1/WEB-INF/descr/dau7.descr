@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.content.rtx.db.DataUnitService" name="Item Details">
+  <Query entity="ActivityInstance">
+    <Input id="p0" param="kcond22.activityInstanceOid" type="integer" implied="false" expandStyle="in"/>
+    <Output id="activityInstanceOid" name="oid" index="0"/>
+    <Output id="activityInstanceLastTimestamp" name="workedAt" index="1"/>
+    <Output id="activityInstanceReadyTimestamp" name="readySince" index="2"/>
+    <Output id="activityInstanceStatus" name="status" index="3"/>
+    <Output id="activityInstanceActiveTimestamp" name="activeSince" index="4"/>
+    <Output id="activityInstanceGroupName" name="group" index="5"/>
+    <Output id="activityInstanceName" name="name" index="6"/>
+    <Output id="activityInstanceProcessInstanceName" name="processInstanceName" index="7" namePrefix="processInstance_"/>
+    <Output id="activityInstance2ProcessInstance$processInstanceOid" name="processInstance_oid" index="8" useId="true"/>
+    <HQL>select a_activityInstance.oid, a_activityInstance.workedAt, a_activityInstance.readySince, a_activityInstance.status, a_activityInstance.activeSince, a_group_activityInstance2Group.groupName, a_activityInstance.name, a_processInstance_activityInstance2ProcessInstance.name, a_processInstance_activityInstance2ProcessInstance.oid from ActivityInstance a_activityInstance left join a_activityInstance.activityInstanceGroup a_group_activityInstance2Group left join a_activityInstance.processInstance a_processInstance_activityInstance2ProcessInstance
+      <Where defaultPolicy="fill" allImplied="false">(({[p0]a_activityInstance.oid in(?)}))</Where>
+    </HQL>
+  </Query>
+</Descriptor>

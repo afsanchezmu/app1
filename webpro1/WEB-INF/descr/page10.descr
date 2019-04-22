@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultPageService" name="Active Items">
+  <ParentContainer>sv3</ParentContainer>
+  <Secure>false</Secure>
+  <Localized>false</Localized>
+  <CheckPermission>true</CheckPermission>
+  <PermissionElement>sv3</PermissionElement>
+  <MasterPage>mpage2</MasterPage>
+  <Alternatives/>
+  <ProtectedSubPages/>
+  <Navigations knownEffects="UserCtxParam|#pr#">
+    <Navigation name="0" nonContextual="true" interPage="always" links="page10"/>
+    <Navigation name="1" nonContextual="true" interPage="always" links="page10.link"/>
+    <Navigation name="2" links="page10.auto-link"/>
+    <Navigation name="3" links="page10.auto-link" selectiveRefresh="true"/>
+    <Navigation name="4" links="ln60|validation-failed"/>
+    <Navigation name="5" links="ln60"/>
+    <Navigation name="6" links="ln65"/>
+    <Navigation name="7" links="ln65" selectiveRefresh="true"/>
+    <Navigation name="8" links="pwu5Block"/>
+    <Navigation name="9" links="pwu5Block" selectiveRefresh="true"/>
+    <Navigation name="10" links="pwu5First"/>
+    <Navigation name="11" links="pwu5First" selectiveRefresh="true"/>
+    <Navigation name="12" links="pwu5Last"/>
+    <Navigation name="13" links="pwu5Last" selectiveRefresh="true"/>
+    <Navigation name="14" links="pwu5Next"/>
+    <Navigation name="15" links="pwu5Next" selectiveRefresh="true"/>
+    <Navigation name="16" links="pwu5Previous"/>
+    <Navigation name="17" links="pwu5Previous" selectiveRefresh="true"/>
+  </Navigations>
+  <ContextInitServices/>
+  <ContextInits></ContextInits>
+  <UselessPreserves>
+    <UselessPreserve navs="2" effects="-|UserCtxParam" futile="" renewed="acond13|rcond16.userOID|acond15|acond14|rcond15.groupOID|rcond14.processOid|rcond13.processOid"/>
+    <UselessPreserve navs="4" futile=""/>
+    <UselessPreserve navs="5" futile="pwu5.current.activityInstanceOid|kcond12.activityInstanceOid"/>
+    <UselessPreserve navs="10|6|8|16|14|12" futile="rcond12.userOID" renewed="acond13|rcond16.userOID|acond15|acond14|rcond15.groupOID|rcond14.processOid|rcond13.processOid"/>
+    <UselessPreserve navs="3|2" effects="#pr#" futile="pwu5.current.activityInstanceOid|tmu3.date|kcond12.activityInstanceOid" renewed="acond13|rcond16.userOID|acond15|acond14|rcond15.groupOID|rcond14.processOid|rcond13.processOid"/>
+    <UselessPreserve navs="3|17|15|9|13|11" effects="UserCtxParam" futile="tmu3.date|kcond12.activityInstanceOid"/>
+    <UselessPreserve navs="17|15|9|13|11" effects="-|#pr#" futile="tmu3.date|kcond12.activityInstanceOid"/>
+    <UselessPreserve navs="7" futile="tmu3.date"/>
+    <UselessPreserve navs="3" effects="-" futile="acond13|rcond16.userOID|acond15|pwu5.current.activityInstanceOid|acond14|rcond15.groupOID|tmu3.date|kcond12.activityInstanceOid|rcond14.processOid|rcond13.processOid"/>
+  </UselessPreserves>
+  <LinkSequence>ln56|ln54|ln55|ln57|ln59|ln66|ln58|ln61|ln63|ln59|ln66|ln62|ln59|ln66</LinkSequence>
+  <UnitComputations>
+    <UnitComputation unit="pu15" formBased="true">
+      <NavigationCondition selectiveRefresh="true" navs="3" effects="#pr#"/>
+      <RefreshFormAll navs="1|0"/>
+    </UnitComputation>
+    <UnitComputation unit="gtu3">
+      <NavigationCondition selectiveRefresh="true" navs="3" effects="UserCtxParam|#pr#"/>
+    </UnitComputation>
+    <UnitComputation unit="seu6">
+      <NavigationCondition selectiveRefresh="true" navs="3" effects="#pr#"/>
+    </UnitComputation>
+    <UnitComputation unit="enu4" formBased="true">
+      <NavigationCondition selectiveRefresh="true" navs="3" effects="#pr#"/>
+      <RefreshFormAll navs="1|0"/>
+    </UnitComputation>
+    <UnitComputation unit="dau4">
+      <NavigationCondition selectiveRefresh="true" navs="3|7" effects="#pr#"/>
+      <NavigationCondition selectiveRefresh="true" navs="7" effects="-|UserCtxParam"/>
+    </UnitComputation>
+    <UnitComputation unit="seu7">
+      <NavigationCondition selectiveRefresh="true" navs="3" effects="#pr#"/>
+    </UnitComputation>
+    <UnitComputation unit="seu8">
+      <NavigationCondition selectiveRefresh="true" navs="3" effects="#pr#"/>
+    </UnitComputation>
+    <UnitComputation unit="pwu5" formBased="true">
+      <NavigationCondition selectiveRefresh="true" navs="7|17|9|15|13|11" effects="-"/>
+      <NavigationCondition selectiveRefresh="true" effects="UserCtxParam|#pr#"/>
+      <RefreshFormAll navs="1|0"/>
+      <RefreshForm selectiveRefresh="true" navs="3" effects="UserCtxParam" inputs="rcond12.userOID"/>
+      <RefreshForm navs="2" effects="UserCtxParam" inputs="rcond12.userOID"/>
+      <RefreshForm selectiveRefresh="true" navs="17|9|15|13|11" inputs="pwu5.block"/>
+      <RefreshForm navs="10|16|8|14|12" inputs="pwu5.block"/>
+      <RefreshForm navs="5" inputs="acond14"/>
+      <RefreshForm selectiveRefresh="true" navs="7" inputs="pwu5.current.activityInstanceOid|pwu5.block"/>
+      <RefreshForm navs="6" inputs="pwu5.current.activityInstanceOid|pwu5.block"/>
+    </UnitComputation>
+    <UnitComputation unit="tmu3">
+      <NavigationCondition selectiveRefresh="true" navs="3" effects="#pr#"/>
+    </UnitComputation>
+  </UnitComputations>
+  <ManualLinks>
+    <ManualLink>ln60</ManualLink>
+    <ManualLink>ln64</ManualLink>
+    <ManualLink>ln65</ManualLink>
+    <ManualLink>pwu5First</ManualLink>
+    <ManualLink>pwu5Previous</ManualLink>
+    <ManualLink>pwu5Next</ManualLink>
+    <ManualLink>pwu5Last</ManualLink>
+    <ManualLink>pwu5Block</ManualLink>
+  </ManualLinks>
+  <PropagationModes client="true" server="true"/>
+  <Variables></Variables>
+  <Conditions></Conditions>
+  <Layouts>
+    <Layout id="page10_grid_0">
+      <Layout id="page10_cell_0">
+        <Layout id="page10_grid_1">
+          <Layout id="page10_cell_1">
+            <Layout id="enu4_0" unitId="enu4"></Layout>
+            <Layout id="pwu5_0" unitId="pwu5"></Layout>
+          </Layout>
+        </Layout>
+      </Layout>
+      <Layout id="page10_cell_13">
+        <Layout id="dau4_0" unitId="dau4"></Layout>
+      </Layout>
+    </Layout>
+  </Layouts>
+  <AutoLinkInfo>
+    <PreservedContextParams>
+      <Params>tmu3.date|pwu5.current.activityInstanceOid|kcond12.activityInstanceOid</Params>
+    </PreservedContextParams>
+    <PreservedContextParams selectiveRefresh="true">
+      <Params>acond13|rcond16.userOID|acond15|rcond15.groupOID|rcond14.processOid|rcond13.processOid|pwu5.current.activityInstanceOid|acond14</Params>
+    </PreservedContextParams>
+  </AutoLinkInfo>
+  <!--Page Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultPageParameterService">
+    <ModelName>Active Items</ModelName>
+    <NavigationAncestors>sv3</NavigationAncestors>
+    <LinkIdRequired>true</LinkIdRequired>
+    <PageParams>
+      <PageParam unit="seu6">kcond11.processOid</PageParam>
+      <PageParam preservedByForm="true" unit="enu4">sfld8_label</PageParam>
+      <PageParam preservedByForm="true" unit="enu4">sfld8_output</PageParam>
+      <PageParam preservedByForm="true" unit="enu4">sfld9_output</PageParam>
+      <PageParam preservedByForm="true" unit="enu4">sfld10_output</PageParam>
+      <PageParam preservedByForm="true" unit="enu4">sfld10_label</PageParam>
+      <PageParam preservedByForm="true" unit="enu4">sfld9_label</PageParam>
+      <PageParam unit="seu7">rcond10.processOid</PageParam>
+      <PageParam unit="seu8">rcond11.groupOID</PageParam>
+      <PageParam unit="tmu3">tmu3.date</PageParam>
+      <PageParam unit="dau4">kcond12.activityInstanceOid</PageParam>
+      <PageParam unit="pwu5">acond13</PageParam>
+      <PageParam unit="pwu5">rcond16.userOID</PageParam>
+      <PageParam unit="pwu5">acond15</PageParam>
+      <PageParam unit="pwu5">acond14</PageParam>
+      <PageParam unit="pwu5">pwu5.current.activityInstanceOid</PageParam>
+      <PageParam unit="pwu5">rcond12.userOID</PageParam>
+      <PageParam unit="pwu5">pwu5.block</PageParam>
+      <PageParam unit="pwu5">rcond15.groupOID</PageParam>
+      <PageParam unit="pwu5">rcond14.processOid</PageParam>
+      <PageParam unit="pwu5">rcond13.processOid</PageParam>
+      <PageParam>link</PageParam>
+      <PageParam>nav</PageParam>
+      <PageParam>so</PageParam>
+      <PageParam>ajax</PageParam>
+      <PageParam>ajaxRefresh</PageParam>
+    </PageParams>
+  </WRParameterService>
+</Descriptor>

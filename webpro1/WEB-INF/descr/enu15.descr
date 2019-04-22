@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.content.rtx.EntryUnitService" name="User Input">
+  <FormFields>
+    <Field id="fld25" name="Subject" type="string" localized="false">
+      <Slot id="fld25_slot" label="true" output="true"/>
+    </Field>
+    <Field id="fld26" name="Title" type="string" localized="false">
+      <Slot id="fld26_slot" label="true" output="true"/>
+    </Field>
+    <Field id="fld27" name="Date" type="date" localized="true">
+      <Slot id="fld27_slot" label="true" output="true"/>
+    </Field>
+    <Field id="fld28" name="Aprove" type="boolean" localized="true">
+      <Slot id="fld28_slot" label="true" output="true"/>
+    </Field>
+    <Field id="fld29" name="Description" type="text" localized="false">
+      <Slot id="fld29_slot" label="true" output="true"/>
+    </Field>
+    <Field id="fld30" name="Comment" type="text" localized="false">
+      <Slot id="fld30_slot" label="true" output="true"/>
+    </Field>
+  </FormFields>
+  <wr:Validation xmlns:wr="http://www.webratio.com/2013/WebML/WRValidation">
+    <wr:ValidationLink elementId="enu15" linkId="ln136" action="validate"/>
+    <MandatoryValidationRule service="com.webratio.units.validation.MandatoryValidationRuleService" elementId="fld28" id="mnd3" name="required">
+      <CompanionField/>
+      <Predicate/>
+      <IgnoreCase/>
+      <Value/>
+    </MandatoryValidationRule>
+  </wr:Validation>
+</Descriptor>

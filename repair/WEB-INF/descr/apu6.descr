@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.bpm.services.ActivityParametersUnitService" name="Set Parameters">
+  <OnFailRemoveTaskOid>true</OnFailRemoveTaskOid>
+  <InActivityModule>true</InActivityModule>
+  <RetrievePreviousInstances>false</RetrievePreviousInstances>
+  <RetrieveNextTypes>false</RetrieveNextTypes>
+  <Input id="ap21" uuid="H6HJWCFB_I19UU">RepairFile</Input>
+  <Input id="ap23" uuid="H6HJWCFB_I19UU/H5C57EKZ_3RV">RepairFile.Problem abstract</Input>
+  <Input id="ap25" uuid="H6HJWCFB_I19UU/H5C57LGJ_2JC">RepairFile.Computer characteristic</Input>
+  <Input id="ap27" uuid="H6HJWCFB_I19UU/H5C57TVW_3GZ">RepairFile.Defect description</Input>
+  <Input id="ap30" uuid="H6HJWCFB_I19UU/H5C58S03_7AD">RepairFile.Repair price</Input>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Set Parameters</ModelName>
+    <ParentContainer>hym4</ParentContainer>
+    <MasterPage ignore="false">sv4mpage4</MasterPage>
+    <NavigationAncestors>sv4|sv4Activities|hym4</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>true</CheckPermission>
+    <PermissionElement>hym4</PermissionElement>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <OperationParam unit="apu6">ap21</OperationParam>
+      <OperationParam unit="apu6">ap30</OperationParam>
+      <OperationParam unit="apu6">ap27</OperationParam>
+      <OperationParam unit="apu6">ap23</OperationParam>
+      <OperationParam unit="apu6">ap25</OperationParam>
+      <Params>fld32_slot|sp|fld29_slot|cmplink|fld33_slot|link|pu23.errorInfo|pu23.shownMessages|fld30_slot|fld31_slot|smc|fld28_slot</Params>
+    </OperationParams>
+    <SecondaryIncomingLinks>ln153</SecondaryIncomingLinks>
+    <OutgoingLinks>
+      <Link resultCode="success.ln154">oln26</Link>
+      <Link resultCode="success.ln155">oln27</Link>
+      <Link resultCode="error">apu6ko</Link>
+    </OutgoingLinks>
+    <IsLinkHistoryRecorded>true</IsLinkHistoryRecorded>
+  </WRParameterService>
+</Descriptor>
+ 

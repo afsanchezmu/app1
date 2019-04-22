@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.utility.rtx.db.SelectorUnitService" name="Activity Instance">
+  <MaxResults/>
+  <Query entity="ActivityInstance">
+    <Input id="p0" param="kcond1.activityInstanceOid" type="integer" implied="false" expandStyle="in"/>
+    <Output id="activityInstanceOid" name="oid" index="0"/>
+    <Output id="activityInstanceStatus" name="status" index="1"/>
+    <Output id="activityInstanceCode" name="code" index="2"/>
+    <Output id="activityInstanceUserName" name="userName" index="3"/>
+    <Output id="activityInstanceName" name="name" index="4"/>
+    <HQL>select a_activityInstance.oid, a_activityInstance.status, a_activityType_activityInstance2ActivityType.code, a_user_activityInstance2User.userName, a_activityInstance.name from ActivityInstance a_activityInstance left join a_activityInstance.activityType a_activityType_activityInstance2ActivityType left join a_activityInstance.user a_user_activityInstance2User
+      <Where defaultPolicy="fill" allImplied="false">(({[p0]a_activityInstance.oid in(?)}))</Where>
+    </HQL>
+  </Query>
+</Descriptor>

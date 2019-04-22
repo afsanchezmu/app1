@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.bpm.services.ActivityParametersUnitService" name="Set Parameters">
+  <OnFailRemoveTaskOid>true</OnFailRemoveTaskOid>
+  <InActivityModule>true</InActivityModule>
+  <RetrievePreviousInstances>false</RetrievePreviousInstances>
+  <RetrieveNextTypes>false</RetrieveNextTypes>
+  <Input id="ap42" uuid="H6HJWCFB_I19UU">RepairFile</Input>
+  <Input id="ap46" uuid="H6HJWCFB_I19UU/H5C57TVW_3GZ">RepairFile.Defect description</Input>
+  <Input id="ap50" uuid="H6HJWCFB_I19UU/H5C58Y1V_1I3">RepairFile.Repair progress</Input>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Set Parameters</ModelName>
+    <ParentContainer>hym6</ParentContainer>
+    <MasterPage ignore="false">sv4mpage4</MasterPage>
+    <NavigationAncestors>sv4|sv4Activities|hym6</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>true</CheckPermission>
+    <PermissionElement>hym6</PermissionElement>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <OperationParam unit="apu10">ap42</OperationParam>
+      <OperationParam unit="apu10">ap46</OperationParam>
+      <OperationParam unit="apu10">ap50</OperationParam>
+      <Params>fld44_slot|fld43_slot|sp|cmplink|fld40_slot|link|pu23.errorInfo|pu23.shownMessages|slot11|fld41_slot|msfld2_presel|smc|fld42_slot|fld45_slot</Params>
+    </OperationParams>
+    <SecondaryIncomingLinks>ln163</SecondaryIncomingLinks>
+    <OutgoingLinks>
+      <Link resultCode="success.ln164">oln32</Link>
+      <Link resultCode="success.ln165">oln33</Link>
+      <Link resultCode="error">apu10ko</Link>
+    </OutgoingLinks>
+    <IsLinkHistoryRecorded>true</IsLinkHistoryRecorded>
+  </WRParameterService>
+</Descriptor>
+ 

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.utility.rtx.ScriptUnitService" name="title is different check">
+  <Script xml:space="preserve">//inputs=title
+//outputs=titleCheck
+return ["True":titleCheck]</Script>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>title is different check</ModelName>
+    <ParentContainer>hym1</ParentContainer>
+    <ParentModule>hym1</ParentModule>
+    <NavigationAncestors/>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>false</CheckPermission>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <OperationParam unit="scu1">scu1.title</OperationParam>
+      <Params>mc|sp|cmplink|link|smc</Params>
+    </OperationParams>
+    <OutgoingLinks>
+      <Link resultCode="success" transport="true">ln81</Link>
+      <Link resultCode="error" transport="true">ln81</Link>
+    </OutgoingLinks>
+    <IsLinkHistoryRecorded>true</IsLinkHistoryRecorded>
+  </WRParameterService>
+</Descriptor>

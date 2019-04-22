@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.bpm.services.RollbackUnitService" name="Rollback Activity">
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Rollback Activity</ModelName>
+    <ParentContainer>sv3</ParentContainer>
+    <MasterPage ignore="false">mpage2</MasterPage>
+    <NavigationAncestors>sv3</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>true</CheckPermission>
+    <PermissionElement>sv3</PermissionElement>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <OperationParam unit="pu12">pu12.activityInstanceOid</OperationParam>
+      <OperationParam unit="pu12">par62</OperationParam>
+      <Params>sp|cmplink|pu17.shownMessages|link|pdu3.contextProcessInstanceOid|pdu3.processInstanceOid|pu17.errorInfo|pdu3.processUUID|smc</Params>
+    </OperationParams>
+    <OutgoingLinks>
+      <Link resultCode="success">oln9</Link>
+      <Link resultCode="error">kln10</Link>
+    </OutgoingLinks>
+    <IsLinkHistoryRecorded>true</IsLinkHistoryRecorded>
+  </WRParameterService>
+</Descriptor>

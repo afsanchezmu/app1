@@ -1,0 +1,163 @@
+
+<BPMProject xmlns:gr="http://www.webratio.com/2006/WebML/Graph" gr:showTooltip="true" gr:showActivityParameters="true" uuid="H4GXYB6L_AF1GS">  
+  
+  <Pool id="pool1" name="Customer" uuid="H4GXYB6S_62B" parameterOrder="pool1#prm1 pool1#prm2"> 
+    
+    <Parameters> 
+      
+      <Parameter id="pool1#prm1" uuid="H6HJWCFB_I19UU" name="RepairFile" type="string" businessObject="H6HJHWHN_4QN"/>  
+      
+      <Parameter id="pool1#prm2" uuid="H6HNT4VO_4NS29" name="Customer Decision" type="string" caseValueOrder="pool1#prm2#cv1 pool1#prm2#cv2"> 
+        
+        <CaseValue id="pool1#prm2#cv1" value="Approval"/>  
+        
+        <CaseValue id="pool1#prm2#cv2" value="Refusal"/> 
+      
+      </Parameter> 
+    
+    </Parameters>  
+    
+    <Lane id="pool1#lane1" name="Customer" notification="None" uuid="H4GXYB6T_2TJ" roles="H6HP65XO_73P H6HP6CCZ_4B5"> 
+      
+      <Task id="pool1#lane1#task1" name="Describe the defective computer" execution="userExecution" gr:x="130" gr:y="40" uuid="H4GXYB6T_4W7" parametersOrder="pool1#lane1#task1#bopar1" gr:showParameters="false"> 
+        
+        <FlowConnector id="pool1#lane1#task1#fcon22" to="pool1#lane2#task7" uuid="H4GZ6DUS_A2X1J"/>  
+        
+        <BusinessObjectParameter id="pool1#lane1#task1#bopar1" parameter="pool1#prm1" order="pool1#lane1#task1#bopar1#boppar1 pool1#lane1#task1#bopar1#boppar2 pool1#lane1#task1#bopar1#boppar3 pool1#lane1#task1#bopar1#boppar4"> 
+          
+          <PropertyParameter id="pool1#lane1#task1#bopar1#boppar4" editPolicy="Editable Mandatory" property="H6HJHWHN_4QN.H5C58HQJ_1AD"/>  
+          
+          <PropertyParameter id="pool1#lane1#task1#bopar1#boppar2" editPolicy="Editable Mandatory" property="H6HJHWHN_4QN.H5C57LGJ_2JC"/>  
+          
+          <PropertyParameter id="pool1#lane1#task1#bopar1#boppar3" editPolicy="Editable Mandatory" property="H6HJHWHN_4QN.H5C57TVW_3GZ"/>  
+          
+          <PropertyParameter id="pool1#lane1#task1#bopar1#boppar1" editPolicy="Editable Mandatory" property="H6HJHWHN_4QN.H5C57EKZ_3RV"/> 
+        
+        </BusinessObjectParameter> 
+      
+      </Task>  
+      
+      <StartEvent execution="userExecution" gr:x="3" gr:y="82" id="pool1#lane1#strev2" name="New repair request" uuid="H4GXYB6U_ZF"> 
+        
+        <FlowConnector id="pool1#lane1#strev2#fcon1" to="pool1#lane1#task1" uuid="H4GXYB6V_1OA"/> 
+      
+      </StartEvent>  
+      
+      <ExclusiveGateway id="pool1#lane1#gateex1" name="Apply the customer decision" uuid="H4GZ7U3X_FTEXT" gr:x="753" gr:y="78" execution="serviceExecution" conditionType="Literal" parameters="pool1#prm2"> 
+        
+        <FlowConnector id="pool1#lane1#gateex1#fcon5" to="pool1#lane1#endevt1" uuid="H4GZ8FSK_ACSAY" name="Unacceptable price" inputCaseValues="pool1#prm2#cv2" default="true"/>  
+        
+        <FlowConnector id="pool1#lane1#gateex1#fcon2e" to="pool1#lane2#task9" uuid="H6J3PBLT_49PVI" name="Acceptable price" inputCaseValues="pool1#prm2#cv1"/> 
+      
+      </ExclusiveGateway>  
+      
+      <EndEvent id="pool1#lane1#endevt1" name="Computer unrepaired" uuid="H4GZ8FSJ_673AM" gr:x="953" gr:y="62"/>  
+      
+      <Task id="pool1#lane1#task1e" name="Decide if the cost is acceptable" uuid="H6J3HXBF_D9KQG" gr:x="580" gr:y="40" execution="userExecution" parametersOrder="pool1#lane1#task1e#bopar1e pool1#lane1#task1e#smpars1e" gr:showParameters="false"> 
+        
+        <FlowConnector id="pool1#lane1#task1e#fcon3e" to="pool1#lane1#gateex1" uuid="H4GZ7U3X_HUZ28"/>  
+        
+        <BusinessObjectParameter id="pool1#lane1#task1e#bopar1e" parameter="pool1#prm1" order="pool1#lane1#task1e#bopar1e#boppar1e pool1#lane1#task1e#bopar1e#boppar2e pool1#lane1#task1e#bopar1e#boppar3e pool1#lane1#task1e#bopar1e#boppar4e pool1#lane1#task1e#bopar1e#boppar5e"> 
+          
+          <PropertyParameter id="pool1#lane1#task1e#bopar1e#boppar3e" editPolicy="Read Only" property="H6HJHWHN_4QN.H5C57TVW_3GZ"/>  
+          
+          <PropertyParameter id="pool1#lane1#task1e#bopar1e#boppar1e" editPolicy="Read Only" property="H6HJHWHN_4QN.H5C57EKZ_3RV"/>  
+          
+          <PropertyParameter id="pool1#lane1#task1e#bopar1e#boppar5e" editPolicy="Read Only" property="H6HJHWHN_4QN.H5C58S03_7AD"/>  
+          
+          <PropertyParameter id="pool1#lane1#task1e#bopar1e#boppar2e" editPolicy="Read Only" property="H6HJHWHN_4QN.H5C57LGJ_2JC"/>  
+          
+          <PropertyParameter id="pool1#lane1#task1e#bopar1e#boppar4e" editPolicy="Read Only" property="H6HJHWHN_4QN.H5C58HQJ_1AD"/> 
+        
+        </BusinessObjectParameter>  
+        
+        <SimpleParameters id="pool1#lane1#task1e#smpars1e" order="pool1#lane1#task1e#smpars1e#smpar1e"> 
+          
+          <SimpleParameter id="pool1#lane1#task1e#smpars1e#smpar1e" editPolicy="Editable Mandatory" parameter="pool1#prm2"/> 
+        
+        </SimpleParameters> 
+      
+      </Task> 
+    
+    </Lane>  
+    
+    <Lane id="pool1#lane2" name="Computer Repair Service" uuid="H4GZ4KA1_HATQI" roles="H6HP6CCZ_4B5"> 
+      
+      <Task id="pool1#lane2#task7" name="Check the defect and hand out a cost calculation back " execution="userExecution" uuid="H4GZ6DUR_GGW26" gr:x="350" gr:y="20" parametersOrder="pool1#lane2#task7#bopar2" gr:showParameters="false"> 
+        
+        <BusinessObjectParameter id="pool1#lane2#task7#bopar2" parameter="pool1#prm1" order="pool1#lane2#task7#bopar2#boppar5 pool1#lane2#task7#bopar2#boppar6 pool1#lane2#task7#bopar2#boppar7 pool1#lane2#task7#bopar2#boppar8 pool1#lane2#task7#bopar2#boppar9"> 
+          
+          <PropertyParameter id="pool1#lane2#task7#bopar2#boppar9" editPolicy="Editable Mandatory" property="H6HJHWHN_4QN.H5C58S03_7AD"/>  
+          
+          <PropertyParameter id="pool1#lane2#task7#bopar2#boppar6" editPolicy="Editable" property="H6HJHWHN_4QN.H5C57LGJ_2JC"/>  
+          
+          <PropertyParameter id="pool1#lane2#task7#bopar2#boppar5" editPolicy="Editable" property="H6HJHWHN_4QN.H5C57EKZ_3RV"/>  
+          
+          <PropertyParameter id="pool1#lane2#task7#bopar2#boppar8" editPolicy="Read Only" property="H6HJHWHN_4QN.H5C58HQJ_1AD"/>  
+          
+          <PropertyParameter id="pool1#lane2#task7#bopar2#boppar7" editPolicy="Editable" property="H6HJHWHN_4QN.H5C57TVW_3GZ"/> 
+        
+        </BusinessObjectParameter>  
+        
+        <FlowConnector id="pool1#lane2#task7#fcon1e" to="pool1#lane1#task1e" uuid="H6J3HXBF_DE4WV"/> 
+      
+      </Task>  
+      
+      <Task id="pool1#lane2#task8" name="Test proper system functionality" execution="userExecution" uuid="H4GZIFBT_95HSA" gr:x="1130" gr:y="30" parametersOrder="pool1#lane2#task8#bopar5" gr:showParameters="false"> 
+        
+        <FlowConnector id="pool1#lane2#task8#fcon34" to="pool1#lane2#gateex7" uuid="H4GZJS2U_1BJ9C"/>  
+        
+        <BusinessObjectParameter id="pool1#lane2#task8#bopar5" parameter="pool1#prm1" order="pool1#lane2#task8#bopar5#boppar22 pool1#lane2#task8#bopar5#boppar23 pool1#lane2#task8#bopar5#boppar24 pool1#lane2#task8#bopar5#boppar25 pool1#lane2#task8#bopar5#boppar26 pool1#lane2#task8#bopar5#boppar27"> 
+          
+          <PropertyParameter id="pool1#lane2#task8#bopar5#boppar24" editPolicy="Editable" property="H6HJHWHN_4QN.H5C57TVW_3GZ"/>  
+          
+          <PropertyParameter id="pool1#lane2#task8#bopar5#boppar22" editPolicy="Read Only" property="H6HJHWHN_4QN.H5C57EKZ_3RV"/>  
+          
+          <PropertyParameter id="pool1#lane2#task8#bopar5#boppar25" editPolicy="Read Only" property="H6HJHWHN_4QN.H5C58HQJ_1AD"/>  
+          
+          <PropertyParameter id="pool1#lane2#task8#bopar5#boppar26" editPolicy="Read Only" property="H6HJHWHN_4QN.H5C58S03_7AD"/>  
+          
+          <PropertyParameter id="pool1#lane2#task8#bopar5#boppar23" editPolicy="Read Only" property="H6HJHWHN_4QN.H5C57LGJ_2JC"/>  
+          
+          <PropertyParameter id="pool1#lane2#task8#bopar5#boppar27" editPolicy="Editable Mandatory" property="H6HJHWHN_4QN.H5C58Y1V_1I3"/> 
+        
+        </BusinessObjectParameter> 
+      
+      </Task>  
+      
+      <Task id="pool1#lane2#task9" name="Check, repair and configure the hardware or the software" execution="userExecution" uuid="H4GZCLUS_7OIV0" gr:x="880" gr:y="20" parametersOrder="pool1#lane2#task9#bopar3" gr:showParameters="false"> 
+        
+        <FlowConnector id="pool1#lane2#task9#fcon28" to="pool1#lane2#task8" uuid="H4GZO9H0_68ZFI"/>  
+        
+        <BusinessObjectParameter id="pool1#lane2#task9#bopar3" parameter="pool1#prm1" order="pool1#lane2#task9#bopar3#boppar10 pool1#lane2#task9#bopar3#boppar11 pool1#lane2#task9#bopar3#boppar12 pool1#lane2#task9#bopar3#boppar13 pool1#lane2#task9#bopar3#boppar14 pool1#lane2#task9#bopar3#boppar6e"> 
+          
+          <PropertyParameter id="pool1#lane2#task9#bopar3#boppar14" editPolicy="Read Only" property="H6HJHWHN_4QN.H5C58S03_7AD"/>  
+          
+          <PropertyParameter id="pool1#lane2#task9#bopar3#boppar10" editPolicy="Read Only" property="H6HJHWHN_4QN.H5C57EKZ_3RV"/>  
+          
+          <PropertyParameter id="pool1#lane2#task9#bopar3#boppar11" editPolicy="Read Only" property="H6HJHWHN_4QN.H5C57LGJ_2JC"/>  
+          
+          <PropertyParameter id="pool1#lane2#task9#bopar3#boppar12" editPolicy="Editable" property="H6HJHWHN_4QN.H5C57TVW_3GZ"/>  
+          
+          <PropertyParameter id="pool1#lane2#task9#bopar3#boppar13" editPolicy="Read Only" property="H6HJHWHN_4QN.H5C58HQJ_1AD"/>  
+          
+          <PropertyParameter id="pool1#lane2#task9#bopar3#boppar6e" editPolicy="Editable Mandatory" property="H6HJHWHN_4QN.H5C58Y1V_1I3"/> 
+        
+        </BusinessObjectParameter> 
+      
+      </Task>  
+      
+      <ExclusiveGateway id="pool1#lane2#gateex7" name="Verify Repair Progress" execution="serviceExecution" conditionType="Literal" uuid="H4GZJS2T_G7YYR" gr:x="1303" gr:y="68" propertyParameters="H6HJHWHN_4QN.H5C58Y1V_1I3" parameters="pool1#prm1"> 
+        
+        <FlowConnector id="pool1#lane2#gateex7#fcon35" name="Error still detected" to="pool1#lane2#task9" uuid="H4GZPA9A_7YOH9" gr:bendpoints="-254.0 -78.0" propertyInputCaseValues="H6HJHWHN_4QN.H6J52723_15" default="true"/>  
+        
+        <FlowConnector id="pool1#lane2#gateex7#fcon4e" to="pool1#lane2#endevt3" uuid="H6J3X18L_7SN93" name="No error detected" propertyInputCaseValues="H6HJHWHN_4QN.H6J52723_43F"/> 
+      
+      </ExclusiveGateway>  
+      
+      <EndEvent id="pool1#lane2#endevt3" name="Computer repaired" uuid="H4GZPA99_12P7B" gr:x="1503" gr:y="62"/> 
+    
+    </Lane> 
+  
+  </Pool> 
+</BPMProject> 

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultPageService" name="Check, repair and configure the hardware or the software">
+  <ParentContainer>hym6</ParentContainer>
+  <Secure>false</Secure>
+  <Localized>false</Localized>
+  <CheckPermission>true</CheckPermission>
+  <PermissionElement>hym6</PermissionElement>
+  <MasterPage>sv4mpage4</MasterPage>
+  <Alternatives/>
+  <ProtectedSubPages/>
+  <Navigations knownEffects="#pr#|sv4var16">
+    <Navigation name="0" nonContextual="true" interPage="always" links="page23"/>
+    <Navigation name="1" nonContextual="true" interPage="always" links="page23.link"/>
+    <Navigation name="2" links="page23.auto-link"/>
+    <Navigation name="3" links="page23.auto-link" selectiveRefresh="true"/>
+    <Navigation name="4" links="ln164|validation-failed"/>
+    <Navigation name="5" interPage="always" links="icu5.link|oln31" effects="#pr#"/>
+    <Navigation name="6" links="ln164|impl" postPropagatedLink="ln164"/>
+    <Navigation name="7" links="ln165|impl" postPropagatedLink="ln165"/>
+    <Navigation name="8" links="ln166|impl" postPropagatedLink="ln166"/>
+  </Navigations>
+  <ContextInitServices/>
+  <ContextInits></ContextInits>
+  <UselessPreserves>
+    <UselessPreserve navs="3|2|7|6|4|8" futile=""/>
+  </UselessPreserves>
+  <LinkSequence>ln162|ln163</LinkSequence>
+  <UnitComputations>
+    <UnitComputation unit="apu11">
+      <NavigationCondition selectiveRefresh="true" effects="#pr#"/>
+    </UnitComputation>
+    <UnitComputation unit="enu20" formBased="true">
+      <NavigationCondition selectiveRefresh="true" effects="#pr#"/>
+      <RefreshFormAll navs="1|0|7|6|5|8"/>
+    </UnitComputation>
+    <UnitComputation unit="enu21" formBased="true">
+      <NavigationCondition selectiveRefresh="true" effects="#pr#"/>
+      <RefreshFormAll navs="1|0|7|6|5|8"/>
+    </UnitComputation>
+  </UnitComputations>
+  <ManualLinks>
+    <ManualLink>ln164</ManualLink>
+    <ManualLink>ln165</ManualLink>
+    <ManualLink>ln166</ManualLink>
+  </ManualLinks>
+  <PropagationModes client="true" server="true"/>
+  <Variables></Variables>
+  <Conditions></Conditions>
+  <Layouts>
+    <Layout id="page23_grid_0">
+      <Layout id="page23_cell_0">
+        <Layout id="enu20_0" unitId="enu20"></Layout>
+      </Layout>
+      <Layout id="page23_cell_12">
+        <Layout id="enu21_0" unitId="enu21"></Layout>
+      </Layout>
+    </Layout>
+  </Layouts>
+  <AutoLinkInfo>
+    <PreservedContextParams>
+      <Params/>
+    </PreservedContextParams>
+    <PreservedContextParams selectiveRefresh="true">
+      <Params/>
+    </PreservedContextParams>
+  </AutoLinkInfo>
+  <!--Page Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultPageParameterService">
+    <ModelName>Check, repair and configure the hardware or the software</ModelName>
+    <NavigationAncestors>sv4|sv4Activities|hym6</NavigationAncestors>
+    <LinkIdRequired>true</LinkIdRequired>
+    <PageParams>
+      <PageParam preservedByForm="true" unit="enu20">fld45_slot</PageParam>
+      <PageParam preservedByForm="true" unit="enu20">fld42_slot</PageParam>
+      <PageParam preservedByForm="true" formPreserveGroup="msfld2_presel" unit="enu20">msfld2_presel</PageParam>
+      <PageParam preservedByForm="true" formPreserveGroup="msfld2|msfld2_label" unit="enu20">slot11</PageParam>
+      <PageParam preservedByForm="true" unit="enu20">fld41_slot</PageParam>
+      <PageParam preservedByForm="true" unit="enu20">fld40_slot</PageParam>
+      <PageParam preservedByForm="true" unit="enu20">fld43_slot</PageParam>
+      <PageParam preservedByForm="true" unit="enu20">fld44_slot</PageParam>
+      <PageParam>ap42</PageParam>
+      <PageParam>ap46</PageParam>
+      <PageParam>ap50</PageParam>
+      <PageParam>link</PageParam>
+      <PageParam>nav</PageParam>
+      <PageParam>so</PageParam>
+      <PageParam>ajax</PageParam>
+      <PageParam>ajaxRefresh</PageParam>
+    </PageParams>
+  </WRParameterService>
+</Descriptor>
+ 

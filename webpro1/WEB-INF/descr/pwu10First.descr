@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultLinkService">
+  <Target>page20</Target>
+  <Secure>false</Secure>
+  <Source>pwu10</Source>
+  <SourcePage>page20</SourcePage>
+  <ReachableAlternativePages></ReachableAlternativePages>
+  <Navigates>true</Navigates>
+  <StartsTransaction>false</StartsTransaction>
+  <EndsTransaction>false</EndsTransaction>
+  <StartPageIdRequiredByTarget>true</StartPageIdRequiredByTarget>
+  <PreservedContextParams>
+    <Params>tmu6.date|rcond35.processInstanceOid|pwu10.current.processInstanceOid|pwu10.block</Params>
+  </PreservedContextParams>
+  <PreservedContextParams selectiveRefresh="true">
+    <Params>acond27|rcond34.processOid|rcond33.userOID|rcond32.processOid|acond28|pwu10.current.processInstanceOid|pwu10.block</Params>
+  </PreservedContextParams>
+  <ContextPropagations>
+    <ContextPropagation targetParam="pwu10.block" sourceUnit="pwu10" sourceParam="scroller.first"/>
+  </ContextPropagations>
+</Descriptor>

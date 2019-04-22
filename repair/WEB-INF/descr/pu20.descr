@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.bpm.services.ProcessInfoUnitService" name="Work Item Parameters">
+  <Mode>parameters</Mode>
+  <Outputs previousInstances="false" incomingUserActivityTypeOids="false" incomingUserActivityInstanceOids="false"/>
+  <wr:Validation xmlns:wr="http://www.webratio.com/2013/WebML/WRValidation">
+    <wr:Condition elementId="pu20">cexpr9</wr:Condition>
+  </wr:Validation>
+</Descriptor>
+ 

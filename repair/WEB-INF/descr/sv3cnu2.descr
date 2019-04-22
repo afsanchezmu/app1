@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.operation.rtx.db.ConnectUnitService" name="Connect to process">
+  <Role useHQL="false">processInstance2Notes</Role>
+  <Source id="ProcessInstance">
+    <Query entity="ProcessInstance">
+      <Input id="p0" param="sv3kcond33.processInstanceOid" type="integer" implied="false" expandStyle="in"/>
+      <HQL>from ProcessInstance a_processInstance
+        <Where defaultPolicy="fill" allImplied="false">(({[p0]a_processInstance.oid in(?)}))</Where>
+      </HQL>
+    </Query>
+  </Source>
+  <Target id="Note">
+    <Query entity="Note">
+      <Input id="p0" param="sv3kcond34.noteOid" type="integer" implied="false" expandStyle="in"/>
+      <HQL>from Note a_note
+        <Where defaultPolicy="fill" allImplied="false">(({[p0]a_note.oid in(?)}))</Where>
+      </HQL>
+    </Query>
+  </Target>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Connect to process</ModelName>
+    <ParentContainer>sv3opg2</ParentContainer>
+    <MasterPage ignore="false">sv3mpage4</MasterPage>
+    <NavigationAncestors>sv3|sv3Activities</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>true</CheckPermission>
+    <PermissionElement>sv3</PermissionElement>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <OperationParam unit="sv3cnu2">sv3kcond33.processInstanceOid</OperationParam>
+      <OperationParam unit="sv3cnu2">sv3kcond34.noteOid</OperationParam>
+      <Params>sv3pu25.activityInstanceOid|sp|link|sv3kcond29.processInstanceOid|sv3pwu12.block|sv3rcond38.activityInstanceOid|sv3par129|sv3kcond31.activityInstanceOid|sv3kcond30.activityInstanceOid|cmplink|sv3rcond36.processInstanceOid|sv3kcond32.userOID|sv3rcond37.processInstanceOid|sv3pwu11.block|smc</Params>
+    </OperationParams>
+    <OutgoingLinks>
+      <Link resultCode="success">sv3oln18</Link>
+    </OutgoingLinks>
+  </WRParameterService>
+</Descriptor>

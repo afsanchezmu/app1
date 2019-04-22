@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultPageService" name="Error">
+  <ParentContainer>sv2</ParentContainer>
+  <Secure>false</Secure>
+  <Localized>false</Localized>
+  <CheckPermission>false</CheckPermission>
+  <MasterPage>mpage1</MasterPage>
+  <Alternatives/>
+  <ProtectedSubPages/>
+  <Navigations knownEffects="#pr#|var6">
+    <Navigation name="0" nonContextual="true" interPage="always" links="page4"/>
+    <Navigation name="1" nonContextual="true" interPage="always" links="page4.link"/>
+    <Navigation name="2" links="page4.auto-link"/>
+    <Navigation name="3" links="page4.auto-link" selectiveRefresh="true"/>
+    <Navigation name="4" interPage="always" links="ln11|kln6"/>
+    <Navigation name="5" interPage="always" links="ln36|kln4"/>
+    <Navigation name="6" interPage="always" links="ln9|kln3"/>
+  </Navigations>
+  <ContextInitServices/>
+  <ContextInits></ContextInits>
+  <UselessPreserves>
+    <UselessPreserve navs="2" effects="-|var6" futile=""/>
+    <UselessPreserve navs="3|2" effects="#pr#" futile=""/>
+    <UselessPreserve navs="3" effects="-|var6" futile="pu9.errorInfo"/>
+  </UselessPreserves>
+  <LinkSequence/>
+  <UnitComputations>
+    <UnitComputation unit="pu9" formBased="true">
+      <NavigationCondition selectiveRefresh="true" effects="#pr#"/>
+      <RefreshFormAll navs="6|5|4" inputs="pu9.errorInfo"/>
+      <RefreshFormAll navs="1|0"/>
+    </UnitComputation>
+  </UnitComputations>
+  <ManualLinks></ManualLinks>
+  <Variables></Variables>
+  <Conditions></Conditions>
+  <Layouts>
+    <Layout id="page4_grid_0">
+      <Layout id="page4_cell_0">
+        <Layout id="pu9_0" unitId="pu9"></Layout>
+      </Layout>
+    </Layout>
+  </Layouts>
+  <AutoLinkInfo>
+    <PreservedContextParams>
+      <Params>pu9.errorInfo</Params>
+    </PreservedContextParams>
+    <PreservedContextParams selectiveRefresh="true">
+      <Params>pu9.errorInfo</Params>
+    </PreservedContextParams>
+  </AutoLinkInfo>
+  <!--Page Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultPageParameterService">
+    <ModelName>Error</ModelName>
+    <NavigationAncestors>sv2</NavigationAncestors>
+    <LinkIdRequired>true</LinkIdRequired>
+    <PageParams>
+      <PageParam unit="pu9">pu9.errorInfo</PageParam>
+      <PageParam>link</PageParam>
+      <PageParam>nav</PageParam>
+      <PageParam>so</PageParam>
+      <PageParam>ajax</PageParam>
+      <PageParam>ajaxRefresh</PageParam>
+    </PageParams>
+  </WRParameterService>
+</Descriptor>

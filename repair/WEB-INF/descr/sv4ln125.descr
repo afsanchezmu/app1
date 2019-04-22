@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultLinkService">
+  <Target>sv4mpage4</Target>
+  <Secure>false</Secure>
+  <Source>sv4apu1</Source>
+  <SourcePage>sv4mpage4</SourcePage>
+  <ReachableAlternativePages></ReachableAlternativePages>
+  <StartsTransaction>false</StartsTransaction>
+  <EndsTransaction>false</EndsTransaction>
+  <StartPageIdRequiredByTarget>false</StartPageIdRequiredByTarget>
+  <PreservedContextParams>
+    <Params/>
+  </PreservedContextParams>
+  <ContextPropagations>
+    <ContextPropagation targetParam="sv4pu25.activityInstanceOid" sourceUnit="sv4apu1" sourceParam="taskOid"/>
+  </ContextPropagations>
+</Descriptor>
+ 

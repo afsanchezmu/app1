@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultLinkService">
+  <Target>sv3mpage4</Target>
+  <Secure>false</Secure>
+  <Source>sv3pwu12</Source>
+  <SourcePage>sv3mpage4</SourcePage>
+  <ReachableAlternativePages></ReachableAlternativePages>
+  <Navigates>true</Navigates>
+  <StartsTransaction>false</StartsTransaction>
+  <EndsTransaction>false</EndsTransaction>
+  <StartPageIdRequiredByTarget>true</StartPageIdRequiredByTarget>
+  <PreservedContextParams>
+    <Params>sv3pwu12.block</Params>
+  </PreservedContextParams>
+  <PreservedContextParams selectiveRefresh="true">
+    <Params>sv3rcond37.processInstanceOid|sv3rcond38.activityInstanceOid|sv3pwu12.block</Params>
+  </PreservedContextParams>
+  <ContextPropagations>
+    <ContextPropagation targetParam="sv3pwu12.block" sourceUnit="sv3pwu12" sourceParam="scroller.previous"/>
+  </ContextPropagations>
+</Descriptor>

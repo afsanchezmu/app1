@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.bpm.services.ActivityParametersUnitService" name="Set Parameters">
+  <OnFailRemoveTaskOid/>
+  <InActivityModule>false</InActivityModule>
+  <RetrievePreviousInstances>false</RetrievePreviousInstances>
+  <RetrieveNextTypes>false</RetrieveNextTypes>
+  <Input id="ap20" uuid="JUPTLTFF_NAGTC1">Aprove</Input>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Set Parameters</ModelName>
+    <ParentContainer>hym4</ParentContainer>
+    <ParentModule>hym4</ParentModule>
+    <NavigationAncestors/>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>false</CheckPermission>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <OperationParam unit="apu7">ap20</OperationParam>
+      <Params>mc|sp|fld29_slot|fld27_slot|cmplink|link|fld25_slot|fld30_slot|fld26_slot|smc|fld28_slot</Params>
+    </OperationParams>
+    <SecondaryIncomingLinks>ln134</SecondaryIncomingLinks>
+    <OutgoingLinks>
+      <Link resultCode="success.ln136">oln15</Link>
+      <Link resultCode="success.ln137">oln16</Link>
+    </OutgoingLinks>
+    <IsLinkHistoryRecorded>true</IsLinkHistoryRecorded>
+  </WRParameterService>
+</Descriptor>

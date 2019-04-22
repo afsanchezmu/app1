@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.module.rtx.CollectorUnitService" name="Input">
+  <Type>INPUT</Type>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Input</ModelName>
+    <ParentContainer>hym3</ParentContainer>
+    <ParentModule>hym3</ParentModule>
+    <NavigationAncestors/>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>false</CheckPermission>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <Params>mc|fld11_slot|fld16_slot|fld14_slot|fld12_slot</Params>
+    </OperationParams>
+    <OutgoingLinks>
+      <Link resultCode="success">oln21</Link>
+    </OutgoingLinks>
+    <IsLinkHistoryRecorded>true</IsLinkHistoryRecorded>
+  </WRParameterService>
+</Descriptor>

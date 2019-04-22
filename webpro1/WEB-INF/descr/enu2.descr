@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.content.rtx.EntryUnitService" name="Search">
+  <FormFields>
+    <Field id="fld3" name="Process Active Since From" type="date" localized="true"></Field>
+    <Field id="fld4" name="Process Active Since To" type="date" localized="true"></Field>
+    <Field id="fld5" name="Activity Ready Since From" type="date" localized="true"></Field>
+    <Field id="fld6" name="Activity Ready Since To" type="date" localized="true"></Field>
+    <SelectionField id="sfld1" name="Process" type="string" localized="false" value="" splitOutput="">
+      <Slot id="sfld1_label" label="true" output="false"/>
+      <Slot id="sfld1_output" label="false" output="true"/>
+    </SelectionField>
+    <SelectionField id="sfld2" name="User" type="string" localized="false" value="" splitOutput="">
+      <Slot id="sfld2_label" label="true" output="false"/>
+      <Slot id="sfld2_output" label="false" output="true"/>
+    </SelectionField>
+    <SelectionField id="sfld3" name="Group" type="string" localized="false" value="" splitOutput="">
+      <Slot id="sfld3_label" label="true" output="false"/>
+      <Slot id="sfld3_output" label="false" output="true"/>
+    </SelectionField>
+    <SelectionField id="sfld4" name="Process Status" type="string" localized="false" value="" splitOutput="">
+      <Slot id="slot1" label="true" output="true" value="active|completed|cancelled"/>
+    </SelectionField>
+    <SelectionField id="sfld5" name="Activity Status" type="string" localized="false" value="" splitOutput="">
+      <Slot id="slot2" label="true" output="true" value="ready|active|completed|cancelled|aborted"/>
+    </SelectionField>
+  </FormFields>
+  <wr:Validation xmlns:wr="http://www.webratio.com/2013/WebML/WRValidation">
+    <wr:ValidationLink elementId="enu2" linkId="ln26" action="validate"/>
+  </wr:Validation>
+</Descriptor>

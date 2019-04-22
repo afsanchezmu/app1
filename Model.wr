@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?webml version="7.2.0.4"?>
+
+<WebProject xmlns:bpm="http://www.webratio.com/2009/WebML/BPM" xmlns:gr="http://www.webratio.com/2006/WebML/Graph" outputPath="${webapps_loc}/${project_name}" gr:showUnitContent="true" gr:showTooltip="true" httpPort="8080" httpsPort="8443" enableProjectDependencies="true" jobGroupName="WEBRATIO" wrTempNewProject="true" bpm:bpmBased="true">
+  <ServiceDataProviders/>
+  <ReferencedProject name="BootstrapStyle" natureId="com.webratio.ide.styles.wrstylenature"/>
+  <ReferencedProject name="bpp1" natureId="com.webratio.bpm.businessmodelingnature"/>
+  <ReferencedProject name="WebRatio" natureId="com.webratio.ide.styles.wrstylenature"/>
+  <ReferencedProject name="com.webratio.units.bpm" natureId="com.webratio.ide.units.wrunitsnature"/>
+  <BPMResources>
+    <BPMResource id="bpmr1" name="IdeaGeneration" uuid="JUR5H7U2_K9B1C8" path="/bpp1/Processes/IdeaGeneration.bpm"/>
+  </BPMResources>
+</WebProject>

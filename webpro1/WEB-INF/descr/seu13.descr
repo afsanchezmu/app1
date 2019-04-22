@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.utility.rtx.db.SelectorUnitService" name="Users">
+  <MaxResults/>
+  <Query entity="User">
+    <Input id="p0" param="rcond26.groupOID" type="integer" implied="false" expandStyle="in"/>
+    <Output id="userOID" name="oid" index="0"/>
+    <Output id="userName" name="userName" index="1"/>
+    <HQL>select a_user.oid, a_user.userName from User a_user
+      <Where defaultPolicy="fill" allImplied="false">(({[p0]a_user.oid in(select a_user_p0.source_oid from Rel_User_to_groups a_user_p0 where a_user_p0.target_oid in(?))}))</Where>
+    </HQL>
+  </Query>
+</Descriptor>

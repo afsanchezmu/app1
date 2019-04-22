@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.content.rtx.db.IndexUnitService" name="Process History">
+  <UseFirstRowAsDefaultCurrent>false</UseFirstRowAsDefaultCurrent>
+  <MaxResults/>
+  <Query entity="ActivityInstance">
+    <Input id="p0" param="sv3kcond31.activityInstanceOid" type="integer" implied="false" expandStyle="in"/>
+    <Output id="activityInstanceOid" name="oid" index="0"/>
+    <Output id="activityInstanceCompletedTimestamp" name="completedAt" index="1"/>
+    <Output id="activityInstanceUserName" name="userName" index="2"/>
+    <Output id="activityInstanceName" name="name" index="3"/>
+    <HQL>select a_activityInstance.oid, a_activityInstance.completedAt, a_user_activityInstance2User.userName, a_activityInstance.name from ActivityInstance a_activityInstance left join a_activityInstance.user a_user_activityInstance2User
+      <Where defaultPolicy="fill" allImplied="false">(({[p0]a_activityInstance.oid in(?)}))</Where>order by a_activityInstance.completedAt desc, a_activityInstance.oid desc
+    </HQL>
+  </Query>
+</Descriptor>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.content.rtx.EntryUnitService" name="Please provide title and date">
+  <FormFields>
+    <Field id="fld13" name="title" type="string" localized="false">
+      <Slot id="fld13_slot" label="true" output="true"/>
+    </Field>
+    <Field id="fld15" name="Date" type="date" localized="true">
+      <Slot id="fld15_slot" label="true" output="true"/>
+    </Field>
+  </FormFields>
+  <wr:Validation xmlns:wr="http://www.webratio.com/2013/WebML/WRValidation">
+    <MandatoryValidationRule service="com.webratio.units.validation.MandatoryValidationRuleService" elementId="fld13" id="mnd4" name="required">
+      <CompanionField/>
+      <Predicate/>
+      <IgnoreCase/>
+      <Value/>
+    </MandatoryValidationRule>
+    <MandatoryValidationRule service="com.webratio.units.validation.MandatoryValidationRuleService" elementId="fld15" id="mnd6" name="required">
+      <CompanionField/>
+      <Predicate/>
+      <IgnoreCase/>
+      <Value/>
+    </MandatoryValidationRule>
+  </wr:Validation>
+</Descriptor>

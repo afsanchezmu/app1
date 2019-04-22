@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultPageService" name="Control Panel">
+  <ParentContainer>sv2</ParentContainer>
+  <Secure>false</Secure>
+  <Localized>false</Localized>
+  <CheckPermission>false</CheckPermission>
+  <MasterPage>mpage1</MasterPage>
+  <Alternatives/>
+  <ProtectedSubPages/>
+  <Navigations knownEffects="#pr#|var6">
+    <Navigation name="0" nonContextual="true" interPage="always" links="page5"/>
+    <Navigation name="1" nonContextual="true" interPage="always" links="page5.link"/>
+    <Navigation name="2" links="page5.auto-link"/>
+    <Navigation name="3" links="page5.auto-link" selectiveRefresh="true"/>
+    <Navigation name="4" links="ln16|validation-failed"/>
+    <Navigation name="5" links="ln19|validation-failed"/>
+    <Navigation name="6" links="ln20|validation-failed"/>
+    <Navigation name="7" links="ln22|validation-failed"/>
+    <Navigation name="8" links="ln23|validation-failed"/>
+    <Navigation name="9" links="ln24|validation-failed"/>
+    <Navigation name="10" links="ln26|validation-failed"/>
+    <Navigation name="11" interPage="always" links="ln11|oln6" effects="#pr#"/>
+    <Navigation name="12" links="ln16|kln2"/>
+    <Navigation name="13" links="ln16|oln2" effects="#pr#"/>
+    <Navigation name="14" links="ln19|kln5"/>
+    <Navigation name="15" links="ln19|oln5" effects="#pr#"/>
+    <Navigation name="16" links="ln20|kln5"/>
+    <Navigation name="17" links="ln20|oln5" effects="#pr#"/>
+    <Navigation name="18" links="ln22|kln2"/>
+    <Navigation name="19" links="ln22|oln2" effects="#pr#"/>
+    <Navigation name="20" links="ln23|kln2"/>
+    <Navigation name="21" links="ln23|oln2" effects="#pr#"/>
+    <Navigation name="22" links="ln24|kln2"/>
+    <Navigation name="23" links="ln24|oln2" effects="#pr#"/>
+    <Navigation name="24" links="ln26"/>
+    <Navigation name="25" interPage="always" links="ln8"/>
+    <Navigation name="26" links="pwu2Block"/>
+    <Navigation name="27" links="pwu2First"/>
+    <Navigation name="28" links="pwu2Last"/>
+    <Navigation name="29" links="pwu2Next"/>
+    <Navigation name="30" links="pwu2Previous"/>
+    <Navigation name="31" links="pwu2processInstanceActiveTimestamp"/>
+  </Navigations>
+  <ContextInitServices/>
+  <ContextInits></ContextInits>
+  <UselessPreserves>
+    <UselessPreserve navs="22|18|16|26|27|14|28|29|12|20|10|30|7|6|5|31|4|9|8" effects="#pr#" futile=""/>
+    <UselessPreserve navs="22|18|16|26|27|14|28|29|12|2|20|10|30|7|6|5|31|4|9|8" effects="-|var6" futile=""/>
+    <UselessPreserve navs="3|21|2|19|17|23|15|13" effects="#pr#" futile="pwu2.sortCriteria|pwu2.newSortAttribute|tmu1.date"/>
+    <UselessPreserve navs="21|19|17|23|15|13" effects="-|var6" futile="pwu2.sortCriteria|pwu2.newSortAttribute|tmu1.date"/>
+    <UselessPreserve navs="24" futile="pwu2.sortCriteria|pwu2.newSortAttribute"/>
+    <UselessPreserve navs="3" effects="-|var6" futile="pwu2.sortCriteria|pwu2.newSortAttribute|tmu1.date|pu11.errorInfo"/>
+  </UselessPreserves>
+  <LinkSequence>ln17|ln18|ln30|ln25|ln31|ln27|ln32|ln28|ln25|ln31|ln27|ln32|ln29|ln25|ln31|ln27|ln32</LinkSequence>
+  <UnitComputations>
+    <UnitComputation unit="pwu2" formBased="true">
+      <NavigationCondition selectiveRefresh="true" effects="#pr#"/>
+      <RefreshFormAll navs="19|17|22|18|23|15|16|25|13|14|11|12|21|20|1|0"/>
+      <RefreshForm navs="30|26|27|28|29" inputs="pwu2.block"/>
+      <RefreshForm navs="24" inputs="acond4"/>
+      <RefreshForm navs="31" inputs="pwu2.sortCriteria|pwu2.newSortAttribute"/>
+    </UnitComputation>
+    <UnitComputation unit="pu10" formBased="true">
+      <NavigationCondition selectiveRefresh="true" effects="#pr#"/>
+      <RefreshFormAll navs="19|17|22|18|23|15|16|25|13|14|11|12|21|20|1|0"/>
+    </UnitComputation>
+    <UnitComputation unit="enu2" formBased="true">
+      <NavigationCondition selectiveRefresh="true" effects="#pr#"/>
+      <RefreshFormAll navs="19|17|22|18|23|15|16|25|13|14|11|12|21|20|1|0"/>
+    </UnitComputation>
+    <UnitComputation unit="seu2">
+      <NavigationCondition selectiveRefresh="true" effects="#pr#"/>
+    </UnitComputation>
+    <UnitComputation unit="seu3">
+      <NavigationCondition selectiveRefresh="true" effects="#pr#"/>
+    </UnitComputation>
+    <UnitComputation unit="seu4">
+      <NavigationCondition selectiveRefresh="true" effects="#pr#"/>
+    </UnitComputation>
+    <UnitComputation unit="tmu1">
+      <NavigationCondition selectiveRefresh="true" effects="#pr#"/>
+    </UnitComputation>
+    <UnitComputation unit="tmu2">
+      <NavigationCondition selectiveRefresh="true" effects="#pr#"/>
+    </UnitComputation>
+    <UnitComputation unit="pu11" formBased="true">
+      <NavigationCondition selectiveRefresh="true" effects="#pr#"/>
+      <RefreshFormAll navs="20|22|18|16|14|12" inputs="pu11.errorInfo"/>
+      <RefreshFormAll navs="21|1|0|19|17|23|15|25|13|11"/>
+    </UnitComputation>
+  </UnitComputations>
+  <ManualLinks>
+    <ManualLink>ln14</ManualLink>
+    <ManualLink>ln15</ManualLink>
+    <ManualLink>pwu2processInstanceActiveTimestamp</ManualLink>
+    <ManualLink>pwu2First</ManualLink>
+    <ManualLink>pwu2Previous</ManualLink>
+    <ManualLink>pwu2Next</ManualLink>
+    <ManualLink>pwu2Last</ManualLink>
+    <ManualLink>pwu2Block</ManualLink>
+    <ManualLink>ln16</ManualLink>
+    <ManualLink>ln19</ManualLink>
+    <ManualLink>ln20</ManualLink>
+    <ManualLink>ln21</ManualLink>
+    <ManualLink>ln22</ManualLink>
+    <ManualLink>ln23</ManualLink>
+    <ManualLink>ln24</ManualLink>
+    <ManualLink>ln26</ManualLink>
+  </ManualLinks>
+  <Variables></Variables>
+  <Conditions></Conditions>
+  <Layouts>
+    <Layout id="page5_grid_0">
+      <Layout id="page5_cell_0">
+        <Layout id="pu11_0" unitId="pu11"></Layout>
+      </Layout>
+      <Layout id="page5_cell_12">
+        <Layout id="pu10_0" unitId="pu10"></Layout>
+      </Layout>
+      <Layout id="page5_cell_24">
+        <Layout id="page5_grid_1">
+          <Layout id="page5_cell_25">
+            <Layout id="enu2_0" unitId="enu2"></Layout>
+            <Layout id="pwu2_0" unitId="pwu2"></Layout>
+          </Layout>
+        </Layout>
+      </Layout>
+    </Layout>
+  </Layouts>
+  <AutoLinkInfo>
+    <PreservedContextParams>
+      <Params>pwu2.sortCriteria|pwu2.newSortAttribute|tmu1.date|pu11.errorInfo</Params>
+    </PreservedContextParams>
+    <PreservedContextParams selectiveRefresh="true">
+      <Params>pu11.errorInfo</Params>
+    </PreservedContextParams>
+  </AutoLinkInfo>
+  <!--Page Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultPageParameterService">
+    <ModelName>Control Panel</ModelName>
+    <NavigationAncestors>sv2</NavigationAncestors>
+    <LinkIdRequired>true</LinkIdRequired>
+    <PageParams>
+      <PageParam preservedByForm="true" unit="enu2">sfld1_label</PageParam>
+      <PageParam preservedByForm="true" unit="enu2">sfld3_label</PageParam>
+      <PageParam preservedByForm="true" unit="enu2">sfld2_label</PageParam>
+      <PageParam preservedByForm="true" unit="enu2">sfld1_output</PageParam>
+      <PageParam preservedByForm="true" unit="enu2">sfld3_output</PageParam>
+      <PageParam preservedByForm="true" unit="enu2">sfld2_output</PageParam>
+      <PageParam unit="seu4">kcond3.processOid</PageParam>
+      <PageParam unit="tmu1">tmu1.date</PageParam>
+      <PageParam unit="tmu2">tmu2.date</PageParam>
+      <PageParam unit="pwu2">pwu2.sortCriteria</PageParam>
+      <PageParam unit="pwu2">rcond5.groupOID</PageParam>
+      <PageParam unit="pwu2">rcond4.userOID</PageParam>
+      <PageParam unit="pwu2">acond7</PageParam>
+      <PageParam unit="pwu2">acond5</PageParam>
+      <PageParam unit="pwu2">acond6</PageParam>
+      <PageParam unit="pwu2">acond3</PageParam>
+      <PageParam unit="pwu2">rcond3.processOid</PageParam>
+      <PageParam unit="pwu2">acond4</PageParam>
+      <PageParam unit="pwu2">acond2</PageParam>
+      <PageParam unit="pwu2">acond1</PageParam>
+      <PageParam unit="pwu2">pwu2.block</PageParam>
+      <PageParam unit="pwu2">pwu2.newSortAttribute</PageParam>
+      <PageParam unit="pu11">pu11.errorInfo</PageParam>
+      <PageParam>kcond2.processInstanceOid</PageParam>
+      <PageParam>pwu1.sortCriteria</PageParam>
+      <PageParam>pwu1.newSortAttribute</PageParam>
+      <PageParam>rcond2.processInstanceOid</PageParam>
+      <PageParam>link</PageParam>
+      <PageParam>nav</PageParam>
+      <PageParam>so</PageParam>
+      <PageParam>ajax</PageParam>
+      <PageParam>ajaxRefresh</PageParam>
+    </PageParams>
+  </WRParameterService>
+</Descriptor>

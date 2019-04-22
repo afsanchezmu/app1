@@ -1,0 +1,345 @@
+<DataModel xmlns:db="http://www.webratio.com/2006/WebML/Database" xmlns:gr="http://www.webratio.com/2006/WebML/Graph">
+  <Entity id="User" name="User" duration="persistent" gr:x="20" gr:y="158" gr:hideAttributes="false" attributeOrder="userOID userName password email" db:database="db1" db:table="user">
+    <Attribute name="oid" id="userOID" type="integer" key="true" db:column="oid"/>
+    <Attribute name="userName" id="userName" type="string" db:column="username"/>
+    <Attribute name="password" id="password" type="password" db:column="password"/>
+    <Attribute name="email" id="email" type="string" db:column="email"/>
+    <Attribute id="userDefaultGroupName" name="group" type="string" derivationQuery="simpleImported::Self.User2DefaultGroup.groupName"/>
+  </Entity>
+  <Entity id="Group" name="Group" duration="persistent" gr:x="250" gr:y="178" gr:hideAttributes="false" attributeOrder="groupOID groupName" db:database="db1" db:table="group">
+    <Attribute name="oid" id="groupOID" type="integer" key="true" db:column="oid"/>
+    <Attribute name="groupName" id="groupName" type="string" db:column="groupname"/>
+  </Entity>
+  <Entity id="Module" name="Module" duration="persistent" gr:x="472" gr:y="167" gr:hideAttributes="false" attributeOrder="moduleOID moduleID moduleName" db:database="db1" db:table="module">
+    <Attribute name="oid" id="moduleOID" type="integer" key="true" db:column="oid"/>
+    <Attribute name="moduleID" id="moduleID" type="string" db:column="moduleid"/>
+    <Attribute name="moduleName" id="moduleName" type="string" db:column="modulename"/>
+    <Attribute id="moduleDomainName" name="moduleDomainName" type="string" db:column="moduledomainname"/>
+  </Entity>
+  <Relationship id="User2Group_Group2User" name="User_Group" sourceEntity="User" targetEntity="Group" db:database="db1" db:table="user_group">
+    <RelationshipRole1 id="User2Group" name="groups" maxCard="N">
+      <db:JoinColumn attribute="userOID" name="user_oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="Group2User" name="users" maxCard="N">
+      <db:JoinColumn attribute="groupOID" name="group_oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="User2DefaultGroup_DefaultGroup2User" name="User_DefaultGroup" sourceEntity="User" targetEntity="Group" gr:bendpoints="113,42,-112,44" db:database="db1" db:table="user">
+    <RelationshipRole1 id="User2DefaultGroup" name="defaultGroup" maxCard="1">
+      <db:JoinColumn attribute="userOID" name="oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="DefaultGroup2User" name="defaultUsers" maxCard="N">
+      <db:JoinColumn attribute="groupOID" name="group_oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="Group2DefaultModule_DefaultModule2Group" name="Group_DefaultModule" sourceEntity="Group" targetEntity="Module" db:database="db1" db:table="group">
+    <RelationshipRole1 id="Group2DefaultModule" name="defaultModule" maxCard="1">
+      <db:JoinColumn attribute="groupOID" name="oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="DefaultModule2Group" name="defaultGroups" maxCard="N">
+      <db:JoinColumn attribute="moduleOID" name="module_oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="Group2Module_Module2Group" name="Group_Module" sourceEntity="Group" targetEntity="Module" gr:bendpoints="110,41,-115,41" db:database="db1" db:table="group_module">
+    <RelationshipRole1 id="Group2Module" name="modules" maxCard="N">
+      <db:JoinColumn attribute="groupOID" name="group_oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="Module2Group" name="groups" maxCard="N">
+      <db:JoinColumn attribute="moduleOID" name="module_oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <db:Database id="db1" name="db1" type="MySQL" url="jdbc:mysql://localhost:3306/db1" username="admin" password="password" cryptedPassword="false" connectionCount="5">
+  </db:Database>
+  <Entity id="Process" gr:x="-961" gr:y="-658" name="Process" duration="persistent" attributeOrder="processOid processCode processName processDefaultInstanceName processUUID processDescription processVersion" db:database="db1" db:table="process">
+    <Attribute id="processOid" key="true" name="oid" type="integer" db:column="oid"/>
+    <Attribute id="processCode" name="code" type="string" db:column="code"/>
+    <Attribute id="processName" name="name" type="string" db:column="name"/>
+    <Attribute id="processDefaultInstanceName" name="default instance name" type="string" db:column="default_instance_name"/>
+    <Attribute id="processDescription" name="description" type="text" contentType="text/html" db:column="description"/>
+    <Attribute id="processUUID" name="uuid" type="string" db:column="uuid"/>
+    <Attribute id="processVersion" name="version" type="string" db:column="version"/>
+  </Entity>
+  <Entity id="ProcessInstance" gr:x="-956" gr:y="-76" name="ProcessInstance" duration="persistent" attributeOrder="processInstanceOid processInstanceCode processInstanceName processInstanceProcessName processInstanceDescription processInstanceSubProcessIndex processInstanceStatus processInstanceActiveTimestamp processInstanceCompletedTimestamp processInstanceCancelledTimestamp processInstanceAbortedTimestamp processInstanceAttachmentCount" db:database="db1" db:table="processinstance">
+    <Attribute id="processInstanceOid" key="true" name="oid" type="integer" db:column="oid"/>
+    <Attribute id="processInstanceCode" name="code" type="string" derivationQuery="simpleImported::Self.processInstance2Process.processCode"/>
+    <Attribute id="processInstanceName" name="name" type="string" db:column="name"/>
+    <Attribute id="processInstanceProcessName" name="process name" type="string" derivationQuery="simpleImported::Self.processInstance2Process.processName"/>
+    <Attribute id="processInstanceSubProcessIndex" name="subProcessIndex" type="integer" db:column="subprocessindex"/>
+    <Attribute id="processInstanceStatus" name="status" type="string" db:column="status"/>
+    <Attribute id="processInstanceActiveTimestamp" name="active since" type="timestamp" db:column="active_since"/>
+    <Attribute id="processInstanceCompletedTimestamp" name="completed at" type="timestamp" db:column="completed_at"/>
+    <Attribute id="processInstanceCancelledTimestamp" name="cancelled at" type="timestamp" db:column="cancelled_at"/>
+    <Attribute id="processInstanceAbortedTimestamp" name="aborted at" type="timestamp" db:column="aborted_at"/>
+    <Attribute id="processInstanceDescription" name="description" type="text" derivationQuery="simpleImported::Self.processInstance2Process.processDescription" contentType="text/html"/>
+    <Attribute id="processInstanceAttachmentCount" name="attachment count" type="integer" derivationQuery="calculated::count(Self.processInstance2Attachments(as Var1))" db:table="processinstance_attachment_cou" db:column="der_attr" storageType="file">
+      <db:JoinColumn attribute="processInstanceOid" name="oid"/>
+    </Attribute>
+  </Entity>
+  <Entity id="ActivityType" gr:x="-448" gr:y="-707" name="ActivityType" duration="persistent" attributeOrder="activityTypeOid activityTypeId activityTypeCode activityTypeName activityTypeProcessName activityTypeDescription activityTypeType activityTypeExecution activityTypeDefaultInstanceName activityTypeSortNumber activityTypeUUID" db:database="db1" db:table="activitytype">
+    <Attribute id="activityTypeOid" key="true" name="oid" type="integer" db:column="oid"/>
+    <Attribute id="activityTypeId" name="ID" type="string" db:column="id"/>
+    <Attribute id="activityTypeCode" name="code" type="string" db:column="code"/>
+    <Attribute id="activityTypeName" name="name" type="string" db:column="name"/>
+    <Attribute id="activityTypeProcessName" name="process name" type="string" derivationQuery="simpleImported::Self.activityType2Process.processName"/>
+    <Attribute id="activityTypeDefaultInstanceName" name="default instance name" type="string" db:column="default_instance_name"/>
+    <Attribute id="activityTypeDescription" name="description" type="text" contentType="text/html" db:column="description"/>
+    <Attribute id="activityTypeType" name="type" type="string" db:column="type"/>
+    <Attribute id="activityTypeExecution" name="execution" type="string" db:column="execution"/>
+    <Attribute id="activityTypeSortNumber" name="sort number" type="float" db:column="sort_number"/>
+    <Attribute id="activityTypeUUID" name="uuid" type="string" db:column="uuid"/>
+  </Entity>
+  <Entity id="ActivityInstance" gr:x="-445" gr:y="-166" name="ActivityInstance" duration="persistent" attributeOrder="activityInstanceOid activityInstanceCode activityInstanceName activityInstanceProcessInstanceName activityInstanceProcessName activityInstanceActivityTypeName activityInstanceDescription activityInstanceUserName activityInstanceGroupName activityInstanceExecution activityInstanceType activityInstanceStatus activityInstanceReadyTimestamp activityInstanceActiveTimestamp activityInstanceCompletedTimestamp activityInstanceAbortedTimestamp activityInstanceCancelledTimestamp activityInstanceLastTimestamp activityInstanceProcessInstanceActiveSince activityInstanceRollbackable activityInstanceContext" db:database="db1" db:table="activityinstance">
+    <Attribute id="activityInstanceOid" key="true" name="oid" type="integer" db:column="oid"/>
+    <Attribute id="activityInstanceCode" name="code" type="string" derivationQuery="simpleImported::Self.activityInstance2ActivityType.activityTypeCode"/>
+    <Attribute id="activityInstanceName" name="name" type="string" db:column="name"/>
+    <Attribute id="activityInstanceProcessInstanceName" name="process instance name" type="string" derivationQuery="simpleImported::Self.activityInstance2ProcessInstance.processInstanceName"/>
+    <Attribute id="activityInstanceProcessName" name="process name" type="string" derivationQuery="simpleImported::Self.activityInstance2ProcessInstance.processInstanceProcessName"/>
+    <Attribute id="activityInstanceActivityTypeName" name="activity name" type="string" derivationQuery="simpleImported::Self.activityInstance2ActivityType.activityTypeName"/>
+    <Attribute id="activityInstanceDescription" name="description" type="text" derivationQuery="simpleImported::Self.activityInstance2ActivityType.activityTypeDescription" contentType="text/html"/>
+    <Attribute id="activityInstanceUserName" name="userName" type="string" derivationQuery="simpleImported::Self.activityInstance2User.userName"/>
+    <Attribute id="activityInstanceGroupName" name="group" type="string" derivationQuery="simpleImported::Self.activityInstance2Group.groupName"/>
+    <Attribute id="activityInstanceExecution" name="execution" type="string" derivationQuery="simpleImported::Self.activityInstance2ActivityType.activityTypeExecution"/>
+    <Attribute id="activityInstanceType" name="type" type="string" derivationQuery="simpleImported::Self.activityInstance2ActivityType.activityTypeType"/>
+    <Attribute id="activityInstanceStatus" name="status" type="string" db:column="status"/>
+    <Attribute id="activityInstanceReadyTimestamp" name="ready since" type="timestamp" db:column="ready_since"/>
+    <Attribute id="activityInstanceActiveTimestamp" name="active since" type="timestamp" db:column="active_since"/>
+    <Attribute id="activityInstanceCompletedTimestamp" name="completed at" type="timestamp" db:column="completed_at"/>
+    <Attribute id="activityInstanceAbortedTimestamp" name="aborted at" type="timestamp" db:column="aborted_at"/>
+    <Attribute id="activityInstanceCancelledTimestamp" name="cancelled at" type="timestamp" db:column="cancelled_at"/>
+    <Attribute id="activityInstanceLastTimestamp" name="worked at" type="timestamp" db:column="worked_at"/>
+    <Attribute id="activityInstanceProcessInstanceActiveSince" name="process active since" type="timestamp" derivationQuery="simpleImported::Self.activityInstance2ProcessInstance.processInstanceActiveTimestamp"/>
+    <Attribute id="activityInstanceProcessInstanceAttachmentCount" name="process attachment count" type="integer" derivationQuery="simpleImported::Self.activityInstance2ProcessInstance.processInstanceAttachmentCount"/>
+    <Attribute id="activityInstanceRollbackable" name="rollbackable" type="boolean" db:column="rollbackable"/>
+    <Attribute id="activityInstanceContext" name="context" type="string" db:column="context"/>
+  </Entity>
+  <Entity id="ParameterType" gr:x="-1289" gr:y="-620" name="ParameterType" duration="persistent" attributeOrder="parameterTypeOid parameterTypeName parameterTypeDescription parameterTypeType" db:database="db1" db:table="parametertype">
+    <Attribute id="parameterTypeOid" name="oid" type="integer" key="true" db:column="oid"/>
+    <Attribute id="parameterTypeName" name="name" type="string" db:column="name"/>
+    <Attribute id="parameterTypeDescription" name="description" type="string" contentType="text/html" db:column="description"/>
+    <Attribute id="parameterTypeType" name="type" type="string" db:column="type"/>
+  </Entity>
+  <Entity id="ParameterInstance" gr:x="-1301" gr:y="0" name="ParameterInstance" duration="persistent" attributeOrder="parameterInstanceOid parameterInstanceName parameterInstanceValue parameterInstanceCurrent parameterInstanceTimestamp" db:database="db1" db:table="parameterinstance">
+    <Attribute id="parameterInstanceOid" key="true" name="oid" type="integer" db:column="oid"/>
+    <Attribute id="parameterInstanceName" name="name" type="string" derivationQuery="simpleImported::Self.parameterInstance2ParameterType.parameterTypeName"/>
+    <Attribute id="parameterInstanceValue" name="value" type="string" db:column="value"/>
+    <Attribute id="parameterInstanceCurrent" name="current" type="boolean" db:column="current"/>
+    <Attribute id="parameterInstanceTimestamp" name="timestamp" type="timestamp" db:column="timestamp"/>
+  </Entity>
+  <Entity id="SequenceFlow" gr:x="-416" gr:y="-940" name="SequenceFlow" duration="persistent" attributeOrder="sequenceFlowOid sequenceFlowLabel sequenceFlowCondition sequenceFlowDefault sequenceFlowSortNumber" db:database="db1" db:table="sequenceflow">
+    <Attribute id="sequenceFlowOid" key="true" name="oid" type="integer" db:column="oid"/>
+    <Attribute id="sequenceFlowLabel" name="label" type="string" db:column="label"/>
+    <Attribute id="sequenceFlowCondition" name="condition" type="string" db:column="condition"/>
+    <Attribute id="sequenceFlowDefault" name="default" type="boolean" db:column="default"/>
+    <Attribute id="sequenceFlowSortNumber" name="sort number" type="float" db:column="sort_number"/>
+  </Entity>
+  <Entity id="Notification" gr:x="-204" gr:y="286" name="Notification" duration="persistent" attributeOrder="notificationOid notificationMessage notificationRead" db:database="db1" db:table="notification">
+    <Attribute id="notificationOid" name="oid" key="true" type="integer" db:column="oid"/>
+    <Attribute id="notificationMessage" name="message" type="string" db:column="message"/>
+    <Attribute id="notificationRead" name="read" type="boolean" db:column="read"/>
+  </Entity>
+  <Entity id="Note" gr:x="-712" gr:y="-261" name="Note" duration="persistent" attributeOrder="noteOid noteText noteTimestamp noteUserName" db:database="db1" db:table="note">
+    <Attribute id="noteOid" key="true" name="oid" type="integer" db:column="oid"/>
+    <Attribute id="noteText" name="text" type="text" db:column="text"/>
+    <Attribute id="noteTimestamp" name="timestamp" type="timestamp" db:column="timestamp"/>
+    <Attribute id="noteUserName" name="userName" type="string" derivationQuery="simpleImported::Self.note2User.userName"/>
+  </Entity>
+  <Entity id="Attachment" name="Attachment" duration="persistent" gr:x="-423" gr:y="585" attributeOrder="attachmentOid attachmentFile attachmentTitle attachmentTimestamp attachmentUserName" db:database="db1" db:table="attachment">
+    <Attribute id="attachmentOid" name="oid" key="true" type="integer" db:column="oid"/>
+    <Attribute id="attachmentFile" name="file" type="blob" storageType="file" db:column="file"/>
+    <Attribute id="attachmentTitle" name="title" type="string" db:column="title"/>
+    <Attribute id="attachmentTimestamp" name="timestamp" type="timestamp" db:column="timestamp"/>
+    <Attribute id="attachmentUserName" name="userName" type="string" derivationQuery="simpleImported::Self.attachment2User.userName"/>
+  </Entity>
+  <Relationship id="ProcessInstance_Process" name="ProcessInstance_Process" sourceEntity="ProcessInstance" targetEntity="Process" db:database="db1" db:table="processinstance">
+    <RelationshipRole1 id="processInstance2Process" name="process" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="processInstanceOid" name="oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="process2ProcessInstances" name="processInstances" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="processOid" name="process_oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="ActivityType_ActivityInstance" name="ActivityType_ActivityInstance" sourceEntity="ActivityType" targetEntity="ActivityInstance" db:database="db1" db:table="activityinstance">
+    <RelationshipRole1 id="activityType2ActivityInstances" name="activityInstances" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="activityTypeOid" name="activitytype_oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="activityInstance2ActivityType" name="activityType" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="activityInstanceOid" name="oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="Process_ActivityType" name="Process_ActivityType" sourceEntity="Process" targetEntity="ActivityType" db:database="db1" db:table="activitytype">
+    <RelationshipRole1 id="process2ActivityTypes" name="activityTypes" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="processOid" name="process_oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="activityType2Process" name="process" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="activityTypeOid" name="oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="ProcessInstance_ActivityInstance" name="ProcessInstance_ActivityInstance" sourceEntity="ProcessInstance" targetEntity="ActivityInstance" db:database="db1" db:table="activityinstance">
+    <RelationshipRole1 id="processInstance2ActivityInstances" name="activityInstances" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="processInstanceOid" name="processinstance_oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="activityInstance2ProcessInstance" name="processInstance" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="activityInstanceOid" name="oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="ParameterType_ParameterInstance" name="ParameterType_ParameterInstance" sourceEntity="ParameterType" targetEntity="ParameterInstance" db:database="db1" db:table="parameterinstance">
+    <RelationshipRole1 id="parameterType2ParameterInstances" name="parameterInstances" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="parameterTypeOid" name="parametertype_oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="parameterInstance2ParameterType" name="parameterType" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="parameterInstanceOid" name="oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="Process_ParameterType" name="Process_ParameterType" sourceEntity="Process" targetEntity="ParameterType" db:database="db1" db:table="parametertype">
+    <RelationshipRole1 id="process2ParameterTypes" name="parameterTypes" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="processOid" name="process_oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="parameterType2Process" name="process" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="parameterTypeOid" name="oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="ProcessInstance_ParameterInstance" name="ProcessInstance_ParameterInstance" sourceEntity="ProcessInstance" targetEntity="ParameterInstance" db:database="db1" db:table="parameterinstance">
+    <RelationshipRole1 id="processInstance2ParameterInstances" name="parameterInstances" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="processInstanceOid" name="processinstance_oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="parameterInstance2ProcessInstance" name="processInstance" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="parameterInstanceOid" name="oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="ParameterInstance_ActivityInstance" name="ParameterInstance_ActivityInstance" sourceEntity="ParameterInstance" targetEntity="ActivityInstance" gr:bendpoints="200,-232,-685,-265;391,-232,-494,-265" db:database="db1" db:table="parameterinstance">
+    <RelationshipRole1 id="parameterInstance2ActivityInstance" name="activityInstance" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="parameterInstanceOid" name="oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="activityInstance2ParameterInstances" name="parameterInstances" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="activityInstanceOid" name="activityinstance_oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="NextActivityType_PreviousSequenceFlow" name="NextActivityType_PreviousSequenceFlow" sourceEntity="ActivityType" targetEntity="SequenceFlow" gr:bendpoints="71,-188,75,104" db:database="db1" db:table="sequenceflow">
+    <RelationshipRole1 id="nextActivityType2PreviousSequenceFlows" name="previousConditions" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="activityTypeOid" name="activitytype_oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="previousSequenceFlow2NextActivityType" name="nextActivityType" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="sequenceFlowOid" name="oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="PreviousActivityType_NextSequenceFlow" name="PreviousActivityType_NextSequenceFlow" sourceEntity="ActivityType" targetEntity="SequenceFlow" gr:bendpoints="-76,-188,-72,104" db:database="db1" db:table="sequenceflow">
+    <RelationshipRole1 id="previousActivityType2NextSequenceFlows" name="nextConditions" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="activityTypeOid" name="activitytype_oid_2"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="nextSequenceFlow2PreviousActivityType" name="previousActivityType" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="sequenceFlowOid" name="oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="PreviousActivityInstance_NextActivityInstance" name="PreviousActivityInstance_NextActivityInstance" sourceEntity="ActivityInstance" targetEntity="ActivityInstance" gr:bendpoints="-118,188,-118,188;-139,133,-139,133" db:database="db1" db:table="previousactivityinstance_nexta">
+    <RelationshipRole1 id="previousActivityInstance2NextActivityInstances" name="nextActivityInstances" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="activityInstanceOid" name="activityinstance_oid_2"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="nextActivityInstance2PreviousActivityInstances" name="previousActivityInstances" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="activityInstanceOid" name="activityinstance_oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="User_ActivityInstance" name="User_ActivityInstance" sourceEntity="User" targetEntity="ActivityInstance" db:database="db1" db:table="activityinstance">
+    <RelationshipRole1 id="user2ActivityInstances" name="activityInstances" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="userOID" name="user_oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="activityInstance2User" name="user" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="activityInstanceOid" name="oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="ActivityInstance_CandidateUser" name="ActivityInstance_CandidateUser" sourceEntity="ActivityInstance" targetEntity="User" gr:bendpoints="201,161,-240,0" db:database="db1" db:table="activityinstance_candidateuser">
+    <RelationshipRole1 id="activityInstance2CandidateUsers" name="activityInstanceCandidateUsers" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="activityInstanceOid" name="activityinstance_oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="candidateUser2ActivityInstances" name="candidateUserActivityInstances" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="userOID" name="user_oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="Group_ActivityType" name="Group_ActivityType" sourceEntity="Group" targetEntity="ActivityType" gr:bendpoints="-112,-546,582,244" db:database="db1" db:table="group_activitytype">
+    <RelationshipRole1 id="group2ActivityTypes" name="activityTypes" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="groupOID" name="group_oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="activityType2Groups" name="groups" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="activityTypeOid" name="activitytype_oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="User_Notifications" name="User_Notifications" sourceEntity="User" targetEntity="Notification" db:database="db1" db:table="user_notifications">
+    <RelationshipRole1 id="user2Notifications" name="notifications" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="userOID" name="user_oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="notification2Users" name="users" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="notificationOid" name="notification_oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="ActivityInstance_Notifications" name="ActivityInstance_Notification" sourceEntity="ActivityInstance" targetEntity="Notification" db:database="db1" db:table="notification">
+    <RelationshipRole1 id="activityInstance2Notifications" name="notifications" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="activityInstanceOid" name="activityinstance_oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="notification2ActivityInstance" name="activityInstance" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="notificationOid" name="oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="Note_ProcessInstance" name="Note_ProcessInstance" sourceEntity="Note" targetEntity="ProcessInstance" db:database="db1" db:table="note_processinstance">
+    <RelationshipRole1 id="note2ProcessInstances" name="processInstances" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="noteOid" name="note_oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="processInstance2Notes" name="processNotes" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="processInstanceOid" name="processinstance_oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="Note_ActivityInstance" name="Note_ActivityInstance" sourceEntity="Note" targetEntity="ActivityInstance" db:database="db1" db:table="note_activityinstance">
+    <RelationshipRole1 id="note2ActivityInstances" name="activityInstances" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="noteOid" name="note_oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="activityInstance2Notes" name="activityInstanceNotes" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="activityInstanceOid" name="activityinstance_oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="ActivityInstance_NextActivityInstanceNotes" name="ActivityInstance_NextActivityInstanceNotes" sourceEntity="ActivityInstance" targetEntity="Note" gr:bendpoints="-230,-100,54,178" db:database="db1" db:table="note">
+    <RelationshipRole1 id="nextActivityInstance2Notes" name="nextActivityInstanceNote" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="activityInstanceOid" name="activityinstance_oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="note2NextActivityInstance" name="activityInstance" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="noteOid" name="oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="Note_User" name="Note_User" sourceEntity="Note" targetEntity="User" gr:bendpoints="386,-66,-342,-498" db:database="db1" db:table="note">
+    <RelationshipRole1 id="note2User" name="user" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="noteOid" name="oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="user2Notes" name="userNotes" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="userOID" name="user_oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="ActivityInstance_Group" name="ActivityInstance_Group" sourceEntity="ActivityInstance" targetEntity="Group" gr:bendpoints="564,-84,-130,-240" db:database="db1" db:table="activityinstance">
+    <RelationshipRole1 id="activityInstance2Group" name="activityInstanceGroup" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="activityInstanceOid" name="oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="group2ActivityInstances" name="activityInstances" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="groupOID" name="group_oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="Attachment_ProcessInstance" name="Attachment_ProcessInstance" sourceEntity="Attachment" targetEntity="ProcessInstance" db:database="db1" db:table="attachment_processinstance">
+    <RelationshipRole1 id="attachment2ProcessInstances" name="processInstances" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="attachmentOid" name="attachment_oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="processInstance2Attachments" name="processAttachments" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="processInstanceOid" name="processinstance_oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="Attachment_User" name="Attachment_User" sourceEntity="Attachment" targetEntity="User" db:database="db1" db:table="attachment">
+    <RelationshipRole1 id="attachment2User" name="user" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="attachmentOid" name="oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="user2Attachments" name="userAttachments" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="userOID" name="user_oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="SubprocessInstances_ParentProcessInstance" name="SubprocessInstances_ParentProcessInstance" sourceEntity="ProcessInstance" targetEntity="ProcessInstance" gr:bendpoints="-123,149,-123,149;-153,98,-153,98" db:database="db1" db:table="processinstance">
+    <RelationshipRole1 id="subprocessInstance2ParentProcessInstance" name="ParentProcessInstance" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="processInstanceOid" name="oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="parentProcessInstance2SubprocessInstances" name="SubprocessInstances" maxCard="N" cascadeDelete="false">
+      <db:JoinColumn attribute="processInstanceOid" name="processinstance_oid"/>
+    </RelationshipRole2>
+  </Relationship>
+</DataModel>

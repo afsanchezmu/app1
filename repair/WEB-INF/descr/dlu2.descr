@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.operation.rtx.db.DeleteUnitService" name="Remove Notification">
+  <Entity>Notification</Entity>
+  <CascadeDeleteRoles/>
+  <FetchMode keyCondition="kcond15">HQL</FetchMode>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Remove Notification</ModelName>
+    <ParentContainer>sv4</ParentContainer>
+    <MasterPage ignore="false">mpage3</MasterPage>
+    <NavigationAncestors>sv4</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>true</CheckPermission>
+    <PermissionElement>sv4</PermissionElement>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <OperationParam unit="dlu2">kcond15.notificationOid</OperationParam>
+      <Params>pwu8.block|sp|pwu7.current.activityInstanceOid|kcond19.activityInstanceOid|sfld13_label|link|pwu7.block|sfld13_output|rcond22.processOid|pwu7.sortCriteria|kcond20.processOid|kcond17.activityTypeOid|cmplink|rcond23.userOID|rcond24.processOid|acond20|pu20.processInstanceOid|kcond18.activityInstanceOid|smc|pwu7.newSortAttribute</Params>
+    </OperationParams>
+    <OutgoingLinks></OutgoingLinks>
+    <IsLinkHistoryRecorded>true</IsLinkHistoryRecorded>
+  </WRParameterService>
+</Descriptor>
+ 

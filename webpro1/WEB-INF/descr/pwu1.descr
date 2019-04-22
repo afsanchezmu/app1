@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.content.rtx.db.PowerIndexUnitService" name="Activity List">
+  <UseFirstRowAsDefaultCurrent>false</UseFirstRowAsDefaultCurrent>
+  <Results maxResults="" blockFactor="" blockWindow=""/>
+  <SortHistorySize>3</SortHistorySize>
+  <Checkable>false</Checkable>
+  <Query entity="ActivityInstance">
+    <Input id="p0" param="rcond2.processInstanceOid" type="integer" implied="false" expandStyle="in"/>
+    <Output id="activityInstanceOid" name="oid" index="0"/>
+    <Output id="activityInstanceReadyTimestamp" name="readySince" index="1"/>
+    <Output id="activityInstanceStatus" name="status" index="2"/>
+    <Output id="activityInstanceExecution" name="execution" index="3"/>
+    <Output id="activityInstanceCancelledTimestamp" name="cancelledAt" index="4"/>
+    <Output id="activityInstanceAbortedTimestamp" name="abortedAt" index="5"/>
+    <Output id="activityInstanceCompletedTimestamp" name="completedAt" index="6"/>
+    <Output id="activityInstanceActiveTimestamp" name="activeSince" index="7"/>
+    <Output id="activityInstanceGroupName" name="group" index="8"/>
+    <Output id="activityInstanceUserName" name="userName" index="9"/>
+    <Output id="activityInstanceName" name="name" index="10"/>
+    <HQL>select a_activityInstance.oid, a_activityInstance.readySince, a_activityInstance.status, a_activityType_activityInstance2ActivityType.execution, a_activityInstance.cancelledAt, a_activityInstance.abortedAt, a_activityInstance.completedAt, a_activityInstance.activeSince, a_group_activityInstance2Group.groupName, a_user_activityInstance2User.userName, a_activityInstance.name from ActivityInstance a_activityInstance left join a_activityInstance.activityInstanceGroup a_group_activityInstance2Group left join a_activityInstance.activityType a_activityType_activityInstance2ActivityType left join a_activityInstance.user a_user_activityInstance2User
+      <Where defaultPolicy="fill" allImplied="false">(({[p0](a_activityInstance.processInstance.oid in(?))}))</Where>order by $$SORT_CRITERIA$$
+    </HQL>
+  </Query>
+  <SortAttributes>
+    <Attribute id="activityInstanceReadyTimestamp" dynamic="true" order="asc">a_activityInstance.readySince</Attribute>
+    <Attribute id="activityInstanceActiveTimestamp" dynamic="true" order="asc">a_activityInstance.activeSince</Attribute>
+    <Attribute id="activityInstanceCompletedTimestamp" dynamic="true" order="asc">a_activityInstance.completedAt</Attribute>
+    <Attribute id="activityInstanceName" dynamic="true" order="asc">a_activityInstance.name</Attribute>
+    <Attribute id="activityInstanceGroupName" dynamic="true" order="asc">a_group_activityInstance2Group.groupName</Attribute>
+    <Attribute id="activityInstanceStatus" dynamic="true" order="asc">a_activityInstance.status</Attribute>
+    <Attribute id="activityInstanceAbortedTimestamp" dynamic="true" order="asc">a_activityInstance.abortedAt</Attribute>
+    <Attribute id="activityInstanceCancelledTimestamp" dynamic="true" order="asc">a_activityInstance.cancelledAt</Attribute>
+    <Attribute id="activityInstanceUserName" dynamic="true" order="asc">a_user_activityInstance2User.userName</Attribute>
+    <Attribute id="activityInstanceExecution" dynamic="true" order="desc">a_activityType_activityInstance2ActivityType.execution</Attribute>
+    <Attribute id="activityInstanceReadyTimestamp" dynamic="false" order="asc">a_activityInstance.readySince</Attribute>
+    <Attribute id="activityInstanceActiveTimestamp" dynamic="false" order="asc">a_activityInstance.activeSince</Attribute>
+    <Attribute id="activityInstanceCompletedTimestamp" dynamic="false" order="asc">a_activityInstance.completedAt</Attribute>
+    <Attribute id="activityInstanceName" dynamic="false" order="asc">a_activityInstance.name</Attribute>
+    <Attribute id="activityInstanceGroupName" dynamic="false" order="asc">a_group_activityInstance2Group.groupName</Attribute>
+    <Attribute id="activityInstanceStatus" dynamic="false" order="asc">a_activityInstance.status</Attribute>
+    <Attribute id="activityInstanceAbortedTimestamp" dynamic="false" order="asc">a_activityInstance.abortedAt</Attribute>
+    <Attribute id="activityInstanceCancelledTimestamp" dynamic="false" order="asc">a_activityInstance.cancelledAt</Attribute>
+    <Attribute id="activityInstanceUserName" dynamic="false" order="asc">a_user_activityInstance2User.userName</Attribute>
+    <Attribute id="activityInstanceExecution" dynamic="false" order="desc">a_activityType_activityInstance2ActivityType.execution</Attribute>
+  </SortAttributes>
+  <wr:Validation xmlns:wr="http://www.webratio.com/2013/WebML/WRValidation">
+    <wr:ValidationLink elementId="pwu1" linkId="ln12" action="validate"/>
+    <wr:ValidationLink elementId="pwu1" linkId="ln13" action="validate"/>
+  </wr:Validation>
+</Descriptor>

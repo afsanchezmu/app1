@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.bpm.services.MetadataUnitService" name="Processes">
+  <Mode>verifyMetadata</Mode>
+  <CreateTestUsers/>
+  <UsersPerLane>2</UsersPerLane>
+  <wr:Validation xmlns:wr="http://www.webratio.com/2013/WebML/WRValidation">
+    <wr:ValidationLink elementId="pu10" linkId="ln16" action="validate"/>
+    <wr:ValidationLink elementId="pu10" linkId="ln19" action="validate"/>
+    <wr:ValidationLink elementId="pu10" linkId="ln20" action="validate"/>
+    <wr:ValidationLink elementId="pu10" linkId="ln22" action="validate"/>
+    <wr:ValidationLink elementId="pu10" linkId="ln23" action="validate"/>
+    <wr:ValidationLink elementId="pu10" linkId="ln24" action="validate"/>
+    <CheckedUnitItemsValidationRule service="com.webratio.units.validation.CheckedUnitItemsValidationRuleService" elementId="pu10" id="pu10Checked" name="Checked Items">
+      <Predicate>min</Predicate>
+      <ItemCount>1</ItemCount>
+    </CheckedUnitItemsValidationRule>
+  </wr:Validation>
+</Descriptor>

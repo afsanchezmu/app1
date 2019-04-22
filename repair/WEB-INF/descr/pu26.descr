@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.bpm.services.ProcessUnitService" name="Complete Activity">
+  <Mode>completeActivity</Mode>
+  <OnFailRemoveTaskOid>true</OnFailRemoveTaskOid>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Complete Activity</ModelName>
+    <ParentContainer>hym2</ParentContainer>
+    <MasterPage ignore="false">sv3mpage4</MasterPage>
+    <NavigationAncestors>sv3|sv3Activities|hym2</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>true</CheckPermission>
+    <PermissionElement>hym2</PermissionElement>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <Params>fld21_slot|sp|fld18_slot|fld20_slot|cmplink|pu17.shownMessages|link|pu17.errorInfo|fld17_slot|fld19_slot|smc</Params>
+    </OperationParams>
+    <OutgoingLinks>
+      <Link resultCode="error">pu26ko</Link>
+    </OutgoingLinks>
+  </WRParameterService>
+</Descriptor>

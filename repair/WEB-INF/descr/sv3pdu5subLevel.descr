@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultLinkService">
+  <Target>sv3page18</Target>
+  <Secure>false</Secure>
+  <Source>sv3pdu5</Source>
+  <SourcePage>sv3page18</SourcePage>
+  <ReachableAlternativePages></ReachableAlternativePages>
+  <Navigates>true</Navigates>
+  <StartsTransaction>false</StartsTransaction>
+  <EndsTransaction>false</EndsTransaction>
+  <StartPageIdRequiredByTarget>false</StartPageIdRequiredByTarget>
+  <PreservedContextParams>
+    <Params>sv3pdu5.processInstanceOid|sv3pdu5.processUUID|sv3pdu5.contextProcessInstanceOid</Params>
+  </PreservedContextParams>
+  <ContextPropagations>
+    <ContextPropagation targetParam="sv3pdu5.processInstanceOid" sourceUnit="sv3pdu5" sourceParam="data[].subProcessInstanceOids[]"/>
+    <ContextPropagation targetParam="sv3pdu5.processUUID" sourceUnit="sv3pdu5" sourceParam="data[].subProcesses[].uuid"/>
+    <ContextPropagation targetParam="sv3pdu5.contextProcessInstanceOid" sourceUnit="sv3pdu5" sourceParam="contextProcessInstanceOid"/>
+  </ContextPropagations>
+</Descriptor>

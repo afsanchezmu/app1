@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.operation.rtx.db.ConnectUnitService" name="Connect to process">
+  <Role useHQL="false">processInstance2Attachments</Role>
+  <Source id="ProcessInstance">
+    <Query entity="ProcessInstance">
+      <Input id="p0" param="sv4kcond26.processInstanceOid" type="integer" implied="false" expandStyle="in"/>
+      <HQL>from ProcessInstance a_processInstance
+        <Where defaultPolicy="fill" allImplied="false">(({[p0]a_processInstance.oid in(?)}))</Where>
+      </HQL>
+    </Query>
+  </Source>
+  <Target id="Attachment">
+    <Query entity="Attachment">
+      <Input id="p0" param="sv4kcond27.attachmentOid" type="integer" implied="false" expandStyle="in"/>
+      <HQL>from Attachment a_attachment
+        <Where defaultPolicy="fill" allImplied="false">(({[p0]a_attachment.oid in(?)}))</Where>
+      </HQL>
+    </Query>
+  </Target>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Connect to process</ModelName>
+    <ParentContainer>sv4opg1</ParentContainer>
+    <MasterPage ignore="false">sv4mpage4</MasterPage>
+    <NavigationAncestors>sv4|sv4Activities</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>true</CheckPermission>
+    <PermissionElement>sv4</PermissionElement>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <OperationParam unit="sv4cnu1">sv4kcond26.processInstanceOid</OperationParam>
+      <OperationParam unit="sv4cnu1">sv4kcond27.attachmentOid</OperationParam>
+      <Params>sv4par156|sv4pwu11.block|sp|sv4kcond29.activityInstanceOid|link|sv4kcond31.userOID|sv4rcond37.processInstanceOid|sv4pwu12.block|cmplink|sv4rcond36.processInstanceOid|sv4kcond30.activityInstanceOid|sv4pu37.activityInstanceOid|smc|sv4rcond38.activityInstanceOid|sv4kcond28.processInstanceOid</Params>
+    </OperationParams>
+    <OutgoingLinks>
+      <Link resultCode="success">sv4oln27</Link>
+    </OutgoingLinks>
+  </WRParameterService>
+</Descriptor>

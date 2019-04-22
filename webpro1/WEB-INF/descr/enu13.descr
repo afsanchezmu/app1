@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.content.rtx.EntryUnitService" name="User Input">
+  <FormFields>
+    <Field id="fld21" name="Description" type="text" localized="false">
+      <Slot id="fld21_slot" label="true" output="true"/>
+    </Field>
+    <Field id="fld22" name="Title" type="string" localized="false">
+      <Slot id="fld22_slot" label="true" output="true"/>
+    </Field>
+    <Field id="fld23" name="Subject" type="string" localized="false">
+      <Slot id="fld23_slot" label="true" output="true"/>
+    </Field>
+    <Field id="fld24" name="Comment" type="text" localized="false">
+      <Slot id="fld24_slot" label="true" output="true"/>
+    </Field>
+    <Field id="fld31" name="TitleCheck" type="boolean" localized="true">
+      <Slot id="fld31_slot" label="true" output="true"/>
+    </Field>
+  </FormFields>
+  <wr:Validation xmlns:wr="http://www.webratio.com/2013/WebML/WRValidation">
+    <wr:ValidationLink elementId="enu13" linkId="ln131" action="validate"/>
+    <MandatoryValidationRule service="com.webratio.units.validation.MandatoryValidationRuleService" elementId="fld24" id="mnd2" name="required">
+      <CompanionField/>
+      <Predicate/>
+      <IgnoreCase/>
+      <Value/>
+    </MandatoryValidationRule>
+    <MandatoryValidationRule service="com.webratio.units.validation.MandatoryValidationRuleService" elementId="fld31" id="mnd8" name="required">
+      <CompanionField/>
+      <Predicate/>
+      <IgnoreCase/>
+      <Value/>
+    </MandatoryValidationRule>
+  </wr:Validation>
+</Descriptor>

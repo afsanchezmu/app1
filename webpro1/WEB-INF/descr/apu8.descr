@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.bpm.services.ActivityParametersUnitService" name="Get Parameters">
+  <OnFailRemoveTaskOid/>
+  <InActivityModule>false</InActivityModule>
+  <RetrievePreviousInstances>false</RetrievePreviousInstances>
+  <RetrieveNextTypes>false</RetrieveNextTypes>
+  <Output id="ap16" uuid="JUPCRMH7_ZEGUI2">Subject</Output>
+  <Output id="ap17" uuid="JUPC0TM6_V9CDTP">Title</Output>
+  <Output id="ap18" uuid="JUPCQGH1_1QHZQE">Date</Output>
+  <Output id="ap19" uuid="JUPTLTFF_NAGTC1">Aprove</Output>
+  <Output id="ap21" uuid="JUPCF637_VIIPOQ">Description</Output>
+  <Output id="ap22" uuid="JUPTFZ27_6EXCAZ">Comment</Output>
+</Descriptor>

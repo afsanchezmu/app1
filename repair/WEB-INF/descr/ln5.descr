@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultLinkService">
+  <Target>pu8</Target>
+  <Secure>false</Secure>
+  <Source>hinu1</Source>
+  <SourcePage>page2</SourcePage>
+  <ReachableAlternativePages></ReachableAlternativePages>
+  <Navigates>true</Navigates>
+  <StartsTransaction>false</StartsTransaction>
+  <EndsTransaction>false</EndsTransaction>
+  <StartPageIdRequiredByTarget>true</StartPageIdRequiredByTarget>
+  <PreservedContextParams>
+    <Params>pu8.activityInstanceOid</Params>
+  </PreservedContextParams>
+  <ContextPropagations>
+    <ContextPropagation targetParam="pu8.groupOid" sourceUnit="hinu1" sourceParam="data[].groupOID"/>
+    <ContextPropagation targetParam="pu8.userOid" sourceUnit="hinu1" sourceParam="data[].hiulvl1data[].userOID"/>
+  </ContextPropagations>
+  <PageActions>
+    <PrepareClose pages="page3|page2"/>
+    <PrepareClose pages="page2"/>
+    <PrepareClose pages=""/>
+  </PageActions>
+</Descriptor>

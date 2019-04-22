@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.DefaultPageService" name="Definicion de la idea">
+  <ParentContainer>hym2</ParentContainer>
+  <Secure>false</Secure>
+  <Localized>false</Localized>
+  <CheckPermission>false</CheckPermission>
+  <Alternatives/>
+  <ProtectedSubPages/>
+  <Navigations knownEffects="#pr#">
+    <Navigation name="0" nonContextual="true" interPage="always" links="page14"/>
+    <Navigation name="1" nonContextual="true" interPage="always" links="page14.link"/>
+    <Navigation name="2" links="page14.auto-link"/>
+    <Navigation name="3" links="page14.auto-link" selectiveRefresh="true"/>
+    <Navigation name="4" interPage="always" links="icu1.enter|oln18" effects="#pr#"/>
+    <Navigation name="5" links="ln100|impl" postPropagatedLink="ln100"/>
+    <Navigation name="6" links="ln101|impl" postPropagatedLink="ln101"/>
+    <Navigation name="7" links="ln99|impl" postPropagatedLink="ln99"/>
+  </Navigations>
+  <ContextInitServices/>
+  <ContextInits></ContextInits>
+  <UselessPreserves>
+    <UselessPreserve navs="3|2|7|6|5" futile=""/>
+  </UselessPreserves>
+  <LinkSequence>ln102|ln103</LinkSequence>
+  <UnitComputations>
+    <UnitComputation unit="apu3">
+      <NavigationCondition selectiveRefresh="true" effects="#pr#"/>
+    </UnitComputation>
+    <UnitComputation unit="enu8" formBased="true">
+      <NavigationCondition selectiveRefresh="true" effects="#pr#"/>
+      <RefreshFormAll navs="1|0|7|6|5|4"/>
+    </UnitComputation>
+    <UnitComputation unit="enu9" formBased="true">
+      <NavigationCondition selectiveRefresh="true" effects="#pr#"/>
+      <RefreshFormAll navs="1|0|7|6|5|4"/>
+    </UnitComputation>
+  </UnitComputations>
+  <ManualLinks>
+    <ManualLink>ln99</ManualLink>
+    <ManualLink>ln100</ManualLink>
+    <ManualLink>ln101</ManualLink>
+  </ManualLinks>
+  <Variables></Variables>
+  <Conditions></Conditions>
+  <Layouts>
+    <Layout id="page14_grid_0">
+      <Layout id="page14_cell_0">
+        <Layout id="enu9_0" unitId="enu9"></Layout>
+      </Layout>
+      <Layout id="page14_cell_8">
+        <Layout id="enu8_0" unitId="enu8"></Layout>
+      </Layout>
+    </Layout>
+  </Layouts>
+  <AutoLinkInfo>
+    <PreservedContextParams>
+      <Params>mc</Params>
+    </PreservedContextParams>
+    <PreservedContextParams selectiveRefresh="true">
+      <Params>mc</Params>
+    </PreservedContextParams>
+  </AutoLinkInfo>
+  <!--Page Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultPageParameterService">
+    <ModelName>Definicion de la idea</ModelName>
+    <ParentModule>hym2</ParentModule>
+    <NavigationAncestors/>
+    <LinkIdRequired>true</LinkIdRequired>
+    <PageParams>
+      <PageParam preservedByForm="true" unit="enu9">fld13_slot</PageParam>
+      <PageParam preservedByForm="true" unit="enu9">fld15_slot</PageParam>
+      <PageParam>ap1</PageParam>
+      <PageParam>ap5</PageParam>
+      <PageParam>link</PageParam>
+      <PageParam>nav</PageParam>
+      <PageParam>so</PageParam>
+      <PageParam>mc</PageParam>
+      <PageParam>ajax</PageParam>
+      <PageParam>ajaxRefresh</PageParam>
+    </PageParams>
+  </WRParameterService>
+</Descriptor>

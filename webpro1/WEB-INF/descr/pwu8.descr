@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.content.rtx.db.PowerIndexUnitService" name="Notifications">
+  <UseFirstRowAsDefaultCurrent>false</UseFirstRowAsDefaultCurrent>
+  <Results maxResults="" blockFactor="5" blockWindow=""/>
+  <SortHistorySize>1</SortHistorySize>
+  <Checkable>false</Checkable>
+  <Query entity="Notification">
+    <Input id="p0" param="rcond23.userOID" type="integer" implied="false" expandStyle="in"/>
+    <Input id="p1" param="rcond24.processOid" type="integer" implied="false" expandStyle="in"/>
+    <Output id="notificationOid" name="oid" index="0"/>
+    <Output id="notificationMessage" name="message" index="1"/>
+    <Output id="notificationRead" name="read" index="2"/>
+    <HQL>select a_notification.oid, a_notification.message, a_notification.read from Notification a_notification
+      <Where defaultPolicy="fill" allImplied="false">(({[p0]a_notification.oid in(select a_notification_p0.source_oid from Rel_Notification_to_users a_notification_p0 where a_notification_p0.target_oid in(?))})) and (({[p1](a_notification.activityInstance.processInstance.process.oid in(?))}))</Where>order by a_notification.oid asc
+    </HQL>
+  </Query>
+  <SortAttributes>
+    <Attribute id="notificationOid" dynamic="false" order="asc">a_notification.oid</Attribute>
+  </SortAttributes>
+  <wr:Validation xmlns:wr="http://www.webratio.com/2013/WebML/WRValidation">
+    <wr:ValidationLink elementId="pwu8" linkId="ln89" action="validate"/>
+    <wr:ValidationLink elementId="pwu8" linkId="ln90" action="validate"/>
+    <wr:ValidationLink elementId="pwu8" linkId="ln91" action="validate"/>
+  </wr:Validation>
+</Descriptor>

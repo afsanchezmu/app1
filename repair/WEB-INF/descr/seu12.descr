@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.utility.rtx.db.SelectorUnitService" name="Groups">
+  <MaxResults/>
+  <Query entity="Group">
+    <Input id="p0" param="rcond25.processOid" type="integer" implied="false" expandStyle="in"/>
+    <Output id="groupOID" name="oid" index="0"/>
+    <Output id="groupName" name="groupName" index="1"/>
+    <HQL>select a_group.oid, a_group.groupName from Group a_group
+      <Where defaultPolicy="fill" allImplied="false">(({[p0]a_group.oid in(select a_group_p0.oid from Group a_group_p0 inner join a_group_p0.activityTypes activityType_p0_1 inner join activityType_p0_1.process process_p0_0 where process_p0_0.oid in(?))}))</Where>
+    </HQL>
+  </Query>
+</Descriptor>
+ 

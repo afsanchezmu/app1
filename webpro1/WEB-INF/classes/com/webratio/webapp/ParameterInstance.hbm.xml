@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="true" default-cascade="none" default-access="property" default-lazy="true">
+  <class name="com.webratio.webapp.ParameterInstance" table="`parameterinstance`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="oid" column="`oid`" type="java.lang.Integer">
+      <generator class="com.webratio.rtx.hibernate.MaxPlusOneIncrementGenerator"/>
+    </id>
+    <property name="value" column="`value`" type="java.lang.String" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="current" column="`current`" type="java.lang.Boolean" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="timestamp" column="`timestamp`" type="java.sql.Timestamp" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <many-to-one name="parameterType" class="com.webratio.webapp.ParameterType" update="true" insert="true" not-found="exception" unique="false" optimistic-lock="true" embed-xml="true">
+      <column name="`parametertype_oid`"/>
+    </many-to-one>
+    <many-to-one name="processInstance" class="com.webratio.webapp.ProcessInstance" update="true" insert="true" not-found="exception" unique="false" optimistic-lock="true" embed-xml="true">
+      <column name="`processinstance_oid`"/>
+    </many-to-one>
+    <many-to-one name="activityInstance" class="com.webratio.webapp.ActivityInstance" update="true" insert="true" not-found="exception" unique="false" optimistic-lock="true" embed-xml="true">
+      <column name="`activityinstance_oid`"/>
+    </many-to-one>
+  </class>
+  <!-- mapping for relationship 'parameterType[parameterInstance2ParameterType]' -->
+  <class entity-name="com.webratio.webapp.Rel_ParameterInstance_to_parameterType" table="`parameterinstance`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="source_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="target_oid" column="`parametertype_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+  <!-- mapping for relationship 'processInstance[parameterInstance2ProcessInstance]' -->
+  <class entity-name="com.webratio.webapp.Rel_ParameterInstance_to_processInstance" table="`parameterinstance`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="source_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="target_oid" column="`processinstance_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+  <!-- mapping for relationship 'activityInstance[parameterInstance2ActivityInstance]' -->
+  <class entity-name="com.webratio.webapp.Rel_ParameterInstance_to_activityInstance" table="`parameterinstance`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="source_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="target_oid" column="`activityinstance_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+</hibernate-mapping>

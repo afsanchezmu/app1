@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.rtx.core.ModelService" crc="Ny4yLjE4LjIwMTkwNDIwQ291bnRyeUlTT0N0eFBhcmFtR3JvdXBDdHhQYXJhbUxhbmd1YWdlSVNPQ3R4UGFyYW1Vc2VyQ3R4UGFyYW0=" enterpriseApplication="false">
+  <WebRatioVersion>7.2.18</WebRatioVersion>
+  <WebRatioBuildId>201903231300</WebRatioBuildId>
+  <WebContainer httpPort="8080" httpsPort="8443" defaultApplicationEncoding="UTF-8" defaultServerEncoding="ISO-8859-1" useDefaultURLEncoding="false" serverName="" useAbsoluteUrl="false" httpRequestHelperClass="com.webratio.struts.DefaultHttpRequestHelper" maxUploadFileSize="12M" defaultCookieTimeout="30"/>
+  <WebModel defaultLoginPage="WebRatio_Default.login.jsp" defaultExpirePage="WRDefault_Default.expire.jsp" defaultErrorPage="WebRatio_Default.error.jsp">
+    <SiteView id="sv1" homePage="page1" name="Home" home="true" loginPage="WebRatio_Default.login.jsp" expirePage="WRDefault_Default.expire.jsp" errorPage="WebRatio_Default.error.jsp"/>
+    <SiteView id="sv2" homePage="page5" name="BP Administration" home="false" customURLName="BPAdmin" loginPage="WebRatio_Default.login.jsp" expirePage="WRDefault_Default.expire.jsp" errorPage="WebRatio_Default.error.jsp"/>
+    <SiteView id="sv3" homePage="page8" name="Lane 1" home="false" protected="true" loginPage="WebRatio_Default.login.jsp" expirePage="WRDefault_Default.expire.jsp" errorPage="WebRatio_Default.error.jsp">
+      <Area id="sv3Activities" name="BPM Activities" topLevel="true">
+        <OperationGroup id="sv3opg2" name="Notes"/>
+        <OperationGroup id="sv3opg1" name="Attachments"/>
+      </Area>
+    </SiteView>
+    <SiteView id="sv4" homePage="page17" name="realista" home="false" protected="true" loginPage="WebRatio_Default.login.jsp" expirePage="WRDefault_Default.expire.jsp" errorPage="WebRatio_Default.error.jsp">
+      <Area id="sv4Activities" name="BPM Activities" topLevel="true">
+        <OperationGroup id="sv4opg2" name="Notes"/>
+        <OperationGroup id="sv4opg1" name="Attachments"/>
+      </Area>
+    </SiteView>
+    <ModuleView id="mov1">
+      <HybridModule id="hym2" name="Add title"/>
+      <HybridModule id="hym3" name="Add description"/>
+      <HybridModule id="hym1" name="Idealista Review"/>
+      <HybridModule id="hym4" name="Aproval"/>
+    </ModuleView>
+  </WebModel>
+  <SessionParameters>
+    <SessionParameter name="CountryISOCtxParam" type="string">CountryISOCtxParam</SessionParameter>
+    <SessionParameter name="GroupCtxParam" type="string">GroupCtxParam</SessionParameter>
+    <SessionParameter name="LanguageISOCtxParam" type="string">LanguageISOCtxParam</SessionParameter>
+    <SessionParameter name="UserCtxParam" type="string">UserCtxParam</SessionParameter>
+  </SessionParameters>
+  <ServiceDataProviders>
+    <CookieStorageProvider id="userCredentials" name="USER_CREDENTIALS" cookieName="USER_CREDENTIALS" encryptionKey="1K2HG508I6" _sel="t"/>
+  </ServiceDataProviders>
+  <LinkPreservedParameters>
+    <LinkPreservedParameter>boxed</LinkPreservedParameter>
+    <LinkPreservedParameter>fllbck</LinkPreservedParameter>
+  </LinkPreservedParameters>
+  <DefaultFileEncoding/>
+  <Statistics pages="24" units="165"/>
+  <BPMBased>true</BPMBased>
+  <AutoLoadServices>_i18n|_bpm|_job.manager</AutoLoadServices>
+</Descriptor>

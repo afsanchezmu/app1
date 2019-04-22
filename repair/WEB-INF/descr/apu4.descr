@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.bpm.services.ActivityParametersUnitService" name="Set Parameters">
+  <OnFailRemoveTaskOid>true</OnFailRemoveTaskOid>
+  <InActivityModule>true</InActivityModule>
+  <RetrievePreviousInstances>false</RetrievePreviousInstances>
+  <RetrieveNextTypes>false</RetrieveNextTypes>
+  <Input id="ap12" uuid="H6HJWCFB_I19UU">RepairFile</Input>
+  <Input id="ap19" uuid="H6HNT4VO_4NS29">Customer Decision</Input>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Set Parameters</ModelName>
+    <ParentContainer>hym3</ParentContainer>
+    <MasterPage ignore="false">sv3mpage4</MasterPage>
+    <NavigationAncestors>sv3|sv3Activities|hym3</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>true</CheckPermission>
+    <PermissionElement>hym3</PermissionElement>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <OperationParam unit="apu4">ap19</OperationParam>
+      <OperationParam unit="apu4">ap12</OperationParam>
+      <Params>slot9|fld22_slot|sp|fld27_slot|cmplink|pu17.shownMessages|link|fld23_slot|fld24_slot|fld25_slot|fld26_slot|pu17.errorInfo|sfld20_presel|smc</Params>
+    </OperationParams>
+    <SecondaryIncomingLinks>ln145|ln148</SecondaryIncomingLinks>
+    <OutgoingLinks>
+      <Link resultCode="success.ln149">oln23</Link>
+      <Link resultCode="success.ln150">oln24</Link>
+      <Link resultCode="error">apu4ko</Link>
+    </OutgoingLinks>
+    <IsLinkHistoryRecorded>true</IsLinkHistoryRecorded>
+  </WRParameterService>
+</Descriptor>

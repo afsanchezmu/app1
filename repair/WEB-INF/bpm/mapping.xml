@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BPMMapping>
+  <AdministrationView id="sv2">BP Administration</AdministrationView>
+  <BPM uuid="H4GXYB6L_AF1GS" resource="ComputerRepair/Processes/ComputerRepair.bpm">
+    <Element id="pool1#lane1" siteView="sv3"/>
+    <Element id="pool1#lane1#task1" activityModuleId="hym2"/>
+    <Element id="pool1#lane1#task1e" activityModuleId="hym3"/>
+    <Element id="pool1#lane2" siteView="sv4"/>
+    <Element id="pool1#lane2#task7" activityModuleId="hym4"/>
+    <Element id="pool1#lane2#task8" activityModuleId="hym5"/>
+    <Element id="pool1#lane2#task9" activityModuleId="hym6"/>
+  </BPM>
+</BPMMapping>
+ 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.utility.rtx.db.SelectorUnitService" name="Users">
+  <MaxResults/>
+  <Query entity="User">
+    <Input id="p0" param="acond8" type="string" implied="false" expandStyle="in" value="Admin" attribute="userName"/>
+    <Output id="userOID" name="oid" index="0"/>
+    <Output id="userName" name="userName" index="1"/>
+    <HQL>select a_user.oid, a_user.userName from User a_user
+      <Where defaultPolicy="fill" allImplied="false">(({[p0]safe_cast(a_user.userName) not in(?)}))</Where>order by a_user.userName asc
+    </HQL>
+  </Query>
+</Descriptor>

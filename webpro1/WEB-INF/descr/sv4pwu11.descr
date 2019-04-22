@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.content.rtx.db.PowerIndexUnitService" name="Attachments">
+  <UseFirstRowAsDefaultCurrent>false</UseFirstRowAsDefaultCurrent>
+  <Results maxResults="" blockFactor="5" blockWindow="5"/>
+  <SortHistorySize>1</SortHistorySize>
+  <Checkable>false</Checkable>
+  <Query entity="Attachment">
+    <Input id="p0" param="sv4rcond36.processInstanceOid" type="integer" implied="false" expandStyle="in"/>
+    <Output id="attachmentOid" name="oid" index="0"/>
+    <Output id="attachmentUserName" name="userName" index="1"/>
+    <Output id="attachmentTimestamp" name="timestamp" index="2"/>
+    <Output id="attachmentFile" name="file" blob="true" index="3"/>
+    <HQL>select a_attachment.oid, a_user_attachment2User.userName, a_attachment.timestamp, a_attachment.fileRef from Attachment a_attachment left join a_attachment.user a_user_attachment2User
+      <Where defaultPolicy="fill" allImplied="false">(({[p0]a_attachment.oid in(select a_attachment_p0.source_oid from Rel_Attachment_to_processInstances a_attachment_p0 where a_attachment_p0.target_oid in(?))}))</Where>order by a_attachment.oid desc, a_attachment.timestamp desc
+    </HQL>
+  </Query>
+  <SortAttributes>
+    <Attribute id="attachmentOid" dynamic="false" order="desc">a_attachment.oid</Attribute>
+    <Attribute id="attachmentTimestamp" dynamic="false" order="desc">a_attachment.timestamp</Attribute>
+  </SortAttributes>
+  <wr:Validation xmlns:wr="http://www.webratio.com/2013/WebML/WRValidation">
+    <wr:ValidationLink elementId="sv4pwu11" linkId="sv4ln151" action="validate"/>
+  </wr:Validation>
+</Descriptor>

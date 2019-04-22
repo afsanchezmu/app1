@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<DataModel packageName="com.webratio.webapp" volatileKeyPolicy="" useQualifiedEntities="">
+  <!-- DATABASES -->
+  <Database id="application_vdb" url="jdbc:h2:mem:application_vdb" schema="" duration="volatileApplication"/>
+  <Database id="db1" url="jdbc:mysql://localhost:3306/db1" schema=""/>
+  <Database id="session_vdb" url="jdbc:h2:mem:session_vdb" schema="" duration="volatileSession"/>
+  <!-- ENTITIES -->
+  <Entity id="ActivityInstance" name="ActivityInstance" className="com.webratio.webapp.ActivityInstance" duration="persistent" database="db1">
+    <Attribute id="activityInstanceAbortedTimestamp" key="false" name="aborted at" fieldName="abortedAt" type="timestamp" javaType="java.sql.Timestamp"/>
+    <Attribute id="activityInstanceActiveTimestamp" key="false" name="active since" fieldName="activeSince" type="timestamp" javaType="java.sql.Timestamp"/>
+    <Attribute id="activityInstanceActivityTypeName" key="false" name="activity name" fieldName="activityName" type="string" javaType="java.lang.String" importPath="activityInstance2ActivityType.activityTypeName" refAttribute="activityTypeName" modifiable="false"/>
+    <Attribute id="activityInstanceCancelledTimestamp" key="false" name="cancelled at" fieldName="cancelledAt" type="timestamp" javaType="java.sql.Timestamp"/>
+    <Attribute id="activityInstanceCode" key="false" name="code" fieldName="code" type="string" javaType="java.lang.String" importPath="activityInstance2ActivityType.activityTypeCode" refAttribute="activityTypeCode" modifiable="false"/>
+    <Attribute id="activityInstanceCompletedTimestamp" key="false" name="completed at" fieldName="completedAt" type="timestamp" javaType="java.sql.Timestamp"/>
+    <Attribute id="activityInstanceContext" key="false" name="context" fieldName="context" type="string" javaType="java.lang.String"/>
+    <Attribute id="activityInstanceDescription" key="false" name="description" fieldName="description" type="text" javaType="java.lang.String" clob="" clobFieldName="descriptionCLOB" contentType="text/html" importPath="activityInstance2ActivityType.activityTypeDescription" refAttribute="activityTypeDescription" modifiable="false"/>
+    <Attribute id="activityInstanceExecution" key="false" name="execution" fieldName="execution" type="string" javaType="java.lang.String" importPath="activityInstance2ActivityType.activityTypeExecution" refAttribute="activityTypeExecution" modifiable="false"/>
+    <Attribute id="activityInstanceGroupName" key="false" name="group" fieldName="group" type="string" javaType="java.lang.String" importPath="activityInstance2Group.groupName" refAttribute="groupName" modifiable="false"/>
+    <Attribute id="activityInstanceLastTimestamp" key="false" name="worked at" fieldName="workedAt" type="timestamp" javaType="java.sql.Timestamp"/>
+    <Attribute id="activityInstanceName" key="false" name="name" fieldName="name" type="string" javaType="java.lang.String" transformerClass="com.webratio.units.bpm.outputs.ActivityInstanceName"/>
+    <Attribute id="activityInstanceOid" key="true" name="oid" fieldName="oid" type="integer" javaType="java.lang.Integer"/>
+    <Attribute id="activityInstanceProcessInstanceActiveSince" key="false" name="process active since" fieldName="processActiveSince" type="timestamp" javaType="java.sql.Timestamp" importPath="activityInstance2ProcessInstance.processInstanceActiveTimestamp" refAttribute="processInstanceActiveTimestamp" modifiable="false"/>
+    <Attribute id="activityInstanceProcessInstanceAttachmentCount" key="false" name="process attachment count" fieldName="processAttachmentCount" type="integer" javaType="java.lang.Integer" importPath="activityInstance2ProcessInstance.processInstanceAttachmentCount" refAttribute="processInstanceAttachmentCount" modifiable="false"/>
+    <Attribute id="activityInstanceProcessInstanceName" key="false" name="process instance name" fieldName="processInstanceName" type="string" javaType="java.lang.String" importPath="activityInstance2ProcessInstance.processInstanceName" refAttribute="processInstanceName" modifiable="false"/>
+    <Attribute id="activityInstanceProcessName" key="false" name="process name" fieldName="processName" type="string" javaType="java.lang.String" importPath="activityInstance2ProcessInstance.processInstance2Process.processName" refAttribute="processName" modifiable="false"/>
+    <Attribute id="activityInstanceReadyTimestamp" key="false" name="ready since" fieldName="readySince" type="timestamp" javaType="java.sql.Timestamp"/>
+    <Attribute id="activityInstanceRollbackable" key="false" name="rollbackable" fieldName="rollbackable" type="boolean" javaType="java.lang.Boolean" trueValue="" falseValue=""/>
+    <Attribute id="activityInstanceStatus" key="false" name="status" fieldName="status" type="string" javaType="java.lang.String"/>
+    <Attribute id="activityInstanceType" key="false" name="type" fieldName="type" type="string" javaType="java.lang.String" importPath="activityInstance2ActivityType.activityTypeType" refAttribute="activityTypeType" modifiable="false"/>
+    <Attribute id="activityInstanceUserName" key="false" name="userName" fieldName="userName" type="string" javaType="java.lang.String" importPath="activityInstance2User.userName" refAttribute="userName" modifiable="false"/>
+    <OutgoingRoles>activityInstance2ActivityType|activityInstance2ProcessInstance|activityInstance2ParameterInstances|previousActivityInstance2NextActivityInstances|nextActivityInstance2PreviousActivityInstances|activityInstance2User|activityInstance2CandidateUsers|activityInstance2Notifications|activityInstance2Notes|nextActivityInstance2Notes|activityInstance2Group</OutgoingRoles>
+    <InverseRoles>activityInstance2ParameterInstances|nextActivityInstance2PreviousActivityInstances|activityInstance2Notifications|activityInstance2Notes|nextActivityInstance2Notes</InverseRoles>
+  </Entity>
+  <Entity id="ActivityType" name="ActivityType" className="com.webratio.webapp.ActivityType" duration="persistent" database="db1">
+    <Attribute id="activityTypeCode" key="false" name="code" fieldName="code" type="string" javaType="java.lang.String"/>
+    <Attribute id="activityTypeDefaultInstanceName" key="false" name="default instance name" fieldName="defaultInstanceName" type="string" javaType="java.lang.String"/>
+    <Attribute id="activityTypeDescription" key="false" name="description" fieldName="description" type="text" javaType="java.lang.String" clob="" clobFieldName="descriptionCLOB" contentType="text/html"/>
+    <Attribute id="activityTypeExecution" key="false" name="execution" fieldName="execution" type="string" javaType="java.lang.String"/>
+    <Attribute id="activityTypeId" key="false" name="ID" fieldName="ID" type="string" javaType="java.lang.String"/>
+    <Attribute id="activityTypeName" key="false" name="name" fieldName="name" type="string" javaType="java.lang.String"/>
+    <Attribute id="activityTypeOid" key="true" name="oid" fieldName="oid" type="integer" javaType="java.lang.Integer"/>
+    <Attribute id="activityTypeProcessName" key="false" name="process name" fieldName="processName" type="string" javaType="java.lang.String" importPath="activityType2Process.processName" refAttribute="processName" modifiable="false"/>
+    <Attribute id="activityTypeSortNumber" key="false" name="sort number" fieldName="sortNumber" type="float" javaType="java.lang.Double"/>
+    <Attribute id="activityTypeType" key="false" name="type" fieldName="type" type="string" javaType="java.lang.String"/>
+    <Attribute id="activityTypeUUID" key="false" name="uuid" fieldName="uuid" type="string" javaType="java.lang.String"/>
+    <OutgoingRoles>activityType2ActivityInstances|activityType2Process|nextActivityType2PreviousSequenceFlows|previousActivityType2NextSequenceFlows|activityType2Groups</OutgoingRoles>
+    <InverseRoles>activityType2ActivityInstances|nextActivityType2PreviousSequenceFlows|previousActivityType2NextSequenceFlows|activityType2Groups</InverseRoles>
+  </Entity>
+  <Entity id="Attachment" name="Attachment" className="com.webratio.webapp.Attachment" duration="persistent" database="db1">
+    <Attribute id="attachmentFile" key="false" name="file" fieldName="file" type="blob" javaType="java.lang.String" storageType="file" uploadPolicy="managed" deletePolicy="no action" refFieldName="fileRef" defBlobName=""/>
+    <Attribute id="attachmentOid" key="true" name="oid" fieldName="oid" type="integer" javaType="java.lang.Integer"/>
+    <Attribute id="attachmentTimestamp" key="false" name="timestamp" fieldName="timestamp" type="timestamp" javaType="java.sql.Timestamp"/>
+    <Attribute id="attachmentTitle" key="false" name="title" fieldName="title" type="string" javaType="java.lang.String"/>
+    <Attribute id="attachmentUserName" key="false" name="userName" fieldName="userName" type="string" javaType="java.lang.String" importPath="attachment2User.userName" refAttribute="userName" modifiable="false"/>
+    <OutgoingRoles>attachment2ProcessInstances|attachment2User</OutgoingRoles>
+    <InverseRoles/>
+  </Entity>
+  <Entity id="Group" name="Group" className="com.webratio.webapp.Group" duration="persistent" database="db1">
+    <Attribute id="groupName" key="false" name="groupName" fieldName="groupName" type="string" javaType="java.lang.String"/>
+    <Attribute id="groupOID" key="true" name="oid" fieldName="oid" type="integer" javaType="java.lang.Integer"/>
+    <OutgoingRoles>Group2User|DefaultGroup2User|Group2DefaultModule|Group2Module|group2ActivityTypes|group2ActivityInstances</OutgoingRoles>
+    <InverseRoles>Group2User|DefaultGroup2User|group2ActivityInstances</InverseRoles>
+  </Entity>
+  <Entity id="Module" name="Module" className="com.webratio.webapp.Module" duration="persistent" database="db1">
+    <Attribute id="moduleDomainName" key="false" name="moduleDomainName" fieldName="moduleDomainName" type="string" javaType="java.lang.String"/>
+    <Attribute id="moduleID" key="false" name="moduleID" fieldName="moduleID" type="string" javaType="java.lang.String"/>
+    <Attribute id="moduleName" key="false" name="moduleName" fieldName="moduleName" type="string" javaType="java.lang.String"/>
+    <Attribute id="moduleOID" key="true" name="oid" fieldName="oid" type="integer" javaType="java.lang.Integer"/>
+    <OutgoingRoles>DefaultModule2Group|Module2Group</OutgoingRoles>
+    <InverseRoles>DefaultModule2Group|Module2Group</InverseRoles>
+  </Entity>
+  <Entity id="Note" name="Note" className="com.webratio.webapp.Note" duration="persistent" database="db1">
+    <Attribute id="noteOid" key="true" name="oid" fieldName="oid" type="integer" javaType="java.lang.Integer"/>
+    <Attribute id="noteText" key="false" name="text" fieldName="text" type="text" javaType="java.lang.String" clob="" clobFieldName="textCLOB"/>
+    <Attribute id="noteTimestamp" key="false" name="timestamp" fieldName="timestamp" type="timestamp" javaType="java.sql.Timestamp"/>
+    <Attribute id="noteUserName" key="false" name="userName" fieldName="userName" type="string" javaType="java.lang.String" importPath="note2User.userName" refAttribute="userName" modifiable="false"/>
+    <OutgoingRoles>note2ProcessInstances|note2ActivityInstances|note2NextActivityInstance|note2User</OutgoingRoles>
+    <InverseRoles/>
+  </Entity>
+  <Entity id="Notification" name="Notification" className="com.webratio.webapp.Notification" duration="persistent" database="db1">
+    <Attribute id="notificationMessage" key="false" name="message" fieldName="message" type="string" javaType="java.lang.String"/>
+    <Attribute id="notificationOid" key="true" name="oid" fieldName="oid" type="integer" javaType="java.lang.Integer"/>
+    <Attribute id="notificationRead" key="false" name="read" fieldName="read" type="boolean" javaType="java.lang.Boolean" trueValue="" falseValue=""/>
+    <OutgoingRoles>notification2Users|notification2ActivityInstance</OutgoingRoles>
+    <InverseRoles>notification2Users</InverseRoles>
+  </Entity>
+  <Entity id="ParameterInstance" name="ParameterInstance" className="com.webratio.webapp.ParameterInstance" duration="persistent" database="db1">
+    <Attribute id="parameterInstanceCurrent" key="false" name="current" fieldName="current" type="boolean" javaType="java.lang.Boolean" trueValue="" falseValue=""/>
+    <Attribute id="parameterInstanceName" key="false" name="name" fieldName="name" type="string" javaType="java.lang.String" importPath="parameterInstance2ParameterType.parameterTypeName" refAttribute="parameterTypeName" modifiable="false"/>
+    <Attribute id="parameterInstanceOid" key="true" name="oid" fieldName="oid" type="integer" javaType="java.lang.Integer"/>
+    <Attribute id="parameterInstanceTimestamp" key="false" name="timestamp" fieldName="timestamp" type="timestamp" javaType="java.sql.Timestamp"/>
+    <Attribute id="parameterInstanceValue" key="false" name="value" fieldName="value" type="string" javaType="java.lang.String"/>
+    <OutgoingRoles>parameterInstance2ParameterType|parameterInstance2ProcessInstance|parameterInstance2ActivityInstance</OutgoingRoles>
+    <InverseRoles/>
+  </Entity>
+  <Entity id="ParameterType" name="ParameterType" className="com.webratio.webapp.ParameterType" duration="persistent" database="db1">
+    <Attribute id="parameterTypeDescription" key="false" name="description" fieldName="description" type="string" javaType="java.lang.String" contentType="text/html"/>
+    <Attribute id="parameterTypeName" key="false" name="name" fieldName="name" type="string" javaType="java.lang.String"/>
+    <Attribute id="parameterTypeOid" key="true" name="oid" fieldName="oid" type="integer" javaType="java.lang.Integer"/>
+    <Attribute id="parameterTypeType" key="false" name="type" fieldName="type" type="string" javaType="java.lang.String"/>
+    <OutgoingRoles>parameterType2ParameterInstances|parameterType2Process</OutgoingRoles>
+    <InverseRoles>parameterType2ParameterInstances</InverseRoles>
+  </Entity>
+  <Entity id="Process" name="Process" className="com.webratio.webapp.Process" duration="persistent" database="db1">
+    <Attribute id="processCode" key="false" name="code" fieldName="code" type="string" javaType="java.lang.String"/>
+    <Attribute id="processDefaultInstanceName" key="false" name="default instance name" fieldName="defaultInstanceName" type="string" javaType="java.lang.String"/>
+    <Attribute id="processDescription" key="false" name="description" fieldName="description" type="text" javaType="java.lang.String" clob="" clobFieldName="descriptionCLOB" contentType="text/html"/>
+    <Attribute id="processName" key="false" name="name" fieldName="name" type="string" javaType="java.lang.String"/>
+    <Attribute id="processOid" key="true" name="oid" fieldName="oid" type="integer" javaType="java.lang.Integer"/>
+    <Attribute id="processUUID" key="false" name="uuid" fieldName="uuid" type="string" javaType="java.lang.String"/>
+    <Attribute id="processVersion" key="false" name="version" fieldName="version" type="string" javaType="java.lang.String"/>
+    <OutgoingRoles>process2ProcessInstances|process2ActivityTypes|process2ParameterTypes</OutgoingRoles>
+    <InverseRoles>process2ProcessInstances|process2ActivityTypes|process2ParameterTypes</InverseRoles>
+  </Entity>
+  <Entity id="ProcessInstance" name="ProcessInstance" className="com.webratio.webapp.ProcessInstance" duration="persistent" database="db1">
+    <Attribute id="processInstanceAbortedTimestamp" key="false" name="aborted at" fieldName="abortedAt" type="timestamp" javaType="java.sql.Timestamp"/>
+    <Attribute id="processInstanceActiveTimestamp" key="false" name="active since" fieldName="activeSince" type="timestamp" javaType="java.sql.Timestamp"/>
+    <Attribute id="processInstanceAttachmentCount" key="false" name="attachment count" fieldName="attachmentCount" type="integer" javaType="java.lang.Integer" derived="true" modifiable="false"/>
+    <Attribute id="processInstanceCancelledTimestamp" key="false" name="cancelled at" fieldName="cancelledAt" type="timestamp" javaType="java.sql.Timestamp"/>
+    <Attribute id="processInstanceCode" key="false" name="code" fieldName="code" type="string" javaType="java.lang.String" importPath="processInstance2Process.processCode" refAttribute="processCode" modifiable="false"/>
+    <Attribute id="processInstanceCompletedTimestamp" key="false" name="completed at" fieldName="completedAt" type="timestamp" javaType="java.sql.Timestamp"/>
+    <Attribute id="processInstanceDescription" key="false" name="description" fieldName="description" type="text" javaType="java.lang.String" clob="" clobFieldName="descriptionCLOB" contentType="text/html" importPath="processInstance2Process.processDescription" refAttribute="processDescription" modifiable="false"/>
+    <Attribute id="processInstanceName" key="false" name="name" fieldName="name" type="string" javaType="java.lang.String" transformerClass="com.webratio.units.bpm.outputs.ProcessInstanceName"/>
+    <Attribute id="processInstanceOid" key="true" name="oid" fieldName="oid" type="integer" javaType="java.lang.Integer"/>
+    <Attribute id="processInstanceProcessName" key="false" name="process name" fieldName="processName" type="string" javaType="java.lang.String" importPath="processInstance2Process.processName" refAttribute="processName" modifiable="false"/>
+    <Attribute id="processInstanceStatus" key="false" name="status" fieldName="status" type="string" javaType="java.lang.String"/>
+    <Attribute id="processInstanceSubProcessIndex" key="false" name="subProcessIndex" fieldName="subProcessIndex" type="integer" javaType="java.lang.Integer"/>
+    <OutgoingRoles>processInstance2Process|processInstance2ActivityInstances|processInstance2ParameterInstances|processInstance2Notes|processInstance2Attachments|subprocessInstance2ParentProcessInstance|parentProcessInstance2SubprocessInstances</OutgoingRoles>
+    <InverseRoles>processInstance2ActivityInstances|processInstance2ParameterInstances|processInstance2Notes|processInstance2Attachments|parentProcessInstance2SubprocessInstances</InverseRoles>
+  </Entity>
+  <Entity id="SequenceFlow" name="SequenceFlow" className="com.webratio.webapp.SequenceFlow" duration="persistent" database="db1">
+    <Attribute id="sequenceFlowCondition" key="false" name="condition" fieldName="condition" type="string" javaType="java.lang.String"/>
+    <Attribute id="sequenceFlowDefault" key="false" name="default" fieldName="_default" type="boolean" javaType="java.lang.Boolean" trueValue="" falseValue=""/>
+    <Attribute id="sequenceFlowLabel" key="false" name="label" fieldName="label" type="string" javaType="java.lang.String"/>
+    <Attribute id="sequenceFlowOid" key="true" name="oid" fieldName="oid" type="integer" javaType="java.lang.Integer"/>
+    <Attribute id="sequenceFlowSortNumber" key="false" name="sort number" fieldName="sortNumber" type="float" javaType="java.lang.Double"/>
+    <OutgoingRoles>previousSequenceFlow2NextActivityType|nextSequenceFlow2PreviousActivityType</OutgoingRoles>
+    <InverseRoles/>
+  </Entity>
+  <Entity id="User" name="User" className="com.webratio.webapp.User" duration="persistent" database="db1">
+    <Attribute id="email" key="false" name="email" fieldName="email" type="string" javaType="java.lang.String"/>
+    <Attribute id="password" key="false" name="password" fieldName="password" type="password" javaType="java.lang.String"/>
+    <Attribute id="userDefaultGroupName" key="false" name="group" fieldName="group" type="string" javaType="java.lang.String" importPath="User2DefaultGroup.groupName" refAttribute="groupName" modifiable="false"/>
+    <Attribute id="userName" key="false" name="userName" fieldName="userName" type="string" javaType="java.lang.String"/>
+    <Attribute id="userOID" key="true" name="oid" fieldName="oid" type="integer" javaType="java.lang.Integer"/>
+    <OutgoingRoles>User2Group|User2DefaultGroup|user2ActivityInstances|candidateUser2ActivityInstances|user2Notifications|user2Notes|user2Attachments</OutgoingRoles>
+    <InverseRoles>user2ActivityInstances|candidateUser2ActivityInstances|user2Notes|user2Attachments</InverseRoles>
+  </Entity>
+  <!-- RELATIONSHIP_ROLES -->
+  <Role id="DefaultGroup2User" inverseId="User2DefaultGroup" source="Group" target="User" maxCard="many" fieldName="defaultUsers" derived="false" database="db1" direct="false"/>
+  <Role id="DefaultModule2Group" inverseId="Group2DefaultModule" source="Module" target="Group" maxCard="many" fieldName="defaultGroups" derived="false" database="db1" direct="false"/>
+  <Role id="Group2DefaultModule" inverseId="DefaultModule2Group" source="Group" target="Module" maxCard="1" fieldName="defaultModule" derived="false" database="db1" direct="true"/>
+  <Role id="Group2Module" inverseId="Module2Group" source="Group" target="Module" maxCard="many" fieldName="modules" derived="false" database="db1" direct="true"/>
+  <Role id="Group2User" inverseId="User2Group" source="Group" target="User" maxCard="many" fieldName="users" derived="false" database="db1" direct="false"/>
+  <Role id="Module2Group" inverseId="Group2Module" source="Module" target="Group" maxCard="many" fieldName="groups" derived="false" database="db1" direct="false"/>
+  <Role id="User2DefaultGroup" inverseId="DefaultGroup2User" source="User" target="Group" maxCard="1" fieldName="defaultGroup" derived="false" database="db1" direct="true"/>
+  <Role id="User2Group" inverseId="Group2User" source="User" target="Group" maxCard="many" fieldName="groups" derived="false" database="db1" direct="true"/>
+  <Role id="activityInstance2ActivityType" inverseId="activityType2ActivityInstances" source="ActivityInstance" target="ActivityType" maxCard="1" fieldName="activityType" derived="false" database="db1" direct="true"/>
+  <Role id="activityInstance2CandidateUsers" inverseId="candidateUser2ActivityInstances" source="ActivityInstance" target="User" maxCard="many" fieldName="activityInstanceCandidateUsers" derived="false" database="db1" direct="true"/>
+  <Role id="activityInstance2Group" inverseId="group2ActivityInstances" source="ActivityInstance" target="Group" maxCard="1" fieldName="activityInstanceGroup" derived="false" database="db1" direct="true"/>
+  <Role id="activityInstance2Notes" inverseId="note2ActivityInstances" source="ActivityInstance" target="Note" maxCard="many" fieldName="activityInstanceNotes" derived="false" database="db1" direct="false"/>
+  <Role id="activityInstance2Notifications" inverseId="notification2ActivityInstance" source="ActivityInstance" target="Notification" maxCard="many" fieldName="notifications" derived="false" database="db1" direct="false"/>
+  <Role id="activityInstance2ParameterInstances" inverseId="parameterInstance2ActivityInstance" source="ActivityInstance" target="ParameterInstance" maxCard="many" fieldName="parameterInstances" derived="false" database="db1" direct="false"/>
+  <Role id="activityInstance2ProcessInstance" inverseId="processInstance2ActivityInstances" source="ActivityInstance" target="ProcessInstance" maxCard="1" fieldName="processInstance" derived="false" database="db1" direct="true"/>
+  <Role id="activityInstance2User" inverseId="user2ActivityInstances" source="ActivityInstance" target="User" maxCard="1" fieldName="user" derived="false" database="db1" direct="true"/>
+  <Role id="activityType2ActivityInstances" inverseId="activityInstance2ActivityType" source="ActivityType" target="ActivityInstance" maxCard="many" fieldName="activityInstances" derived="false" database="db1" direct="false"/>
+  <Role id="activityType2Groups" inverseId="group2ActivityTypes" source="ActivityType" target="Group" maxCard="many" fieldName="groups" derived="false" database="db1" direct="false"/>
+  <Role id="activityType2Process" inverseId="process2ActivityTypes" source="ActivityType" target="Process" maxCard="1" fieldName="process" derived="false" database="db1" direct="true"/>
+  <Role id="attachment2ProcessInstances" inverseId="processInstance2Attachments" source="Attachment" target="ProcessInstance" maxCard="many" fieldName="processInstances" derived="false" database="db1" direct="true"/>
+  <Role id="attachment2User" inverseId="user2Attachments" source="Attachment" target="User" maxCard="1" fieldName="user" derived="false" database="db1" direct="true"/>
+  <Role id="candidateUser2ActivityInstances" inverseId="activityInstance2CandidateUsers" source="User" target="ActivityInstance" maxCard="many" fieldName="candidateUserActivityInstances" derived="false" database="db1" direct="false"/>
+  <Role id="group2ActivityInstances" inverseId="activityInstance2Group" source="Group" target="ActivityInstance" maxCard="many" fieldName="activityInstances" derived="false" database="db1" direct="false"/>
+  <Role id="group2ActivityTypes" inverseId="activityType2Groups" source="Group" target="ActivityType" maxCard="many" fieldName="activityTypes" derived="false" database="db1" direct="true"/>
+  <Role id="nextActivityInstance2Notes" inverseId="note2NextActivityInstance" source="ActivityInstance" target="Note" maxCard="many" fieldName="nextActivityInstanceNote" derived="false" database="db1" direct="false"/>
+  <Role id="nextActivityInstance2PreviousActivityInstances" inverseId="previousActivityInstance2NextActivityInstances" source="ActivityInstance" target="ActivityInstance" maxCard="many" fieldName="previousActivityInstances" derived="false" database="db1" direct="false"/>
+  <Role id="nextActivityType2PreviousSequenceFlows" inverseId="previousSequenceFlow2NextActivityType" source="ActivityType" target="SequenceFlow" maxCard="many" fieldName="previousConditions" derived="false" database="db1" direct="false"/>
+  <Role id="nextSequenceFlow2PreviousActivityType" inverseId="previousActivityType2NextSequenceFlows" source="SequenceFlow" target="ActivityType" maxCard="1" fieldName="previousActivityType" derived="false" database="db1" direct="true"/>
+  <Role id="note2ActivityInstances" inverseId="activityInstance2Notes" source="Note" target="ActivityInstance" maxCard="many" fieldName="activityInstances" derived="false" database="db1" direct="true"/>
+  <Role id="note2NextActivityInstance" inverseId="nextActivityInstance2Notes" source="Note" target="ActivityInstance" maxCard="1" fieldName="activityInstance" derived="false" database="db1" direct="true"/>
+  <Role id="note2ProcessInstances" inverseId="processInstance2Notes" source="Note" target="ProcessInstance" maxCard="many" fieldName="processInstances" derived="false" database="db1" direct="true"/>
+  <Role id="note2User" inverseId="user2Notes" source="Note" target="User" maxCard="1" fieldName="user" derived="false" database="db1" direct="true"/>
+  <Role id="notification2ActivityInstance" inverseId="activityInstance2Notifications" source="Notification" target="ActivityInstance" maxCard="1" fieldName="activityInstance" derived="false" database="db1" direct="true"/>
+  <Role id="notification2Users" inverseId="user2Notifications" source="Notification" target="User" maxCard="many" fieldName="users" derived="false" database="db1" direct="false"/>
+  <Role id="parameterInstance2ActivityInstance" inverseId="activityInstance2ParameterInstances" source="ParameterInstance" target="ActivityInstance" maxCard="1" fieldName="activityInstance" derived="false" database="db1" direct="true"/>
+  <Role id="parameterInstance2ParameterType" inverseId="parameterType2ParameterInstances" source="ParameterInstance" target="ParameterType" maxCard="1" fieldName="parameterType" derived="false" database="db1" direct="true"/>
+  <Role id="parameterInstance2ProcessInstance" inverseId="processInstance2ParameterInstances" source="ParameterInstance" target="ProcessInstance" maxCard="1" fieldName="processInstance" derived="false" database="db1" direct="true"/>
+  <Role id="parameterType2ParameterInstances" inverseId="parameterInstance2ParameterType" source="ParameterType" target="ParameterInstance" maxCard="many" fieldName="parameterInstances" derived="false" database="db1" direct="false"/>
+  <Role id="parameterType2Process" inverseId="process2ParameterTypes" source="ParameterType" target="Process" maxCard="1" fieldName="process" derived="false" database="db1" direct="true"/>
+  <Role id="parentProcessInstance2SubprocessInstances" inverseId="subprocessInstance2ParentProcessInstance" source="ProcessInstance" target="ProcessInstance" maxCard="many" fieldName="subprocessInstances" derived="false" database="db1" direct="false"/>
+  <Role id="previousActivityInstance2NextActivityInstances" inverseId="nextActivityInstance2PreviousActivityInstances" source="ActivityInstance" target="ActivityInstance" maxCard="many" fieldName="nextActivityInstances" derived="false" database="db1" direct="true"/>
+  <Role id="previousActivityType2NextSequenceFlows" inverseId="nextSequenceFlow2PreviousActivityType" source="ActivityType" target="SequenceFlow" maxCard="many" fieldName="nextConditions" derived="false" database="db1" direct="false"/>
+  <Role id="previousSequenceFlow2NextActivityType" inverseId="nextActivityType2PreviousSequenceFlows" source="SequenceFlow" target="ActivityType" maxCard="1" fieldName="nextActivityType" derived="false" database="db1" direct="true"/>
+  <Role id="process2ActivityTypes" inverseId="activityType2Process" source="Process" target="ActivityType" maxCard="many" fieldName="activityTypes" derived="false" database="db1" direct="false"/>
+  <Role id="process2ParameterTypes" inverseId="parameterType2Process" source="Process" target="ParameterType" maxCard="many" fieldName="parameterTypes" derived="false" database="db1" direct="false"/>
+  <Role id="process2ProcessInstances" inverseId="processInstance2Process" source="Process" target="ProcessInstance" maxCard="many" fieldName="processInstances" derived="false" database="db1" direct="false"/>
+  <Role id="processInstance2ActivityInstances" inverseId="activityInstance2ProcessInstance" source="ProcessInstance" target="ActivityInstance" maxCard="many" fieldName="activityInstances" derived="false" database="db1" direct="false"/>
+  <Role id="processInstance2Attachments" inverseId="attachment2ProcessInstances" source="ProcessInstance" target="Attachment" maxCard="many" fieldName="processAttachments" derived="false" database="db1" direct="false"/>
+  <Role id="processInstance2Notes" inverseId="note2ProcessInstances" source="ProcessInstance" target="Note" maxCard="many" fieldName="processNotes" derived="false" database="db1" direct="false"/>
+  <Role id="processInstance2ParameterInstances" inverseId="parameterInstance2ProcessInstance" source="ProcessInstance" target="ParameterInstance" maxCard="many" fieldName="parameterInstances" derived="false" database="db1" direct="false"/>
+  <Role id="processInstance2Process" inverseId="process2ProcessInstances" source="ProcessInstance" target="Process" maxCard="1" fieldName="process" derived="false" database="db1" direct="true"/>
+  <Role id="subprocessInstance2ParentProcessInstance" inverseId="parentProcessInstance2SubprocessInstances" source="ProcessInstance" target="ProcessInstance" maxCard="1" fieldName="parentProcessInstance" derived="false" database="db1" direct="true"/>
+  <Role id="user2ActivityInstances" inverseId="activityInstance2User" source="User" target="ActivityInstance" maxCard="many" fieldName="activityInstances" derived="false" database="db1" direct="false"/>
+  <Role id="user2Attachments" inverseId="attachment2User" source="User" target="Attachment" maxCard="many" fieldName="userAttachments" derived="false" database="db1" direct="false"/>
+  <Role id="user2Notes" inverseId="note2User" source="User" target="Note" maxCard="many" fieldName="userNotes" derived="false" database="db1" direct="false"/>
+  <Role id="user2Notifications" inverseId="notification2Users" source="User" target="Notification" maxCard="many" fieldName="notifications" derived="false" database="db1" direct="true"/>
+</DataModel>

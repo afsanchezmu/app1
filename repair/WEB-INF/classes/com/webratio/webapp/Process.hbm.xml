@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="true" default-cascade="none" default-access="property" default-lazy="true">
+  <class name="com.webratio.webapp.Process" table="`process`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="oid" column="`oid`" type="java.lang.Integer">
+      <generator class="com.webratio.rtx.hibernate.MaxPlusOneIncrementGenerator"/>
+    </id>
+    <property name="code" column="`code`" type="java.lang.String" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="name" column="`name`" type="java.lang.String" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="defaultInstanceName" column="`default_instance_name`" type="java.lang.String" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="description" column="`description`" type="java.lang.String" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="uuid" column="`uuid`" type="java.lang.String" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <property name="version" column="`version`" type="java.lang.String" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+    <set name="processInstances" inverse="true" mutable="true" sort="unsorted" optimistic-lock="true" embed-xml="true">
+      <key on-delete="noaction">
+        <column name="`process_oid`"/>
+      </key>
+      <one-to-many class="com.webratio.webapp.ProcessInstance" not-found="exception" embed-xml="true"/>
+    </set>
+    <set name="activityTypes" inverse="true" mutable="true" sort="unsorted" optimistic-lock="true" embed-xml="true">
+      <key on-delete="noaction">
+        <column name="`process_oid`"/>
+      </key>
+      <one-to-many class="com.webratio.webapp.ActivityType" not-found="exception" embed-xml="true"/>
+    </set>
+    <set name="parameterTypes" inverse="true" mutable="true" sort="unsorted" optimistic-lock="true" embed-xml="true">
+      <key on-delete="noaction">
+        <column name="`process_oid`"/>
+      </key>
+      <one-to-many class="com.webratio.webapp.ParameterType" not-found="exception" embed-xml="true"/>
+    </set>
+  </class>
+  <!-- mapping for relationship 'processInstances[process2ProcessInstances]' -->
+  <class entity-name="com.webratio.webapp.Rel_Process_to_processInstances" table="`processinstance`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="target_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="source_oid" column="`process_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+  <!-- mapping for relationship 'activityTypes[process2ActivityTypes]' -->
+  <class entity-name="com.webratio.webapp.Rel_Process_to_activityTypes" table="`activitytype`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="target_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="source_oid" column="`process_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+  <!-- mapping for relationship 'parameterTypes[process2ParameterTypes]' -->
+  <class entity-name="com.webratio.webapp.Rel_Process_to_parameterTypes" table="`parametertype`" dynamic-update="true" dynamic-insert="true" mutable="true" polymorphism="implicit" select-before-update="false" optimistic-lock="version">
+    <id name="target_oid" column="`oid`" type="java.lang.Integer"/>
+    <property name="source_oid" column="`process_oid`" type="java.lang.Integer" unique="false" optimistic-lock="true" lazy="false" generated="never"/>
+  </class>
+</hibernate-mapping>

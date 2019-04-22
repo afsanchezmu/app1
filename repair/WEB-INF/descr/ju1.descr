@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.controlflow.rtx.JumpUnitService" name="Go to home">
+  <Direction>forward</Direction>
+  <CollectorUnit>pcu1</CollectorUnit>
+  <IgnoreHistory>false</IgnoreHistory>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Go to home</ModelName>
+    <ParentContainer>sv2</ParentContainer>
+    <MasterPage ignore="false">mpage1</MasterPage>
+    <NavigationAncestors>sv2</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>false</CheckPermission>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <Params>kcond4.userOID|sp|cmplink|link|smc</Params>
+    </OperationParams>
+    <OutgoingLinks></OutgoingLinks>
+    <IsLinkHistoryRecorded>true</IsLinkHistoryRecorded>
+  </WRParameterService>
+</Descriptor>

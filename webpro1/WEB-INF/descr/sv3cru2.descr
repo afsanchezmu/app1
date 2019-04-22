@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.operation.rtx.db.CreateUnitService" name="Create Note">
+  <Entity>Note</Entity>
+  <BulkInsert>false</BulkInsert>
+  <SkipBlankRecords>false</SkipBlankRecords>
+  <Field param="sv3cru2.noteOid" type="integer" attribute="noteOid">oid</Field>
+  <Field param="sv3cru2.noteText" type="text" attribute="noteText">text</Field>
+  <Field param="sv3cru2.noteTimestamp" type="timestamp" attribute="noteTimestamp">timestamp</Field>
+  <Association name="processInstances" direct="true" inverseName="processNotes" oneToOne="false" maxCardMany="true">
+    <QueryInput id="oid" param="sv3cru2.note2ProcessInstances.processInstanceOid" type="integer"/>
+    <Query>from ProcessInstance _e where _e.oid = :oid</Query>
+  </Association>
+  <Association name="activityInstances" direct="true" inverseName="activityInstanceNotes" oneToOne="false" maxCardMany="true">
+    <QueryInput id="oid" param="sv3cru2.note2ActivityInstances.activityInstanceOid" type="integer"/>
+    <Query>from ActivityInstance _e where _e.oid = :oid</Query>
+  </Association>
+  <Association name="activityInstance" direct="true" inverseName="nextActivityInstanceNote" oneToOne="false" maxCardMany="false">
+    <QueryInput id="oid" param="sv3cru2.note2NextActivityInstance.activityInstanceOid" type="integer"/>
+    <Query>from ActivityInstance _e where _e.oid = :oid</Query>
+  </Association>
+  <Association name="user" direct="true" inverseName="userNotes" oneToOne="false" maxCardMany="false">
+    <QueryInput id="oid" param="sv3cru2.note2User.userOID" type="integer"/>
+    <Query>from User _e where _e.oid = :oid</Query>
+  </Association>
+  <!--Operation Parameter Service-->
+  <WRParameterService service="com.webratio.rtx.core.DefaultOperationParameterService">
+    <ModelName>Create Note</ModelName>
+    <ParentContainer>sv3opg2</ParentContainer>
+    <MasterPage ignore="false">sv3mpage4</MasterPage>
+    <NavigationAncestors>sv3|sv3Activities</NavigationAncestors>
+    <Secure>false</Secure>
+    <Localized>false</Localized>
+    <CheckPermission>true</CheckPermission>
+    <PermissionElement>sv3</PermissionElement>
+    <StartsTransaction>false</StartsTransaction>
+    <LinkIdRequired>true</LinkIdRequired>
+    <OperationParams>
+      <OperationParam unit="sv3cru2">sv3cru2.note2NextActivityInstance.activityInstanceOid</OperationParam>
+      <OperationParam unit="sv3cru2">sv3cru2.noteText</OperationParam>
+      <OperationParam unit="sv3cru2">sv3cru2.noteTimestamp</OperationParam>
+      <OperationParam unit="sv3cru2">sv3cru2.note2User.userOID</OperationParam>
+      <Params>sv3par156|sv3kcond28.processInstanceOid|sp|link|sv3kcond33.noteOid|sv3rcond38.activityInstanceOid|sv3pwu12.block|sv3kcond31.userOID|sv3kcond30.activityInstanceOid|cmplink|sv3rcond36.processInstanceOid|sv3pu37.activityInstanceOid|sv3kcond32.processInstanceOid|sv3rcond37.processInstanceOid|sv3pwu11.block|smc|sv3kcond29.activityInstanceOid</Params>
+    </OperationParams>
+    <PrecedingIncomingLinks>sv3ln159</PrecedingIncomingLinks>
+    <OutgoingLinks>
+      <Link resultCode="success">sv3oln29</Link>
+    </OutgoingLinks>
+  </WRParameterService>
+</Descriptor>

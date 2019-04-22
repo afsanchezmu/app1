@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Descriptor service="com.webratio.units.content.rtx.db.PowerIndexUnitService" name="Notes">
+  <UseFirstRowAsDefaultCurrent>false</UseFirstRowAsDefaultCurrent>
+  <Results maxResults="" blockFactor="5" blockWindow="5"/>
+  <SortHistorySize>1</SortHistorySize>
+  <Checkable>false</Checkable>
+  <Query entity="Note">
+    <Input id="p0" param="sv4rcond37.processInstanceOid" type="integer" implied="false" expandStyle="in"/>
+    <Input id="p1" param="sv4rcond38.activityInstanceOid" type="integer" implied="false" expandStyle="in"/>
+    <Output id="noteOid" name="oid" index="0"/>
+    <Output id="noteText" name="text" index="1"/>
+    <Output id="noteTimestamp" name="timestamp" index="2"/>
+    <Output id="noteUserName" name="userName" index="3"/>
+    <HQL>select a_note.oid, a_note.text, a_note.timestamp, a_user_note2User.userName from Note a_note left join a_note.user a_user_note2User
+      <Where defaultPolicy="fill" allImplied="false">(({[p0]a_note.oid in(select a_note_p0.source_oid from Rel_Note_to_processInstances a_note_p0 where a_note_p0.target_oid in(?))})) or (({[p1]a_note.oid in(select a_note_p1.source_oid from Rel_Note_to_activityInstances a_note_p1 where a_note_p1.target_oid in(?))}))</Where>order by a_note.oid desc, a_note.timestamp desc
+    </HQL>
+  </Query>
+  <SortAttributes>
+    <Attribute id="noteOid" dynamic="false" order="desc">a_note.oid</Attribute>
+    <Attribute id="noteTimestamp" dynamic="false" order="desc">a_note.timestamp</Attribute>
+  </SortAttributes>
+  <wr:Validation xmlns:wr="http://www.webratio.com/2013/WebML/WRValidation">
+    <wr:ValidationLink elementId="sv4pwu12" linkId="sv4ln158" action="validate"/>
+  </wr:Validation>
+</Descriptor>
